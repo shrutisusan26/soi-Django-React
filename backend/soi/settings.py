@@ -73,11 +73,24 @@ WSGI_APPLICATION = 'soi.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+
 DATABASES = {
+ # setting up of mongoDb happens here.the host string is the connection string from mongodbAtlas
+ #name here is basically the database that forms
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+        'ENGINE': 'djongo',
+        "CLIENT": {
+           "name": "DjangoMongo",
+           "host": "mongodb+srv://soi:samplepassword@mflix.mfei3.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+           "username": "soi",
+           "password": "samplepassword",
+           "authMechanism": "SCRAM-SHA-1",
+        },
+    } 
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # }
 }
 
 
