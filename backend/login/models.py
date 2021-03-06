@@ -15,3 +15,8 @@ class Investor(models.Model):
    user= models.OneToOneField(User,on_delete=models.CASCADE,primary_key=True)
    first_name=models.CharField(max_length=100)
    last_name=models.CharField(max_length=100)
+   
+class Startup(models.Model):
+    user = models.OneToOneField(User,on_delete=models.CASCADE,primary_key=True) #Linking users to their startup, same as in investor
+    startup_name = models.CharField(max_length=100) #Storing name of the startup
+    startup_description = models.CharField(max_length=500) #Storing the description of the startup available to investors

@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from rest_framework.authtoken.models import Token
-from .models import Investor,User
+from .models import Investor,User, Startup
 from django.contrib.auth.hashers import make_password
 
 
@@ -33,3 +33,26 @@ class InvestorUserSerializer(serializers.ModelSerializer):
         investor = Investor.objects.create(user=user,**validated_data)
         Token.objects.create(user=user)
         return investor 
+    
+class StartupUserSerializer(serializers.ModelSerializer):
+    
+    #user instance needs to be created to be used in create() further
+    user = UserSerializer()
+    class Meta:
+        model=Startup
+        fields=['startup_name','startup_description','user']
+    def create(self, validated_data):
+        """ validated_date is a dictionary with fields 'user','startup_name','startup_description'
+        'user' corresponds to our base user with fields like 'username' 'email' 'password'
+        'user' is first popped from the dictionary,passwords encrypted using make_password
+        a user instance is created using User.objects.create  and is_startup is set to true
+        print(validated_data) and print(user_data) to understand better """
+        user_data = validated_data.pop('user')
+        user_data["password"]=make_password(user_data['password'])
+        user=User.objects.create(**user_data)
+        user.is_startup=True
+        user.save()
+        print(validated_data)
+        startup = Startup.objects.create(user=user,**validated_data)
+        Token.objects.create(user=user)
+        return startup 
