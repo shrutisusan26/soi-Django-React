@@ -1,3 +1,17 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
-# Create your models here.
+# base User class with fields that'll be shared between startups and investors
+# username is set as pk
+class User(AbstractUser):
+    is_startup=models.BooleanField(default=False)
+    is_investor=models.BooleanField(default=False)
+    email=models.CharField(max_length=50)
+    username=models.CharField(max_length=50,primary_key=True)
+    password=models.CharField(max_length=50)
+
+#investor models with foreign key reference to the base User model
+class Investor(models.Model):
+   user= models.OneToOneField(User,on_delete=models.CASCADE,primary_key=True)
+   first_name=models.CharField(max_length=100)
+   last_name=models.CharField(max_length=100)
