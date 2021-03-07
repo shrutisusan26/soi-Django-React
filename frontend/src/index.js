@@ -1,32 +1,27 @@
+import 'react-app-polyfill/ie11'; // For IE 11 support
+import 'react-app-polyfill/stable';
+import 'core-js';
+import './polyfill'
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import reportWebVitals from './reportWebVitals';
-import {Route,BrowserRouter} from 'react-router-dom'
-import LoginInv from './components/Investor/LoginInv'
-import {CookiesProvider} from 'react-cookie';
-import Home from './components/Home';
-import LoginSu from './components/Startup/LoginSu';
-function Router(){
-  return(
-  <CookiesProvider>
-    <BrowserRouter>
-      <Route exact path="/" component={Home}/>
-      <Route exact path="/investorlogin" component={LoginInv}/>
-      <Route exact path="/startuplogin" component={LoginSu}/>
-    </BrowserRouter>
-  </CookiesProvider>);
-}
+import App from './App';
+import * as serviceWorker from './serviceWorker';
+
+import { icons } from './assets/icons'
+
+import { Provider } from 'react-redux'
+import store from './store'
+
+React.icons = icons
+
 ReactDOM.render(
-  <React.StrictMode>
-    <Router />
-  </React.StrictMode>,
+  <Provider store={store}>
+    <App/>
+  </Provider>,
   document.getElementById('root')
 );
 
-
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: http://bit.ly/CRA-PWA
+serviceWorker.unregister();
