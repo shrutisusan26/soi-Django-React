@@ -27,6 +27,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+
+CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ORIGIN_WHITELIST = (
+       'https://localhost:3000',
+)
+
 AUTH_USER_MODEL='login.User'
 # Application definition
 
@@ -43,6 +50,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
+    'login'
 
 ]
 REST_FRAMEWORK = {
