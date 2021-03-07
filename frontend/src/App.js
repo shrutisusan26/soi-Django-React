@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import {CookiesProvider} from 'react-cookie';
+import ReactDOM from 'react-dom';
 import './scss/style.scss';
 
 const loading = (
@@ -8,21 +10,25 @@ const loading = (
   </div>
 )
 
-const StartupDashboard= React.lazy(() => import('./Startup/StartupDashboard'));
+function App(){
 
-class App extends Component {
-
-  render() {
+    const StartupDashboard= React.lazy(() => import('./Startup/StartupDashboard'));
+    const LoginSu=React.lazy(()=> import('./Startup/LoginSu'));
+    const LoginInv=React.lazy(()=>import('./Investor/LoginInv'));
+    const Home=React.lazy(()=>import('./Home'));
     return (
+      <CookiesProvider>
       <BrowserRouter>
           <React.Suspense fallback={loading}>
             <Switch>
-              <Route path="/" name="Home" render={props => <StartupDashboard {...props}/>} />
+              <Route path="/home" name="Home" render={props => <Home {...props}/>} />
+              <Route path="/dashboard" name="Dashboard" render={props => <StartupDashboard {...props}/>} />
+              <Route exact path="/startuplogin" name="Investor Login" render={props=> <LoginSu {...props}/>}/>
+              <Route exact path="/investorlogin" name="Startup Login" render={props=> <LoginInv {...props}/>}/>
             </Switch>
           </React.Suspense>
       </BrowserRouter>
+      </CookiesProvider>
     );
   }
-}
-
-export default App;
+  export default App;
