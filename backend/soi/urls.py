@@ -8,4 +8,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     url('', include('login.urls')),
     url('auth/', obtain_auth_token),
+    url('', include('sapp.urls')),
 ]
