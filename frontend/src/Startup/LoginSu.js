@@ -44,37 +44,43 @@ function LoginSu() {
     return (
         <div>
             <div className="login">
-            {isLogin? <h1>Please Login </h1>: <h1>Please Register</h1>}
-            <div className="mb-3">
-                <label htmlFor="username" className="form-label">Username</label>
-                <input type="text" className="form-control" id="username" value={username} placeholder="Enter username" onChange={(e)=>setUsername(e.target.value)}/>
-            </div><br/>
-            <div className="mb-3">
-                <label htmlFor="password" className="form-label">Password</label>
-                <input type="text" className="form-control" id="password" placeholder="Enter password" value={password} onChange={(e)=>setPassword(e.target.value) }/>
-            </div><br/>
-            {!isLogin?<div> <div className="mb-3">
-                <label htmlFor="startup_name" className="form-label">Company Name</label>
-                <input type="text" className="form-control" id="companyNum" value={startup_name} placeholder="Enter your firstName" onChange={(e)=>setstartup_name(e.target.value)}/>
-            </div><br/>
-            <div className="mb-3">
-                <label htmlFor="startup_description" className="form-label">Company Description:</label>
-                <input type="text" className="form-control" id="startup_description" placeholder="Enter the last name" value={startup_description} onChange={(e)=>setDescription(e.target.value) }/>
-            </div><br/>
-            <div className="mb-3">
-                <label htmlFor="email" className="form-label">Email:</label>
-                <input type="text" className="form-control" id="email" placeholder="Enter your email" value={email} onChange={(e)=>setEmail(e.target.value) }/>
-            </div> 
-            <button className="btn btn-primary" onClick={RegisterButton}>Register</button></div>
-            :<button className="btn btn-primary" onClick={loginButton}>Login</button> }
-            {isLogin?
-            <div className="mb-3">
-            <br/>
-            <h5> Dont Have An Account? Please <button className="btn btn-primary" onClick={()=>setIsLogin(false)}>Register</button>Here</h5></div>:
-            <h5> If you have an account, Please <button className="btn btn-primary" onClick={()=>setIsLogin(true)}>Login</button>Here</h5>}
+                {isLogin? <h1>Please Login </h1>: <h1>Please Register</h1>}
+                <div className="mb-3" style={fieldStyle}>
+                    <label htmlFor="username" className="form-label">Username</label>
+                    <input type="text"  className="form-control" id="username" value={username} placeholder="Enter username" onChange={(e)=>setUsername(e.target.value)}/>
+                </div><br/>
+                <div className="mb-3" style={fieldStyle}>
+                    <label htmlFor="password" className="form-label">Password</label>
+                    <input type="text" className="form-control" id="password" placeholder="Enter password" value={password} onChange={(e)=>setPassword(e.target.value) }/>
+                </div><br/>
+                {!isLogin?<div> <div className="mb-3">
+                    <label htmlFor="startup_name" className="form-label">Company Name</label>
+                    <input type="text" className="form-control" id="companyNum" value={startup_name} placeholder="Enter your firstName" onChange={(e)=>setstartup_name(e.target.value)}/>
+                </div><br/>
+                <div className="mb-3">
+                    <label htmlFor="startup_description" className="form-label">Company Description:</label>
+                    <input type="text" className="form-control" id="startup_description" placeholder="Enter the last name" value={startup_description} onChange={(e)=>setDescription(e.target.value) }/>
+                </div><br/>
+                <div className="mb-3">
+                    <label htmlFor="email" className="form-label">Email:</label>
+                    <input type="text" className="form-control" id="email" placeholder="Enter your email" value={email} onChange={(e)=>setEmail(e.target.value) }/>
+                </div> 
+                <button className="btn btn-primary" onClick={RegisterButton}>Register</button></div>
+                :<button className="btn btn-primary" onClick={loginButton}>Login</button> }
+                {isLogin?
+                <div className="mb-3">
+                <br/>
+                <h5> Dont Have An Account? Please <button className="btn btn-primary" onClick={()=>setIsLogin(false)}>Register</button>Here</h5></div>:
+                <h5> If you have an account, Please <button className="btn btn-primary" onClick={()=>setIsLogin(true)}>Login</button>Here</h5>}
             </div>
         </div>
     )
+}
+
+const fieldStyle = {
+    margin: "auto",
+    width: "50%",
+    padding: "10px"
 }
 
 export default LoginSu
