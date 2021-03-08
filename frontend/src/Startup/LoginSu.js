@@ -43,41 +43,60 @@ function LoginSu() {
     }
     return (
         <div>
-            <div className="login">
-                {isLogin? <h1>Please Login </h1>: <h1>Please Register</h1>}
-                <div className="mb-3" style={fieldStyle}>
+            <div className="login" style={centerElem}>
+                {isLogin? <h1 style={centerElem}>Please Login </h1>: <h1 style={centerElem}>Please Register</h1>}
+                <div className="mb-3" style={centerElem}>
                     <label htmlFor="username" className="form-label">Username</label>
                     <input type="text"  className="form-control" id="username" value={username} placeholder="Enter username" onChange={(e)=>setUsername(e.target.value)}/>
-                </div><br/>
-                <div className="mb-3" style={fieldStyle}>
+                </div>
+                <div className="mb-3" style={centerElem}>
                     <label htmlFor="password" className="form-label">Password</label>
                     <input type="text" className="form-control" id="password" placeholder="Enter password" value={password} onChange={(e)=>setPassword(e.target.value) }/>
-                </div><br/>
-                {!isLogin?<div> <div className="mb-3">
+                </div>
+                {!isLogin?
+                <div> 
+                    
+                    <div className="mb-3">
                     <label htmlFor="startup_name" className="form-label">Company Name</label>
                     <input type="text" className="form-control" id="companyNum" value={startup_name} placeholder="Enter your firstName" onChange={(e)=>setstartup_name(e.target.value)}/>
-                </div><br/>
-                <div className="mb-3">
-                    <label htmlFor="startup_description" className="form-label">Company Description:</label>
-                    <input type="text" className="form-control" id="startup_description" placeholder="Enter the last name" value={startup_description} onChange={(e)=>setDescription(e.target.value) }/>
-                </div><br/>
-                <div className="mb-3">
-                    <label htmlFor="email" className="form-label">Email:</label>
-                    <input type="text" className="form-control" id="email" placeholder="Enter your email" value={email} onChange={(e)=>setEmail(e.target.value) }/>
-                </div> 
-                <button className="btn btn-primary" onClick={RegisterButton}>Register</button></div>
-                :<button className="btn btn-primary" onClick={loginButton}>Login</button> }
+                    </div>
+                    
+                    <br/>
+                    <div className="mb-3">
+                        <label htmlFor="startup_description" className="form-label">Company Description:</label>
+                        <input type="text" className="form-control" id="startup_description" placeholder="Enter the last name" value={startup_description} onChange={(e)=>setDescription(e.target.value) }/>
+                    </div>
+                    <br/>
+                    
+                    <div className="mb-3">
+                        <label htmlFor="email" className="form-label">Email:</label>
+                        <input type="text" className="form-control" id="email" placeholder="Enter your email" value={email} onChange={(e)=>setEmail(e.target.value) }/>
+                    </div>             
+                    <button className="btn btn-primary" onClick={RegisterButton}>Register</button>
+                
+                </div>
+                :
+                <div style={centerElem}>
+                    <button style={{margin:"auto"}} className="btn btn-primary" onClick={loginButton}>Login</button> 
+                </div>
+                }
                 {isLogin?
-                <div className="mb-3">
-                <br/>
-                <h5> Dont Have An Account? Please <button className="btn btn-primary" onClick={()=>setIsLogin(false)}>Register</button>Here</h5></div>:
-                <h5> If you have an account, Please <button className="btn btn-primary" onClick={()=>setIsLogin(true)}>Login</button>Here</h5>}
+                <div className="mb-3" style={centerElem}>
+                    <br/>
+                    <h5>Don't Have An Account?</h5>
+                    <button className="btn btn-primary" style={{margin:"5px"}} onClick={()=>setIsLogin(false)}>Register Here!</button>
+                </div>:
+                <div className="mb-3" style={centerElem}>
+                    <h5>If you have an account,</h5>
+                    <button className="btn btn-primary" onClick={()=>setIsLogin(true)}>Login</button>
+                </div>
+                }
             </div>
         </div>
     )
 }
 
-const fieldStyle = {
+const centerElem = {
     margin: "auto",
     width: "50%",
     padding: "10px"
