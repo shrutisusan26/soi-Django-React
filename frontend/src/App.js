@@ -16,6 +16,7 @@ function App(){
     const LoginSu=React.lazy(()=> import('./Startup/LoginSu'));
     const LoginInv=React.lazy(()=>import('./Investor/LoginInv'));
     const Home=React.lazy(()=>import('./Home'));
+    const DescriptionForm=React.lazy(()=>import('./Startup/DescriptionForm'));
     return (
       <CookiesProvider>
       <BrowserRouter>
@@ -25,6 +26,7 @@ function App(){
               <Route path="/dashboard" name="Dashboard" render={props => <StartupDashboard {...props}/>} />
               <Route exact path="/startuplogin" name="Investor Login" render={props=> <LoginSu {...props}/>}/>
               <Route exact path="/investorlogin" name="Startup Login" render={props=> <LoginInv {...props}/>}/>
+              <Route exact path="/updatedesc" name="Update Description" render={props=> <DescriptionForm {...props}/>}/>
             </Switch>
           </React.Suspense>
       </BrowserRouter>
