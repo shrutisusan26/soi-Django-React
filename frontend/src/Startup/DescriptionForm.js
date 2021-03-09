@@ -1,6 +1,6 @@
 import React from 'react';
 import TextArea from "../TextArea";
-import {useEffect,useState} from 'react';
+import {useState} from 'react';
 
 function DescriptionForm(){
     const [desc,setDesc] = useState({startup_name:'',description:''});
