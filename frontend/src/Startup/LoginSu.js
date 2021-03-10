@@ -48,32 +48,25 @@ function LoginSu() {
                 <div className="mb-3" style={centerElem}>
                     <label htmlFor="username" className="form-label">Username</label>
                     <input type="text"  className="form-control" id="username" value={username} placeholder="Enter username" onChange={(e)=>setUsername(e.target.value)}/>
-                </div>
-                <div className="mb-3" style={centerElem}>
+                    <br/>
                     <label htmlFor="password" className="form-label">Password</label>
                     <input type="text" className="form-control" id="password" placeholder="Enter password" value={password} onChange={(e)=>setPassword(e.target.value) }/>
                 </div>
+                
                 {!isLogin?
-                <div> 
-                    
-                    <div className="mb-3">
-                    <label htmlFor="startup_name" className="form-label">Company Name</label>
-                    <input type="text" className="form-control" id="companyNum" value={startup_name} placeholder="Enter your firstName" onChange={(e)=>setstartup_name(e.target.value)}/>
-                    </div>
-                    
-                    <br/>
-                    <div className="mb-3">
+                <div>     
+                    <div className="mb-3" style={centerElem}>
+                        <label htmlFor="startup_name" className="form-label">Company Name</label>
+                        <input type="text" className="form-control" id="companyNum" value={startup_name} placeholder="Enter your firstName" onChange={(e)=>setstartup_name(e.target.value)}/>
+                        <br/>
                         <label htmlFor="startup_description" className="form-label">Company Description:</label>
                         <input type="text" className="form-control" id="startup_description" placeholder="Enter the last name" value={startup_description} onChange={(e)=>setDescription(e.target.value) }/>
-                    </div>
-                    <br/>
-                    
-                    <div className="mb-3">
+                        <br/>
                         <label htmlFor="email" className="form-label">Email:</label>
                         <input type="text" className="form-control" id="email" placeholder="Enter your email" value={email} onChange={(e)=>setEmail(e.target.value) }/>
+                        <br/>
+                        <button className="btn btn-primary" onClick={RegisterButton}>Register</button>
                     </div>             
-                    <button className="btn btn-primary" onClick={RegisterButton}>Register</button>
-                
                 </div>
                 :
                 <div style={centerElem}>
@@ -84,7 +77,7 @@ function LoginSu() {
                 <div className="mb-3" style={centerElem}>
                     <br/>
                     <h5>Don't Have An Account?</h5>
-                    <button className="btn btn-primary" style={{margin:"5px"}} onClick={()=>setIsLogin(false)}>Register Here!</button>
+                    <button className="btn btn-primary" onClick={()=>setIsLogin(false)}>Register Here!</button>
                 </div>:
                 <div className="mb-3" style={centerElem}>
                     <h5>If you have an account,</h5>

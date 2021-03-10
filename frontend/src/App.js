@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import {CookiesProvider} from 'react-cookie';
+
 import ReactDOM from 'react-dom';
+
 import './scss/style.scss';
 
 const loading = (
@@ -11,6 +13,9 @@ const loading = (
 )
 
 function App(){
+ 
+
+  
 
     const StartupDashboard= React.lazy(() => import('./Startup/StartupDashboard'));
     const LoginSu=React.lazy(()=> import('./Startup/LoginSu'));
@@ -18,6 +23,7 @@ function App(){
     const Home=React.lazy(()=>import('./Home'));
     const DescriptionForm=React.lazy(()=>import('./Startup/DescriptionForm'));
     return (
+      
       <CookiesProvider>
       <BrowserRouter>
           <React.Suspense fallback={loading}>
@@ -31,6 +37,9 @@ function App(){
           </React.Suspense>
       </BrowserRouter>
       </CookiesProvider>
+      
+     
+      
     );
   }
   export default App;
