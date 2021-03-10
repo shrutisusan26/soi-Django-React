@@ -1,8 +1,9 @@
 import React from 'react';
 import TextArea from "../TextArea";
 import {useState} from 'react';
-
+import {useCookies} from 'react-cookie';
 function DescriptionForm(){
+    const [token,setToken]=useCookies(['mytoken'])
     const [desc,setDesc] = useState({startup_name:'',description:''});
 
     const handleCallback = (childData,type) =>{ //To get form data from child component, passing function which setDesc
