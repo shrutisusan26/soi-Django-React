@@ -2,6 +2,7 @@ import React,{useEffect,useState} from 'react'
 import APIService from '../APIService'
 import {useCookies} from 'react-cookie';
 import {useHistory} from 'react-router-dom'
+import StartupDashboard from './StartupDashboard';
 function LoginSu() {
     const [username,setUsername]=useState('')
     const [password,setPassword]=useState('')
@@ -11,6 +12,7 @@ function LoginSu() {
     const [isLogin,setIsLogin]=useState(true)
     const [token,setToken]=useCookies(['mytoken'])
     const [isError,setisError]=useState(false)
+    const [response,setisResponse]=useState('');
     let history=useHistory()
     useEffect(()=>{
         if(isError){
@@ -18,7 +20,11 @@ function LoginSu() {
             history.push('/startupslogin')
         }
         else if(token['mytoken']){
-            history.push('/Dashboard')
+            history.push({
+                pathname: '/dashboard',
+                state: { user_id: response }
+            })
+            
         }
     },[token,isError])
     const RegisterButton=()=>{
@@ -32,13 +38,15 @@ function LoginSu() {
     const loginButton=()=>{
         APIService.LoginStartup({username,password})
         .then(resp=> {
-        if(resp.token){
-            setToken('mytoken',resp.token)
-        }
-        
-        else{ 
-            setisError(true)
-        }
+            setisResponse(resp);
+            console.log(resp);
+            if(resp.token){
+                setToken('mytoken',resp.token)
+            }
+            
+            else{ 
+                setisError(true)
+            }
     })
     }
     return (

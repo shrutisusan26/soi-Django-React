@@ -1,6 +1,6 @@
 export default class APIService{
     static LoginInvestor(body){
-        return fetch(`http://127.0.0.1:8000/auth/`,{
+        return fetch(`http://127.0.0.1:8000/api-token-auth/`,{
             method:'POST',
             headers:{
               'Content-Type':'application/json',
@@ -18,7 +18,7 @@ export default class APIService{
         }).then(resp=>resp.json())
     }
     static LoginStartup(body){
-        return fetch(`http://127.0.0.1:8000/auth/`,{
+        return fetch(`http://127.0.0.1:8000/api-token-auth/`,{
             method:'POST',
             headers:{
               'Content-Type':'application/json',
@@ -27,6 +27,15 @@ export default class APIService{
         }).then(resp=>resp.json())
     }
     static RegisterStartUp(body){
+        return fetch(`http://127.0.0.1:8000/soi/startup/signup/`,{
+            method:'POST',
+            headers:{
+              'Content-Type':'application/json',
+            },
+            body:JSON.stringify(body),
+        }).then(resp=>resp.json())
+    }
+    static UpdateDescriptionStartUp(body){
         return fetch(`http://127.0.0.1:8000/soi/startup/signup/`,{
             method:'POST',
             headers:{

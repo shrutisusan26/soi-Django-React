@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import {
     TheSidebar,
@@ -7,8 +7,8 @@ import {
     TheFooter
   } from  '../containers/index'
 
-const StartupDashboard = () => {
-
+const StartupDashboard = (props) => {
+  console.log(props.location)
   return (
     <div className="c-app c-default-layout">
       <TheSidebar/>

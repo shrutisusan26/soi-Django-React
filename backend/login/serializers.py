@@ -2,8 +2,8 @@ from rest_framework import serializers
 from rest_framework.authtoken.models import Token
 from .models import Investor,User, Startup
 from django.contrib.auth.hashers import make_password
-
-
+from rest_framework.authtoken.views import ObtainAuthToken
+from rest_framework.response import Response
 class UserSerializer(serializers.ModelSerializer):
     # additional args to make password hidden
     password = serializers.CharField(required=True, style={'input_type': 'password'},write_only=True)
@@ -56,3 +56,15 @@ class StartupUserSerializer(serializers.ModelSerializer):
         startup = Startup.objects.create(user=user,**validated_data)
         Token.objects.create(user=user)
         return startup 
+
+class CustomAuthToken(ObtainAuthToken):
+
+    def post(self, request, *args, **kwargs):
+        serializer = self.serializer_class(data=request.data,context={'request': request})
+        serializer.is_valid(raise_exception=True)
+        user = serializer.validated_data['user']
+        token, created = Token.objects.get_or_create(user=user)
+        return Response({
+            'token': token.key,
+            'user_id': user.pk,
+        })
