@@ -8,8 +8,6 @@ import APIService from "../APIService"
 import {
     TheSidebar,
     TheHeader,
-    TheContent,
-    TheFooter
   } from  '../containers/index'
 function DescriptionForm(){
     const [token,setToken]=useCookies(['mytoken'])

@@ -164,6 +164,7 @@ const _nav =  [
     to: '/News',
     icon: 'cil-drop',
   },
+  
 ]
 
 export default _nav

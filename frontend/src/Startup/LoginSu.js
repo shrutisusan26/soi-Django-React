@@ -16,20 +16,28 @@ function LoginSu() {
     const [response,setisResponse]=useState('');
     let history=useHistory()
     useEffect(()=>{
+
         if(isError){
             setisError(false)
-            history.push('/startupslogin')
+            history.push('/startuplogin')
         }
-        else if(token['mytoken']){
+        else if(isLogin==true && token['mytoken']){
             history.push({
                 pathname: '/startup/dashboard',
                 state: { user_id: response }
             })
-            
+        }
+        else if(isLogin==false && token['mytoken'] ){
+            console.log("inside profile");
+            history.push({
+                pathname: '/startup/profile',
+                state: { user_id: response }
+            })
         }
     },[token,isError])
     const RegisterButton=()=>{
         const user={username,password,email}
+        
         APIService.RegisterStartUp({user,startup_name,startup_description})
         .then(resp=> {
             loginButton()
@@ -39,13 +47,10 @@ function LoginSu() {
     const loginButton=()=>{
         APIService.LoginStartup({username,password})
         .then(resp=> {
-            setisResponse(resp);
             ls.set('username',resp['user_id']);
-            console.log(resp);
             if(resp.token){
                 setToken('mytoken',resp.token)
             }
-            
             else{ 
                 setisError(true)
             }

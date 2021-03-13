@@ -1,5 +1,11 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import {useCookies} from 'react-cookie';
+import {useHistory} from 'react-router-dom'
+
+// routes config
+import routes from '../routes'
+
 import {
   CHeader,
   CToggler,
@@ -13,9 +19,6 @@ import {
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 
-// routes config
-import routes from '../routes'
-
 import { 
   TheHeaderDropdown,
   TheHeaderDropdownMssg,
@@ -24,7 +27,9 @@ import {
 }  from './index'
 
 const TheHeader = () => {
+  let history=useHistory()
   const dispatch = useDispatch()
+  const [cookies, setCookie, removeCookie] = useCookies(["mytoken"]);
   const sidebarShow = useSelector(state => state.sidebarShow)
 
   const toggleSidebar = () => {
@@ -36,7 +41,10 @@ const TheHeader = () => {
     const val = [false, 'responsive'].includes(sidebarShow) ? true : 'responsive'
     dispatch({type: 'set', sidebarShow: val})
   }
-
+  const Logout=()=>{
+    removeCookie(['mytoken']);
+    history.push('/home');
+  };
   return (
     <CHeader withSubheader>
       <CToggler
@@ -55,13 +63,16 @@ const TheHeader = () => {
 
       <CHeaderNav className="d-md-down-none mr-auto">
         <CHeaderNavItem className="px-3" >
-          <CHeaderNavLink to="/dashboard">Dashboard</CHeaderNavLink>
+          <CHeaderNavLink to="/dashboard" >Dashboard</CHeaderNavLink>
         </CHeaderNavItem>
         <CHeaderNavItem  className="px-3">
           <CHeaderNavLink to="/users">Users</CHeaderNavLink>
         </CHeaderNavItem>
         <CHeaderNavItem className="px-3">
           <CHeaderNavLink>Settings</CHeaderNavLink>
+        </CHeaderNavItem>
+        <CHeaderNavItem className="px-3" >
+          <CHeaderNavLink   onClick={Logout}>Logout</CHeaderNavLink>
         </CHeaderNavItem>
       </CHeaderNav>
 
