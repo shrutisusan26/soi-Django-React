@@ -8,7 +8,6 @@ import {
   } from  '../containers/index'
 
 const StartupDashboard = (props) => {
-  console.log(props.location)
   return (
     <div className="c-app c-default-layout">
       <TheSidebar/>

@@ -1,11 +1,16 @@
 import React from 'react';
-import TextArea from "../TextArea";
+import TextArea from "./TextArea";
 import {useState} from 'react';
 import {useCookies} from 'react-cookie';
 import ls from 'local-storage'
 import {useHistory} from 'react-router-dom'
 import APIService from "../APIService"
-
+import {
+    TheSidebar,
+    TheHeader,
+    TheContent,
+    TheFooter
+  } from  '../containers/index'
 function DescriptionForm(){
     const [token,setToken]=useCookies(['mytoken'])
     const [desc,setDesc] = useState({startup_name:'',startup_description:''});
@@ -36,18 +41,32 @@ function DescriptionForm(){
     const DescriptionButton=()=>{
         APIService.UpdateDescriptionStartUp(desc,username)
         .then(resp=> {
-            history.push('/dashboard')
+            history.push('/startup/dashboard')
         })
         .catch(error=> console.log(error))
     }
 
     return(
     <div>
-        <TextArea parentCallback={handleCallback}/>
-        <button className="btn btn-primary" onClick={DescriptionButton}>Update Description</button>
+         <div className="c-app c-default-layout">
+            <TheSidebar/>
+            <div className="c-wrapper">
+            <TheHeader/>
+            <div className="c-body">
+            <TextArea parentCallback={handleCallback}/>
+            <button className="btn btn-primary" onClick={DescriptionButton} style={centerElem}>Update Description</button>
+            </div>
+            </div>
+            
+        </div>
+       
     </div>
     );
 }
-
+const centerElem = {
+    margin: "0px 450px ",
+    width: "15%",
+    padding: "10px"
+}
 export default DescriptionForm;
 

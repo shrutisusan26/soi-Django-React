@@ -21,7 +21,7 @@ const Notifs=[
     'username':'Investor_4'
 }
 ]
-const Dashboard = () => {
+const StartupDashboard = () => {
   return (
     <>
       <CCard>
@@ -47,4 +47,4 @@ const Dashboard = () => {
   )
 }
 
-export default Dashboard
+export default StartupDashboard

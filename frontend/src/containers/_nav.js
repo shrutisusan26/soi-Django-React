@@ -5,7 +5,7 @@ const _nav =  [
   {
     _tag: 'CSidebarNavItem',
     name: 'Dashboard',
-    to: '/dashboard',
+    to: '/startup/dashboard',
     icon: <CIcon name="cil-speedometer" customClasses="c-sidebar-nav-icon"/>,
     badge: {
       color: 'info',
@@ -14,12 +14,12 @@ const _nav =  [
   },
   {
     _tag: 'CSidebarNavTitle',
-    _children: ['Startup Description']
+    _children: ['Profile Update']
   },
   {
     _tag: 'CSidebarNavItem',
     name: 'Update Description',
-    to: '/updatedesc',
+    to: '/startup/updatedesc',
     icon: 'cil-drop',
   },
   {
@@ -153,7 +153,17 @@ const _nav =  [
     name: 'Charts',
     to: '/charts',
     icon: 'cil-chart-pie'
-  }
+  },
+  {
+    _tag: 'CSidebarNavTitle',
+    _children: ['Other']
+  },
+  {
+    _tag: 'CSidebarNavItem',
+    name: 'Market News',
+    to: '/News',
+    icon: 'cil-drop',
+  },
 ]
 
 export default _nav

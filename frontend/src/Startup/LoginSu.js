@@ -22,7 +22,7 @@ function LoginSu() {
         }
         else if(token['mytoken']){
             history.push({
-                pathname: '/dashboard',
+                pathname: '/startup/dashboard',
                 state: { user_id: response }
             })
             
