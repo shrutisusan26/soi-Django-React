@@ -8,7 +8,7 @@ import APIService from "../APIService"
 
 function DescriptionForm(){
     const [token,setToken]=useCookies(['mytoken'])
-    const [desc,setDesc] = useState({startup_name:'',description:''});
+    const [desc,setDesc] = useState({startup_name:'',startup_description:''});
     const username = ls.get('username'); //username, can be used as pk
     let history=useHistory()
 
@@ -26,7 +26,7 @@ function DescriptionForm(){
             return(
                 {
                     ...desc,
-                    description:childData
+                    startup_description:childData
                 }
             )
         });

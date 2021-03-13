@@ -36,7 +36,7 @@ export default class APIService{
         }).then(resp=>resp.json())
     }
     static UpdateDescriptionStartUp(body,pk){
-        return fetch('http://127.0.0.1:8000/soi/startup/signup/'+pk,{
+        return fetch('http://127.0.0.1:8000/soi/startup/signup/'+pk+'/',{
             method:'PATCH',
             headers:{
               'Content-Type':'application/json',
