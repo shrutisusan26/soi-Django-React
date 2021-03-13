@@ -3,6 +3,7 @@ import APIService from '../APIService'
 import {useCookies} from 'react-cookie';
 import {useHistory} from 'react-router-dom'
 import StartupDashboard from './StartupDashboard';
+import ls from "local-storage"
 function LoginSu() {
     const [username,setUsername]=useState('')
     const [password,setPassword]=useState('')
@@ -39,6 +40,7 @@ function LoginSu() {
         APIService.LoginStartup({username,password})
         .then(resp=> {
             setisResponse(resp);
+            ls.set('username',resp['user_id']);
             console.log(resp);
             if(resp.token){
                 setToken('mytoken',resp.token)

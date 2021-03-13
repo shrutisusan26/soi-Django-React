@@ -1,5 +1,5 @@
 from django.conf.urls import url, include
-from .views import InvestorViewset, StartupViewset
+from .views import *
 from rest_framework.routers import DefaultRouter
 
 
