@@ -11,4 +11,5 @@ router.register('investor/signup', InvestorViewset)
 router.register('startup/signup',StartupViewset)
 urlpatterns = [
     url('soi/', include(router.urls)),
+    url(r'^startup/(?P<action>.+)/(?P<name>[-\w]+)$',follow_unfollow_startup, name="follow-unfollow-startup"),
 ]

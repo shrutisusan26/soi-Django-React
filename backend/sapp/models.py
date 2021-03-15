@@ -1,5 +1,5 @@
 from django.db import models
-from login.models import Startup
+from login.models import Startup,Investor
 # Create your models here.
 class Profile(models.Model):
     profile_user=models.OneToOneField(Startup, on_delete=models.CASCADE,primary_key=True)
