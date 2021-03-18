@@ -7,7 +7,12 @@ import {
 import { CContainer, CFade } from '@coreui/react'
 
 // routes config
-import routes from '../routes'
+
+const IDashboard = React.lazy(() => import('../views/dashboard/InvestorDash'));
+const routes=[
+    { path: '/', exact: true, name: 'Home' },
+    { path: '/investor/dashboard', exact:true,name: 'Dashboard', component: IDashboard }
+]
   
 const loading = (
   <div className="pt-3 text-center">
@@ -35,7 +40,7 @@ const TheContent = () => {
                   )} />
               )
             })}
-            <Redirect from="/" to="/startup/dashboard"/>
+            <Redirect from="/" to="/investor/dashboard"/>
           </Switch>
         </Suspense>
       </CContainer>

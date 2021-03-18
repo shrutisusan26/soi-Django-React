@@ -1,16 +1,34 @@
 import React, { useState, useEffect } from 'react'
 import { Card, Badge, Button, Collapse } from 'react-bootstrap'
 import cslogo from '../Images/cslogo.png'
-export default function Startups({ title }) {
+import APIService from '../APIService'
+import ls from "local-storage"
+export default function Startups(props) {
+    const s_pk=props.props.user.username;
+    const i_pk= ls.get('username');
+    console.log(i_pk)
+    console.log(s_pk)
+    const NotifButton=()=>{
+        APIService.NotifSubmit(s_pk,i_pk)
+        .then(resp=> {
+        if(resp.token){
+            console.log('added')
+        }
+        else{ 
+           console.log('oops')
+        }
+      })
+      }
+  
     const [open, setOpen] = useState(false)
-
+    
     return (
         <Card className="mb-3">
             <Card.Body>
                 <div className="d-flex justify-content-between">
                     <div>
                         <Card.Title>
-                            Credit Suisse - <span className="text-muted font-weight-light">{title}</span>
+                        <h1>{props.props.startup_name}</h1>
                         </Card.Title>
                         <Card.Subtitle className="text-muted mb-2">
                             {/* {new Date(job.created_at).toLocaleDateString()} */}
@@ -32,13 +50,12 @@ export default function Startups({ title }) {
                     >
                         {open ? 'Hide Details' : 'View Details'}
                     </Button>
+                    <Button onClick={NotifButton}>Notify Startup </Button>
                 </Card.Text>
                 <Collapse in={open}>
                     <div className="mt-4">
                         {/* <ReactMarkdown source={job.description} /> */}
-                        <p>RMLS is the largest Realtor®-owned Multiple Listing Service (MLS) in the Northwest. RMLS exists to provide its subscribers with accurate and timely information on listings, the means to analyze the market, and state-of-the art professional tools. Our database contains virtually every property offered for sale by our subscribers with over two million total listings and more than two million tax records. It is the priority of RMLS to lead with accuracy, deliver exceptional service and support, and to be driven by integrity in everything we do.
-
-RMLS knows that our success depends on our employees. We cultivate a culture of teamwork, friendliness, and exceptional service and support for our team and subscribers. We like to have fun, hustle hard, and are committed to cultivating a healthy work-life balance.</p>
+                        <p>{props.props.startup_description}</p>
                     </div>
                 </Collapse>
             </Card.Body>

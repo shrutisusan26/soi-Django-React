@@ -40,7 +40,7 @@ class StartupUserSerializer(serializers.ModelSerializer):
     user = UserSerializer()
     class Meta:
         model=Startup
-        fields=['startup_name','startup_description','user']
+        fields=['interested_investors','startup_name','startup_description','user']
     def create(self, validated_data):
         """ validated_date is a dictionary with fields 'user','startup_name','startup_description'
         'user' corresponds to our base user with fields like 'username' 'email' 'password'

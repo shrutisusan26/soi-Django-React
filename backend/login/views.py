@@ -32,7 +32,7 @@ class StartupViewset(viewsets.ModelViewSet,UpdateModelMixin):
     #     self.perform_update(serializer)
     #     return Response(serializer.data)
 @api_view([ 'GET' ])
-def follow_unfollow_startup(request, action, name):
+def follow_unfollow_startup(request, action, startuppk,investorpk):
     """
     Follower for your startup is going to be an investor, hardcoded for now
     Get the startup object which the investor clicks using the pk
@@ -41,10 +41,10 @@ def follow_unfollow_startup(request, action, name):
     maintained to which as and when the investor clicks the investor gets added to the list
     Same goes with action -remove
     """
-    follower = Investor.objects.get(pk="Shrutisusan26") 
-    name=str(name)
+    name1=str(investorpk)
+    follower = Investor.objects.get(pk=name1) 
+    name=str(startuppk)
     user = Startup.objects.get(pk=name)
-    # print(startup)
     if action == "add":
         Startup.follow_startup(user, follower)
     elif action == "remove":

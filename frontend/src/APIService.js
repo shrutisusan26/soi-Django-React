@@ -53,4 +53,22 @@ export default class APIService{
             body:JSON.stringify(body),
         }).then(resp=>resp.json())
     }
+    static NotifSubmit(s_pk,i_pk){
+       
+        return fetch('http://127.0.0.1:8000/startup/add/'+s_pk+'/'+i_pk,{
+            method:'GET',
+            headers:{
+              'Content-Type':'application/json',
+            },
+        }).then(resp=>resp.json())
+    }
+    static getNotifInvestors(s_pk){
+        return fetch('http://127.0.0.1:8000/soi/startup/signup/'+s_pk+'/',{
+            method:'GET',
+            headers:{
+              'Content-Type':'application/json',
+            },
+        
+        }).then(resp=>resp.json())
+    }
 }

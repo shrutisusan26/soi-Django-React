@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react'
 import APIService from '../APIService'
 import {useCookies} from 'react-cookie';
 import {useHistory} from 'react-router-dom'
-
+import ls from "local-storage"
 function LoginInv() {
     const [username,setUsername]=useState('')
     const [password,setPassword]=useState('')
@@ -20,7 +20,7 @@ function LoginInv() {
             history.push('/investorlogin')
         }
         else if(token['mytoken']){
-            history.push('/dashboard')
+            history.push('/investor/dashboard')
         }
     },[token,isError])
     const RegisterButton=()=>{
@@ -34,7 +34,10 @@ function LoginInv() {
     const loginButton=()=>{
         APIService.LoginInvestor({username,password})
         .then(resp=> {
-        if(resp.token){
+        ls.set('username',resp['user_id']);
+        if(resp){
+            console.log(resp)
+           
             setToken('mytoken',resp.token)}
         
         else{ 

@@ -1,4 +1,4 @@
-import React, { lazy, useState,useEffect } from 'react'
+import React, { lazy } from 'react'
 import {
   CCard,
   CCardBody,
@@ -7,21 +7,21 @@ import {
   CCol,
 } from '@coreui/react'
 import '../../index.css'
-import APIService from '../../APIService'
-import ls from 'local-storage'
-
+const Notifs=[
+  {
+      'username':'Investor_1'
+  },
+  {
+      'username':'Investor_2'
+  },
+  {
+      'username':'Investor_3'
+  },
+  {
+    'username':'Investor_4'
+}
+]
 const StartupDashboard = () => {
-  const [Notifs,setisNotif]=useState([])
-  const username=ls.get('username')
-  
-  useEffect(()=>{
-     APIService.getNotifInvestors(username).then(resp=>{
-       console.log(resp)
-     
-       setisNotif(resp.interested_investors)
-        console.log(Notifs)
-     })
-  },[])
   return (
     <>
       <CCard>
@@ -31,10 +31,10 @@ const StartupDashboard = () => {
         </CCardHeader>
           <CRow className="text-center">
 
-            {Notifs && Notifs.map(info => <main>
+            {Notifs.map(info => <main>
             <CCol ml="20" >
             <div className="block" style={{borderStyle:"solid",borderColor:"black",borderWidth:"1px"}}>
-              <h4 className="block-element" style={{fontWeight:"normal",margin:"10px"}}>{info} viewed your profile</h4>
+              <h4 className="block-element" style={{fontWeight:"normal",margin:"10px"}}>{info.username} viewed your profile</h4>
               <button className="btn btn-primary" style={{height:"40px",position:"relative",top:"5px"}}>View</button>
             </div>
             </CCol>

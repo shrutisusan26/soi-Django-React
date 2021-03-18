@@ -26,6 +26,7 @@ import React from 'react';
 // const Buttons = React.lazy(() => import('./views/buttons/buttons/Buttons'));
 // const Charts = React.lazy(() => import('./views/charts/Charts'));
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'));
+
 // const CoreUIIcons = React.lazy(() => import('./views/icons/coreui-icons/CoreUIIcons'));
 // const Flags = React.lazy(() => import('./views/icons/flags/Flags'));
 // const Brands = React.lazy(() => import('./views/icons/brands/Brands'));
@@ -41,6 +42,7 @@ const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'));
 const routes = [
   { path: '/', exact: true, name: 'Home' },
   { path: '/startup/dashboard', exact:true,name: 'Dashboard', component: Dashboard },
+
   // { path: '/theme', name: 'Theme', component: Colors, exact: true },
   
 ];

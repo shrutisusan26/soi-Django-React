@@ -22,10 +22,17 @@ const _nav =  [
     to: '/startup/updatedesc',
     icon: 'cil-drop',
   },
+  
   {
     _tag: 'CSidebarNavItem',
     name: 'Delete Description',
     to: '/theme/typography',
+    icon: 'cil-pencil',
+  },
+  {
+    _tag: 'CSidebarNavItem',
+    name: 'Catalog',
+    to: '/investor/catalog',
     icon: 'cil-pencil',
   },
   {
