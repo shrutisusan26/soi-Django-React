@@ -6,8 +6,6 @@ import ls from "local-storage"
 export default function Startups(props) {
     const s_pk=props.props.user.username;
     const i_pk= ls.get('username');
-    console.log(i_pk)
-    console.log(s_pk)
     const NotifButton=()=>{
         APIService.NotifSubmit(s_pk,i_pk)
         .then(resp=> {

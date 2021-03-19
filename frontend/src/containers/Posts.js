@@ -10,12 +10,11 @@ function Posts({ posts, loading }) {
   
   return (
       <div>
-    {/* <ul className='list-group mb-4'> */}
-      {posts.map(post => (
-        // <li key={post.id} className='list-group-item'>
-         <Startups  props = {post}/>
+   
+    
+      {posts.map((post,idx) => (
+         <Startups key={idx} props = {post}/>
       ))}
-    {/* </ul> */}
     
 </div>
 
