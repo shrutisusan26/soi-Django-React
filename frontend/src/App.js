@@ -22,10 +22,12 @@ function App(){
     const InvestorDashboard=React.lazy(()=>import('./Investor/InvestorDashboard'));
     const Browsing=React.lazy(()=>import('./Investor/Browsing'));
     const HomePage=React.lazy(()=>import('./HomePage'));
+
     const DescriptionForm=React.lazy(()=>import('./Startup/DescriptionForm'));
     const NewsPage=React.lazy(()=>import('./News/NewsPage'));
     const SubmitProfile=React.lazy(()=>import('./Startup/SubmitProfile'));
     const Logout=React.lazy(()=>'./Startup/Logout');
+    const AboutUs=React.lazy(()=>import('./AboutUs'));
     return (
       
       <CookiesProvider>
@@ -43,6 +45,7 @@ function App(){
               <Route  path="/startup/profile" name="Profile Registration" render={props=> <SubmitProfile {...props}/>}/>
               <Route path="/investor/catalog" name="Catalog" render={props => <Browsing {...props}/>}/>
               <Route  path="/startup/logout" name="Logout" onClick={Logout}/>
+              <Route path = "/about" name = "AboutUs" render = {props => <AboutUs {...props} />} />
             </Switch>
           </React.Suspense>
       </BrowserRouter>
