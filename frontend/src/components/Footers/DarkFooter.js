@@ -15,7 +15,7 @@ function DarkFooter() {
                 href="https://www.creative-tim.com?ref=nukr-dark-footer"
                 target="_blank"
               >
-                Creative Tim
+                COEP
               </a>
             </li>
             <li>
@@ -37,19 +37,19 @@ function DarkFooter() {
           </ul>
         </nav>
         <div className="copyright" id="copyright">
-          © {new Date().getFullYear()}, Designed by{" "}
+          © {new Date().getFullYear()}, Designed &{" "}
           <a
             href="https://www.invisionapp.com?ref=nukr-dark-footer"
             target="_blank"
           >
-            Abhishek
+            
           </a>
-          . Coded by{" "}
+          Coded by{" "}
           <a
             href="https://www.creative-tim.com?ref=nukr-dark-footer"
             target="_blank"
           >
-            Jinit Sanghvi and Shruti Mathews
+            Coep Students
           </a>
           .
         </div>
