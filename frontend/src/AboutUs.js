@@ -20,7 +20,7 @@ import login from './assets/img/login.jpg';
 import bg3 from './assets/img/bg3.jpg';
 import bg1 from './assets/img/bg1.jpg';
 import abhishek from './assets/img/abhishek.jpeg'
-import shruti from './assets/img/shruti.PNG';
+import shruti from './assets/img/shruti.jpeg';
 import jinit from './assets/img/jinit.PNG';
 
 function AboutUs() {
@@ -136,7 +136,7 @@ The other neat thing about Stockpile is that it allows you to give a gift card t
                       className="rounded-circle img-fluid img-raised"
                       src={shruti}
                     ></img>
-                    <h4 className="title">Shruti Sussan</h4>
+                    <h4 className="title">Shruti Mathews</h4>
                     <p className="category text-info">Student</p>
                     <p className="description">
                       You can write here details about one of your team members.
@@ -216,8 +216,8 @@ The other neat thing about Stockpile is that it allows you to give a gift card t
                       className="rounded-circle img-fluid img-raised"
                       src={jinit}
                     ></img>
-                    <h4 className="title">Jinit</h4>
-                    <p className="category text-info">Sanghvi</p>
+                    <h4 className="title">Jinit Sanghvi</h4>
+                    <p className="category text-info">Student</p>
                     <p className="description">
                       You can write here details about one of your team members.
                       You can give more details about what they do. Feel free to
