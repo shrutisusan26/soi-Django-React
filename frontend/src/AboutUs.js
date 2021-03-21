@@ -216,8 +216,8 @@ The other neat thing about Stockpile is that it allows you to give a gift card t
                       className="rounded-circle img-fluid img-raised"
                       src={jinit}
                     ></img>
-                    <h4 className="title">Jinit</h4>
-                    <p className="category text-info">Sanghvi</p>
+                    <h4 className="title">Jinit Sanghvi</h4>
+                    <p className="category text-info">Student</p>
                     <p className="description">
                       You can write here details about one of your team members.
                       You can give more details about what they do. Feel free to
