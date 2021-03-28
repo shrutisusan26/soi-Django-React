@@ -5,7 +5,10 @@ import { Container } from "reactstrap";
 
 // core components
 
-function ProfilePageHeader() {
+import ryan from "../Headers/ryan.jpg";
+import bg5 from "../Headers/bg5.jpg";
+
+function StartupTemplate() {
   let pageHeader = React.createRef();
 
   React.useEffect(() => {
@@ -30,28 +33,29 @@ function ProfilePageHeader() {
         <div
           className="page-header-image"
           style={{
-            backgroundImage: "url(" + require("assets/img/bg5.jpg") + ")",
+            backgroundImage: "url(" + bg5 + ")",
           }}
           ref={pageHeader}
         ></div>
         <Container>
           <div className="photo-container">
-            <img alt="..." src={require("assets/img/ryan.jpg")}></img>
+            <img alt="..." src={ryan}></img>
           </div>
-          <h3 className="title">Abhishek Scheinder</h3>
-          <p className="category">Photographer</p>
+          <br/>
+          <h3 className="category">Abhishek Rai</h3>
+          <h2 className="category">CEO</h2>
           <div className="content">
             <div className="social-description">
-              <h2>26</h2>
-              <p>Comments</p>
+              <h2>1K</h2>
+              <p>Investments</p>
             </div>
             <div className="social-description">
-              <h2>26</h2>
-              <p>Comments</p>
+              <h2>2K</h2>
+              <p>Trading</p>
             </div>
             <div className="social-description">
-              <h2>48</h2>
-              <p>Bookmarks</p>
+              <h2>10K</h2>
+              <p>Interested</p>
             </div>
           </div>
         </Container>
@@ -60,4 +64,4 @@ function ProfilePageHeader() {
   );
 }
 
-export default ProfilePageHeader;
+export default StartupTemplate;

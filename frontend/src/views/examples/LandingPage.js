@@ -58,7 +58,7 @@ function LandingPage() {
                     className="image-container image-left"
                     style={{
                       backgroundImage:
-                        "url(" + require("assets/img/login.jpg") + ")",
+                        "url(" + require(".assets/img/login.jpg") + ")",
                     }}
                   >
                     <p className="blockquote blockquote-info">

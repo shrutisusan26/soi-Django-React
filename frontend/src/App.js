@@ -8,6 +8,7 @@ import './scss/style.scss';
 import SubmitProfile from './Startup/SubmitProfile';
 import InvestorDashboard from './Investor/InvestorDashboard';
 import Browsing from './Investor/Browsing';
+import ProfilePage from './views/examples/ProfilePage';
 
 const loading = (
   <div className="pt-3 text-center">
@@ -28,6 +29,7 @@ function App(){
     const SubmitProfile=React.lazy(()=>import('./Startup/SubmitProfile'));
     const Logout=React.lazy(()=>'./Startup/Logout');
     const AboutUs=React.lazy(()=>import('./AboutUs'));
+    const ProfilePage = React.lazy(()=>import('./views/examples/ProfilePage'));
     return (
       
       <CookiesProvider>
@@ -47,6 +49,7 @@ function App(){
               <Route  path="/startup/logout" name="Logout" onClick={Logout}/>
               <Route path = "/about" name = "AboutUs" render = {props => <AboutUs {...props} />} />
               <Route path='/chat' name="chat" render={props=> <ChatApp {...props}/>}/>
+              <Route path = "/profile" name = "ProfilePage" render = {props => <ProfilePage {...props} />} />
             </Switch>
           </React.Suspense>
       </BrowserRouter>

@@ -27,7 +27,7 @@ const StartupDashboard = () => {
       <CCard>
         <CCardBody>
         <CCardHeader>
-            Notifications
+            Notifications1
         </CCardHeader>
           <CRow className="text-center">
 

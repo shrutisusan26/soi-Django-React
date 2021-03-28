@@ -15,9 +15,15 @@ import {
 } from "reactstrap";
 
 // core components
-import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
-import ProfilePageHeader from "components/Headers/ProfilePageHeader.js";
-import DefaultFooter from "components/Footers/DefaultFooter.js";
+import ExamplesNavbar from "../../components/Navbars/ExamplesNavbar.js";
+import ProfilePageHeader from "../../components/Headers/ProfilePageHeader.js";
+import DefaultFooter from "../../components/Footers/DefaultFooter.js";
+import bg1 from "../../assets/img/bg1.jpg";
+import bg11 from "../../assets/img/bg11.jpg";
+import bg3 from "../../assets/img/bg3.jpg";
+import bg6 from "../../assets/img/bg6.jpg";
+import bg7 from "../../assets/img/bg7.jpg";
+import bg8 from "../../assets/img/bg8.jpg";
 
 function ProfilePage() {
   const [pills, setPills] = React.useState("2");
@@ -40,7 +46,7 @@ function ProfilePage() {
         <div className="section">
           <Container>
             <div className="button-container">
-              <Button className="btn-round" color="info" size="lg">
+              {/* <Button className="btn-round" color="info" size="lg">
                 Follow
               </Button>
               <Button
@@ -53,8 +59,8 @@ function ProfilePage() {
               </Button>
               <UncontrolledTooltip delay={0} target="tooltip515203352">
                 Follow me on Twitter
-              </UncontrolledTooltip>
-              <Button
+              </UncontrolledTooltip> */}
+              {/* <Button
                 className="btn-round btn-icon"
                 color="default"
                 id="tooltip340339231"
@@ -64,14 +70,12 @@ function ProfilePage() {
               </Button>
               <UncontrolledTooltip delay={0} target="tooltip340339231">
                 Follow me on Instagram
-              </UncontrolledTooltip>
+              </UncontrolledTooltip> */}
             </div>
-            <h3 className="title">About me</h3>
+            <h3 className="title">About Startup</h3>
             <h5 className="description">
-              An artist of considerable range, Ryan — the name taken by
-              Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs
-              and records all of his own music, giving it a warm, intimate feel
-              with a solid groove structure. An artist of considerable range.
+              This is the individual template page of startups. we are going to fetch 
+              this description from database. You can use this template for other startup pages
             </h5>
             <Row>
               <Col className="ml-auto mr-auto" md="6">
@@ -129,24 +133,24 @@ function ProfilePage() {
                         <img
                           alt="..."
                           className="img-raised"
-                          src={require("assets/img/bg1.jpg")}
+                          src={bg1}
                         ></img>
                         <img
                           alt="..."
                           className="img-raised"
-                          src={require("assets/img/bg3.jpg")}
+                          src={bg3}
                         ></img>
                       </Col>
                       <Col md="6">
                         <img
                           alt="..."
                           className="img-raised"
-                          src={require("assets/img/bg8.jpg")}
+                          src={bg8}
                         ></img>
                         <img
                           alt="..."
                           className="img-raised"
-                          src={require("assets/img/bg7.jpg")}
+                          src={bg7}
                         ></img>
                       </Col>
                     </Row>
@@ -159,24 +163,24 @@ function ProfilePage() {
                         <img
                           alt="..."
                           className="img-raised"
-                          src={require("assets/img/bg6.jpg")}
+                          src={bg6}
                         ></img>
                         <img
                           alt="..."
                           className="img-raised"
-                          src={require("assets/img/bg11.jpg")}
+                          src={bg11}
                         ></img>
                       </Col>
                       <Col md="6">
                         <img
                           alt="..."
                           className="img-raised"
-                          src={require("assets/img/bg7.jpg")}
+                          src={bg7}
                         ></img>
                         <img
                           alt="..."
                           className="img-raised"
-                          src={require("assets/img/bg8.jpg")}
+                          src={bg8}
                         ></img>
                       </Col>
                     </Row>
@@ -189,24 +193,24 @@ function ProfilePage() {
                         <img
                           alt="..."
                           className="img-raised"
-                          src={require("assets/img/bg3.jpg")}
+                          src={bg3}
                         ></img>
                         <img
                           alt="..."
                           className="img-raised"
-                          src={require("assets/img/bg8.jpg")}
+                          src={bg8}
                         ></img>
                       </Col>
                       <Col md="6">
                         <img
                           alt="..."
                           className="img-raised"
-                          src={require("assets/img/bg7.jpg")}
+                          src={bg7}
                         ></img>
                         <img
                           alt="..."
                           className="img-raised"
-                          src={require("assets/img/bg6.jpg")}
+                          src={bg6}
                         ></img>
                       </Col>
                     </Row>
