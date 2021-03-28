@@ -47,9 +47,12 @@ INSTALLED_APPS = [
     'login',
     'iapp',
     'sapp',
+    'chat',
+    'channels',
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
+   
 ]
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
@@ -89,8 +92,12 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'soi.wsgi.application'
-
-
+ASGI_APPLICATION = "soi.routing.application"
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
+    }
+}
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
