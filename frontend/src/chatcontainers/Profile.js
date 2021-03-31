@@ -1,10 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import {Redirect } from 'react-router-dom';
 import Hoc from '../hoc/hoc';
 import ls from 'local-storage'
 class Profile extends React.Component {
    
     render() {
+        if(this.props.token ===null){
+            return <Redirect to="/home"/>
+        }
         const username=ls.get('username');
         console.log(username);
         return (
@@ -34,7 +38,8 @@ class Profile extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        username: ls.get('username')
+        username: ls.get('username'),
+        token:ls.get('token'),
     }
 }
     

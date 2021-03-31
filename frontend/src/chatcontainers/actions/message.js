@@ -23,6 +23,7 @@ const getUserChatsSuccess = chats => {
 };
 
 export const getUserChats = (username, token) => {
+  console.log("in get user chat");
   return dispatch => {
     axios.defaults.headers = {
       "Content-Type": "application/json",

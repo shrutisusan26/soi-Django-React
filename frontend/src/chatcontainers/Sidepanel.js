@@ -11,39 +11,52 @@ import ls from 'local-storage';
 
 class Sidepanel extends React.Component {
    state={
-        username : ls.get('username'),
-        token:ls.get('token'),
         loginForm: true,
     }
     constructor(props){
         super(props);
-        this.getUserChats(this.state.token,this.state.username);
     }
-    componentWillReceiveProps(newProps) {
-        if (newProps.token !== null && newProps.username !== null) {
-            this.getUserChats(newProps.token, newProps.username);
-        }
-    }
-    componentDidMount() {
-        if (this.props.token !== null && this.props.username !== null) {
-            this.getUserChats(this.props.token, this.props.username);
-        }
-    }
+    waitForAuthDetails() {
+        const component = this;
+        setTimeout(function() {
+          if (
+            component.props.token !== null &&
+            component.props.token !== undefined
+          ) {
+            component.props.getUserChats(
+              component.props.username,
+              component.props.token
+            );
+            return;
+          } else {
+            console.log("waiting for authentication details...");
+            component.waitForAuthDetails();
+          }
+        }, 100);
+      }
+    // componentWillReceiveProps(newProps) {
+    //     if (newProps.token !== null && newProps.username !== null) {
+    //         this.getUserChats(newProps.token, newProps.username);
+    //     }
+    // }
+     componentDidMount() {
+        this.waitForAuthDetails();
+     }
     
-    getUserChats = (token, username) => {
-        axios.defaults.headers = {
-            "Content-Type": "application/json",
-            Authorization: `Token ${token}`
-        };
+    // getUserChats = (token, username) => {
+    //     axios.defaults.headers = {
+    //         "Content-Type": "application/json",
+    //         Authorization: `Token ${token}`
+    //     };
 
-        axios.get(`http://127.0.0.1:8000/chat/?username=${username}`)
-        .then(res => {
-            console.log(res.data);
-            this.setState({
-                chats: res.data
-            });
-        });
-    }
+    //     axios.get(`http://127.0.0.1:8000/chat/?username=${username}`)
+    //     .then(res => {
+    //         console.log(res.data);
+    //         this.setState({
+    //             chats: res.data
+    //         });
+    //     });
+    // }
 
     render() {
         const activeChats = this.props.chats.map(c => {
@@ -99,7 +112,7 @@ const mapStateToProps = state => {
         loading: state.loading,
         token: ls.get('token'),
         username: ls.get('username'),
-        chats:state.messages.chats,
+        chats:state.message.chats,
     }
 }
 const mapDispatchToProps = dispatch => {

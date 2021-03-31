@@ -37,7 +37,7 @@ class HorizontalAddChatForm extends React.Component {
         console.log(combined);
         axios.defaults.headers = {
           "Content-Type": "application/json",
-          Authorization: `Token ${this.props.token}`
+          "Authorization": `Token ${this.props.token}`
         };
         axios
           .post("http://127.0.0.1:8000/chat/create/", {
@@ -116,7 +116,7 @@ const AddChatForm = Form.create()(HorizontalAddChatForm);
 const mapStateToProps = state => {
   return {
     token: ls.get('token'),
-    username: ls.get('username')
+    username: ls.get('username'),
   };
 };
 
@@ -124,7 +124,8 @@ const mapDispatchToProps = dispatch => {
   return {
     closeAddChatPopup: () => dispatch(navActions.closeAddChatPopup()),
     getUserChats: (username, token) =>
-      dispatch(messageActions.getUserChats(username, token)),dispatch,
+      dispatch(messageActions.getUserChats(username, token)),
+      dispatch,
   };
 };
 
