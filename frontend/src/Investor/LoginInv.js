@@ -17,7 +17,7 @@ function LoginInv() {
         console.log("hi")
         if(isError){
             setisError(false)
-            history.push('/investorlogin')
+            history.push('/home')
         }
         else if(token['mytoken']){
             history.push('/investor/dashboard')
@@ -37,7 +37,7 @@ function LoginInv() {
         ls.set('username',resp['user_id']);
         if(resp){
             console.log(resp)
-           
+            ls.set('token',resp.token);
             setToken('mytoken',resp.token)}
         
         else{ 

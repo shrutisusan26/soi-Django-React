@@ -48,6 +48,7 @@ function LoginSu() {
         APIService.LoginStartup({username,password})
         .then(resp=> {
             ls.set('username',resp['user_id']);
+            ls.set('token',resp.token);
             if(resp.token){
                 setToken('mytoken',resp.token)
             }

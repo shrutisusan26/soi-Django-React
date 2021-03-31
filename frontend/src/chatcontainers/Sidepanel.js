@@ -1,14 +1,67 @@
-
 import React from 'react';
+import axios from 'axios';
+import { Spin, Icon } from 'antd';
+import { connect } from 'react-redux';
+import Contact from './Contact';
+import * as navActions from './actions/nav';
+import * as messageActions from './actions/message';
+import ls from 'local-storage';
+//const antIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
+
 
 class Sidepanel extends React.Component {
+   state={
+        username : ls.get('username'),
+        token:ls.get('token'),
+        loginForm: true,
+    }
+    constructor(props){
+        super(props);
+        this.getUserChats(this.state.token,this.state.username);
+    }
+    componentWillReceiveProps(newProps) {
+        if (newProps.token !== null && newProps.username !== null) {
+            this.getUserChats(newProps.token, newProps.username);
+        }
+    }
+    componentDidMount() {
+        if (this.props.token !== null && this.props.username !== null) {
+            this.getUserChats(this.props.token, this.props.username);
+        }
+    }
+    
+    getUserChats = (token, username) => {
+        axios.defaults.headers = {
+            "Content-Type": "application/json",
+            Authorization: `Token ${token}`
+        };
+
+        axios.get(`http://127.0.0.1:8000/chat/?username=${username}`)
+        .then(res => {
+            console.log(res.data);
+            this.setState({
+                chats: res.data
+            });
+        });
+    }
+
     render() {
+        const activeChats = this.props.chats.map(c => {
+            return (
+                <Contact 
+                    key={c.id}
+                    name="Investor 1" 
+                    picURL="http://emilcarlsson.se/assets/louislitt.png"
+                    status="busy"
+                    chatURL={`/${c.id}`} />
+            )
+        })
         return (
             <div id="sidepanel">
             <div id="profile">
                 <div className="wrap">
                 <img id="profile-img" src="http://emilcarlsson.se/assets/mikeross.png" className="online" alt="" />
-                <p>Mike Ross</p>
+                <p>{this.state.username}</p>
                 <i className="fa fa-chevron-down expand-button" aria-hidden="true"></i>
                 <div id="status-options">
                     <ul>
@@ -18,15 +71,6 @@ class Sidepanel extends React.Component {
                     <li id="status-offline"><span className="status-circle"></span> <p>Offline</p></li>
                     </ul>
                 </div>
-                <div id="expanded">
-                    {/* <label htmlFor="twitter"><i className="fa fa-facebook fa-fw" aria-hidden="true"></i></label>
-                    <input name="twitter" type="text" value="mikeross" />
-                    <label htmlFor="twitter"><i className="fa fa-twitter fa-fw" aria-hidden="true"></i></label>
-                    <input name="twitter" type="text" value="ross81" />
-                    <label htmlFor="twitter"><i className="fa fa-instagram fa-fw" aria-hidden="true"></i></label>
-                    <input name="twitter" type="text" value="mike.ross" /> */}
-                </div>
-                </div>
             </div>
             <div id="search">
                 <label htmlFor=""><i className="fa fa-search" aria-hidden="true"></i></label>
@@ -34,36 +78,35 @@ class Sidepanel extends React.Component {
             </div>
             <div id="contacts">
                 <ul>
-                <li className="contact">
-                    <div className="wrap">
-                    <span className="contact-status online"></span>
-                    <img src="http://emilcarlsson.se/assets/louislitt.png" alt="" />
-                    <div className="meta">
-                        <p className="name">Louis Litt</p>
-                        <p className="preview">You just got LITT up, Mike.</p>
-                    </div>
-                    </div>
-                </li>
-                <li className="contact active">
-                    <div className="wrap">
-                    <span className="contact-status busy"></span>
-                    <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
-                    <div className="meta">
-                        <p className="name">Harvey Specter</p>
-                        <p className="preview">Wrong. You take the gun, or you pull out a bigger one. Or, you call their bluff. Or, you do any one of a hundred and htmlForty six other things.</p>
-                    </div>
-                    </div>
-                </li>
+                    {activeChats}
                 </ul>
             </div>
             <div id="bottom-bar">
-                <button id="addcontact"><i className="fa fa-user-plus fa-fw" aria-hidden="true"></i> <span>Add contact</span></button>
+                <button id="addcontact" onClick={()=> this.props.addChat()}>
+                    <i className="fa fa-user-plus fa-fw" aria-hidden="true"></i> 
+                    <span>  Create chat</span>
+                </button>
                 <button id="settings"><i className="fa fa-cog fa-fw" aria-hidden="true"></i> <span>Settings</span></button>
             </div>
             </div>
-
+            </div>
         );
     };
 }
 
-export default Sidepanel; 
+const mapStateToProps = state => {
+    return {
+        loading: state.loading,
+        token: ls.get('token'),
+        username: ls.get('username'),
+        chats:state.messages.chats,
+    }
+}
+const mapDispatchToProps = dispatch => {
+    return {
+      addChat: () => dispatch(navActions.openAddChatPopup()),
+      getUserChats: (username, token) =>
+        dispatch(messageActions.getUserChats(username, token)),dispatch,
+    }
+  };
+export default connect(mapStateToProps,mapDispatchToProps)(Sidepanel);

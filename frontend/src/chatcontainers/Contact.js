@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-
+//navlink prevents re-rendering
 const Contact = (props) => (
     <NavLink to={`${props.chatURL}`} style={{color: '#fff'}}>
         <li className="contact">

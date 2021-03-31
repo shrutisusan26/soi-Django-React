@@ -8,5 +8,5 @@ urlpatterns = [
     url('', include('login.urls')),
     path('api-token-auth/', CustomAuthToken.as_view()),
     url('', include('sapp.urls')),
-     path('chat/', include('chat.urls', namespace='chat')),
+    path('chat/', include('chat.api.urls', namespace='chat')),
 ]

@@ -6,6 +6,7 @@ class Profile extends React.Component {
    
     render() {
         const username=ls.get('username');
+        console.log(username);
         return (
             
             <div className="contact-profile">
@@ -33,7 +34,7 @@ class Profile extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        username: state.username
+        username: ls.get('username')
     }
 }
     

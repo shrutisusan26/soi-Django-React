@@ -6,16 +6,42 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-
 import { icons } from './assets/icons'
-
 import { Provider } from 'react-redux'
-import store from './store'
+import { createStore, compose, applyMiddleware, combineReducers } from "redux";
+import thunk from "redux-thunk";
+import "antd/dist/antd.css";
+import navReducer from "./chatcontainers/reducers/nav";
+import messageReducer from "./chatcontainers/reducers/message";
 
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+function configureStore() {
+  const rootReducer = combineReducers({
+    nav: navReducer,
+    message: messageReducer
+  });
+
+  const store = createStore(
+    rootReducer,
+    composeEnhancers(applyMiddleware(thunk))
+  );
+
+  //   if (module.hot) {
+  //     module.hot.accept("./store/reducers", () => {
+  //       const nextRootReducer = require("./store/reducers/auth");
+  //       store.replaceReducer(nextRootReducer);
+  //     });
+  //   }
+
+  return store;
+}
+
+const stores = configureStore();
 React.icons = icons
 
 ReactDOM.render(
-  <Provider store={store}>
+  <Provider store={stores}>
     <App/>
   </Provider>,
   document.getElementById('root')
