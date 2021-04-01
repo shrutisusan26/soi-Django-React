@@ -34,8 +34,9 @@ function LoginInv() {
     const loginButton=()=>{
         APIService.LoginInvestor({username,password})
         .then(resp=> {
-        ls.set('username',resp['user_id']);
-        if(resp){
+        console.log(resp.token)
+        if(resp.token){
+            ls.set('username',resp['user_id']);
             console.log(resp)
             ls.set('token',resp.token);
             setToken('mytoken',resp.token)}
