@@ -3,6 +3,7 @@ import APIService from '../APIService'
 import {useCookies} from 'react-cookie';
 import {useHistory} from 'react-router-dom'
 import ls from "local-storage"
+import LoginFail from "../LoginFail"
 function LoginInv() {
     const [username,setUsername]=useState('')
     const [password,setPassword]=useState('')
@@ -12,14 +13,16 @@ function LoginInv() {
     const [isLogin,setIsLogin]=useState(true)
     const [token,setToken]=useCookies(['mytoken'])
     const [isError,setisError]=useState(false)
+    const [isAttempt,setisAttempt] = useState(false);
     let history=useHistory()
     useEffect(()=>{
         console.log("hi")
         if(isError){
             setisError(false)
-            history.push('/home')
+            //history.push('/home')
         }
         else if(token['mytoken']){
+            setisAttempt(true)
             history.push('/investor/dashboard')
         }
     },[token,isError])
@@ -43,6 +46,7 @@ function LoginInv() {
         
         else{ 
             setisError(true)
+            setisAttempt(true)
         }
     })
     }
@@ -96,6 +100,12 @@ function LoginInv() {
                     <h5> If you have an account,</h5>
                     <button className="btn btn-primary" onClick={()=>setIsLogin(true)}>Login</button>
                 </div>
+                }
+                {isAttempt?
+                    <div className="mb-3" style={centerElem}>
+                        <LoginFail/>
+                    </div>:
+                    <br/>
                 }
             </div>
         </div>

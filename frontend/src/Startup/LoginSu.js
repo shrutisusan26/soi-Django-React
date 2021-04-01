@@ -3,7 +3,8 @@ import APIService from '../APIService'
 import {useCookies} from 'react-cookie';
 import {useHistory} from 'react-router-dom'
 import StartupDashboard from './StartupDashboard';
-import ls from "local-storage"
+import ls from "local-storage";
+import LoginFail from "../LoginFail"
 function LoginSu() {
     const [username,setUsername]=useState('')
     const [password,setPassword]=useState('')
@@ -15,6 +16,7 @@ function LoginSu() {
     const [isError,setisError]=useState(false)
     const [response,setisResponse]=useState('');
     let history=useHistory()
+    const [isAttempt,setisAttempt] = useState(false);
     useEffect(()=>{
 
         if(isError){
@@ -55,6 +57,7 @@ function LoginSu() {
             }
             else{ 
                 setisError(true)
+                setisAttempt(true)
             }
     })
     }
@@ -100,6 +103,12 @@ function LoginSu() {
                     <h5>If you have an account,</h5>
                     <button className="btn btn-primary" onClick={()=>setIsLogin(true)}>Login</button>
                 </div>
+                }
+                {isAttempt?
+                    <div className="mb-3" style={centerElem}>
+                        <LoginFail/>
+                    </div>:
+                    <br/>
                 }
             </div>
         </div>

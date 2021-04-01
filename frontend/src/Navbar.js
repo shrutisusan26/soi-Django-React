@@ -1,8 +1,9 @@
 import React,{useState,useEffect} from 'react'
 import {useHistory} from 'react-router-dom'
 import {useCookies} from 'react-cookie';
+import ls from "local-storage"
 const Navbar = (props) => {
-  const [token,setToken,removeToken]=useCookies(['mytoken'])
+  const [token,setToken,removeToken]=useCookies(['mytoken','csrftoken'])
   const [showLogout,setshowLogout]=useState(false)
   useEffect(()=>{
     if(token['mytoken']){
@@ -11,8 +12,9 @@ const Navbar = (props) => {
   },[token])
   let history=useHistory()
   const Logout=()=>{
-      removeToken(['mytoken'])
+      removeToken(['mytoken','csrftoken'])
       setshowLogout(false)
+      ls.clear();
       history.push('/')
   };
 
