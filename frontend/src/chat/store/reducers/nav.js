@@ -2,7 +2,7 @@ import * as actionTypes from "../actions/actionTypes";
 import { updateObject } from "../utility";
 
 const initialState = {
-  showAddChatPopup:true
+  showAddChatPopup: false
 };
 
 const openAddChatPopup = (state, action) => {
@@ -10,7 +10,6 @@ const openAddChatPopup = (state, action) => {
 };
 
 const closeAddChatPopup = (state, action) => {
-  console.log('in close chat');
   return updateObject(state, { showAddChatPopup: false });
 };
 

@@ -1,5 +1,6 @@
 import axios from "axios";
 import * as actionTypes from "./actionTypes";
+import { HOST_URL } from "../../settings";
 
 export const addMessage = message => {
   return {
@@ -23,14 +24,17 @@ const getUserChatsSuccess = chats => {
 };
 
 export const getUserChats = (username, token) => {
-  console.log("in get user chat");
+  //console.log(username);
   return dispatch => {
+    axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
+    axios.defaults.xsrfCookieName = "csrftoken";
+    console.log(token.replace(/['"]+/g, ''));
     axios.defaults.headers = {
       "Content-Type": "application/json",
-      Authorization: `Token ${token}`
+      Authorization: `Token ${token.replace(/['"]+/g, '')}`
     };
     axios
-      .get(`http://127.0.0.1:8000/chat/?username=${username}`)
+      .get(`http://127.0.0.1:8000/chat/?username=${username.replace(/['"]+/g, '')}`)
       .then(res => dispatch(getUserChatsSuccess(res.data)));
   };
 };

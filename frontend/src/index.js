@@ -11,13 +11,14 @@ import { Provider } from 'react-redux'
 import { createStore, compose, applyMiddleware, combineReducers } from "redux";
 import thunk from "redux-thunk";
 import "antd/dist/antd.css";
-import navReducer from "./chatcontainers/reducers/nav";
-import messageReducer from "./chatcontainers/reducers/message";
-
+import navReducer from "./chat/store/reducers/nav";
+import messageReducer from "./chat/store/reducers/message";
+import authReducer from "./chat/store/reducers/auth"
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 function configureStore() {
   const rootReducer = combineReducers({
+    auth: authReducer,
     nav: navReducer,
     message: messageReducer
   });

@@ -3,9 +3,10 @@ import { Form, Button, Select } from "antd";
 import axios from "axios";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import * as navActions from "./actions/nav";
-import * as messageActions from "./actions/message";
-import ls from 'local-storage';
+import * as navActions from "../store/actions/nav";
+import * as messageActions from "../store/actions/message";
+import { HOST_URL } from "../settings";
+
 const FormItem = Form.Item;
 
 function hasErrors(fieldsError) {
@@ -33,14 +34,15 @@ class HorizontalAddChatForm extends React.Component {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        const combined = [...usernames, this.props.username];
-        console.log(combined);
+        const combined = [...usernames, this.props.username.replace(/['"]+/g, '')];
+        axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
+        axios.defaults.xsrfCookieName = "csrftoken";
         axios.defaults.headers = {
           "Content-Type": "application/json",
-          "Authorization": `Token ${this.props.token}`
+          Authorization: `Token ${this.props.token.replace(/['"]+/g, '')}`
         };
         axios
-          .post("http://127.0.0.1:8000/chat/create/", {
+          .post(`http://127.0.0.1:8000/chat/create/`, {
             messages: [],
             participants: combined
           })
@@ -92,9 +94,7 @@ class HorizontalAddChatForm extends React.Component {
               onChange={this.handleChange}
             >
               {[]}
-              </Select>
-            //<Select>{[]}</Select>
-           
+            </Select>
           )}
         </FormItem>
         <FormItem>
@@ -115,8 +115,8 @@ const AddChatForm = Form.create()(HorizontalAddChatForm);
 
 const mapStateToProps = state => {
   return {
-    token: ls.get('token'),
-    username: ls.get('username'),
+    token: state.auth.token,
+    username: state.auth.username
   };
 };
 
@@ -124,8 +124,7 @@ const mapDispatchToProps = dispatch => {
   return {
     closeAddChatPopup: () => dispatch(navActions.closeAddChatPopup()),
     getUserChats: (username, token) =>
-      dispatch(messageActions.getUserChats(username, token)),
-      dispatch,
+      dispatch(messageActions.getUserChats(username, token))
   };
 };
 

@@ -15,6 +15,6 @@ class AddChatModal extends React.Component {
       </Modal>
     );
   }
-} 
+}
 
 export default AddChatModal;

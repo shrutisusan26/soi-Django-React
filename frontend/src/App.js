@@ -23,7 +23,7 @@ function App(){
     const InvestorDashboard=React.lazy(()=>import('./Investor/InvestorDashboard'));
     const Browsing=React.lazy(()=>import('./Investor/Browsing'));
     const HomePage=React.lazy(()=>import('./HomePage'));
-    const ChatApp=React.lazy(()=>import('../src/chatcontainers/ChatApp'));
+    const ChatApp=React.lazy(()=>import('../src/chat/ChatApp'));
     const DescriptionForm=React.lazy(()=>import('./Startup/DescriptionForm'));
     const NewsPage=React.lazy(()=>import('./News/NewsPage'));
     const SubmitProfile=React.lazy(()=>import('./Startup/SubmitProfile'));

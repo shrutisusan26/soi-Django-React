@@ -36,6 +36,12 @@ const _nav =  [
     icon: 'cil-pencil',
   },
   {
+    _tag: 'CSidebarNavItem',
+    name: 'Chat',
+    to: '/chat',
+    icon: 'cil-pencil',
+  },
+  {
     _tag: 'CSidebarNavTitle',
     _children: ['Performance Statistics']
   },
