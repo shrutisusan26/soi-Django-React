@@ -13,6 +13,7 @@ function Browsing() {
     const[loading, setLoading] = useState(false);
     const[currentPage, setCurrentPage] = useState(1);
     const[postsPerPage, setPostsPerPage] = useState(10);
+    const[profiles,setProfiles]=useState([]);
     // Get current posts
     const indexOfLastPost = currentPage * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
@@ -21,7 +22,9 @@ function Browsing() {
         const fetchPosts = async () => {
           setLoading(true);
           const res = await axios.get('http://127.0.0.1:8000/soi/startup/signup/');
+          const prof = await axios.get('http://127.0.0.1:8000/soi/startup/profile/');
           setPosts(res.data);
+          setProfiles(prof.data);
           setLoading(false);
         };
     
@@ -35,7 +38,7 @@ function Browsing() {
             <div className="c-wrapper">
             <TheHeader/>
             <div className="c-body">
-            <Posts posts = {currentPosts} loading = {loading}/>
+            <Posts posts = {currentPosts} loading = {loading} prof={profiles}/>
             <Pagination postsPerPage = {postsPerPage} totalPosts = {posts.length}   paginate={paginate}/>
 
             </div>

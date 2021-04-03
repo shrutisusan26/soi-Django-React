@@ -4,6 +4,8 @@ import cslogo from '../Images/cslogo.png'
 import APIService from '../APIService'
 import ls from "local-storage"
 export default function Startups(props) {
+    // console.log(props.prof[0]);
+    // console.log(props.prof[0].tags)
     const s_pk=props.props.user.username;
     const i_pk= ls.get('username');
     const NotifButton=()=>{
@@ -33,7 +35,7 @@ export default function Startups(props) {
                             3/2/20121
                         </Card.Subtitle>
                         <Badge variant="secondary" className="mr-2">Startup</Badge>
-                        <Badge variant="secondary">Pune</Badge>
+                        <Badge variant="secondary">{props.prof[0] && props.prof[0].place}</Badge>
                         <div style={{ wordBreak: 'break-all' }}>
                             {/* <ReactMarkdown source={job.how_to_apply} /> */}
                             
@@ -53,7 +55,10 @@ export default function Startups(props) {
                 <Collapse in={open}>
                     <div className="mt-4">
                         {/* <ReactMarkdown source={job.description} /> */}
-                        <p>{props.props.startup_description}</p>
+                        <p>Tags: {props.prof[0] && props.prof[0].tags}</p><br/>
+                        <p>Logo Url: {props.prof[0] && props.prof[0].logo_url}</p><br/>
+                        <p>Description:{props.props.startup_description}</p>
+                    
                     </div>
                 </Collapse>
             </Card.Body>
