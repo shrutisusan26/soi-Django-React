@@ -12,8 +12,8 @@ import ls from 'local-storage'
 
 const StartupDashboard = () => {
   const [Notifs,setisNotif]=useState([])
-  const username=ls.get('username')
-  
+  const username=ls.get('username').replace(/['"]+/g, '');
+  console.log(username);
   useEffect(()=>{
      APIService.getNotifInvestors(username).then(resp=>{
        console.log(resp)

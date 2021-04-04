@@ -6,7 +6,7 @@ from rest_framework.mixins import UpdateModelMixin
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.decorators import api_view
-
+from django.contrib.auth.decorators import login_required
 
 class InvestorViewset(viewsets.ModelViewSet):
     queryset = Investor.objects.all()
@@ -31,8 +31,10 @@ class StartupViewset(viewsets.ModelViewSet,UpdateModelMixin):
     #     serializer.is_valid(raise_exception=True)
     #     self.perform_update(serializer)
     #     return Response(serializer.data)
+
 @api_view([ 'GET' ])
 def follow_unfollow_startup(request, action, startuppk,investorpk):
+    print("wut")
     """
     Follower for your startup is going to be an investor, hardcoded for now
     Get the startup object which the investor clicks using the pk

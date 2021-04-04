@@ -60,7 +60,16 @@ export default class APIService{
             headers:{
               'Content-Type':'application/json',
             },
-        }).then(resp=>resp.json())
+        }).then()
+    }
+    static NotifRemove(s_pk,i_pk){
+       
+        return fetch('http://127.0.0.1:8000/startup/remove/'+s_pk+'/'+i_pk,{
+            method:'GET',
+            headers:{
+              'Content-Type':'application/json',
+            },
+        }).then()
     }
     static getNotifInvestors(s_pk){
         return fetch('http://127.0.0.1:8000/soi/startup/signup/'+s_pk+'/',{

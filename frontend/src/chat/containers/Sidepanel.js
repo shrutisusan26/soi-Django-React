@@ -53,7 +53,7 @@ class Sidepanel extends React.Component {
         <Contact
           key={c.id}
           name={c.participants.filter(person=>person!==this.props.username.replace(/['"]+/g, ''))}
-          picURL="http://emilcarlsson.se/assets/louislitt.png"
+          picURL="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbR6DbwZj-pYWkxeRYJBGROrO6KAa69CTcfQ&usqp=CAU"
           status="busy"
           chatURL={`/${c.id}`}
         />
@@ -65,11 +65,11 @@ class Sidepanel extends React.Component {
           <div className="wrap">
             <img
               id="profile-img"
-              src="http://emilcarlsson.se/assets/mikeross.png"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbR6DbwZj-pYWkxeRYJBGROrO6KAa69CTcfQ&usqp=CAU"
               className="online"
               alt=""
             />
-            <p>Mike Ross</p>
+            <p>{this.props.username}</p>
             <i
               className="fa fa-chevron-down expand-button"
               aria-hidden="true"

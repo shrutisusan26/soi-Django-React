@@ -85,7 +85,7 @@ class Chat extends React.Component {
         className={message.author === currentUser ? "replies" : "sent"}
       >
         <img
-          src="http://emilcarlsson.se/assets/mikeross.png"
+          src="https://cdn4.iconfinder.com/data/icons/circle-web-and-programming/512/Website_and_programming_3-512.png"
           alt="profile-pic"
         />
         <p>

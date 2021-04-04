@@ -11,7 +11,7 @@ function Posts({ posts, loading ,prof}) {
   return (
       <div>
    
-    
+      
       {posts.map((post,idx) => (
          
          <Startups key={idx} props = {post} prof={prof.filter(prof=>prof.profile_user===post.user.username)}/>

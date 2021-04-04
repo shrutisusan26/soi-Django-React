@@ -14,7 +14,7 @@ const Navbar = (props) => {
   const Logout=()=>{
       removeToken(['mytoken','csrftoken'])
       setshowLogout(false)
-      ls.clear();
+      ls.clear()
       history.push('/')
   };
 
