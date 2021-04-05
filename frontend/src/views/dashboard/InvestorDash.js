@@ -39,7 +39,7 @@ const StartupDashboard = () => {
             </div>
             </CCol>
             </main>
-         )}
+         )}b
           </CRow>
           </CCardBody>
           </CCard>
