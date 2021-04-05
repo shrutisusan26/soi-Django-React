@@ -4,6 +4,7 @@ import {useCookies} from 'react-cookie';
 import {useHistory} from 'react-router-dom'
 import ls from "local-storage"
 import LoginFail from "../LoginFail"
+import './styles.css';
 function LoginInv() {
     const [username,setUsername]=useState('')
     const [password,setPassword]=useState('')
@@ -14,6 +15,7 @@ function LoginInv() {
     const [token,setToken]=useCookies(['mytoken'])
     const [isError,setisError]=useState(false)
     const [isAttempt,setisAttempt] = useState(false);
+    const [isPasswordVisible,setPassVisibility] = useState(false);
     let history=useHistory()
     useEffect(()=>{
         console.log("hi")
@@ -26,6 +28,9 @@ function LoginInv() {
             history.push('/investor/dashboard')
         }
     },[token,isError])
+    const togglePassword=()=>{
+        setPassVisibility(!isPasswordVisible);
+    }
     const RegisterButton=()=>{
         const user={username,password,email}
         APIService.RegisterInvestor({user,first_name,last_name})
@@ -64,10 +69,11 @@ function LoginInv() {
                     <label htmlFor="username" className="form-label">Username</label>
                     <input type="text" className="form-control" id="username" value={username} placeholder="Enter username" onChange={(e)=>setUsername(e.target.value)}/>
                     <br/>
-                    
+                    <div className="password">
                     <label htmlFor="password" className="form-label">Password</label>
-                    <input type="text" className="form-control" id="password" placeholder="Enter password" value={password} onChange={(e)=>setPassword(e.target.value) }/>
-                    
+                    <input  className="form-control" id="password" placeholder="Enter password" value={password} onChange={(e)=>setPassword(e.target.value) }type={isPasswordVisible?"text":"password"}/>
+                    <i className={`fa ${isPasswordVisible? "fa-eye-slash":"fa-eye"}  password-icon`} onClick={togglePassword}/>
+                    </div>
                 </div>
 
                 {!isLogin?

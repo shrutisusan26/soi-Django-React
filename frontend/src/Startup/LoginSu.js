@@ -5,6 +5,7 @@ import {useHistory} from 'react-router-dom'
 import StartupDashboard from './StartupDashboard';
 import ls from "local-storage";
 import LoginFail from "../LoginFail"
+import './styles.css';
 function LoginSu() {
     const [username,setUsername]=useState('')
     const [password,setPassword]=useState('')
@@ -17,6 +18,7 @@ function LoginSu() {
     const [response,setisResponse]=useState('');
     let history=useHistory()
     const [isAttempt,setisAttempt] = useState(false);
+    const [isPasswordVisible,setPassVisibility] = useState(false);
     useEffect(()=>{
 
         if(isError){
@@ -37,6 +39,9 @@ function LoginSu() {
             })
         }
     },[token,isError])
+    const togglePassword=()=>{
+        setPassVisibility(!isPasswordVisible);
+    }
     const RegisterButton=()=>{
         const user={username,password,email}
         
@@ -69,8 +74,11 @@ function LoginSu() {
                     <label htmlFor="username" className="form-label">Username</label>
                     <input type="text"  className="form-control" id="username" value={username} placeholder="Enter username" onChange={(e)=>setUsername(e.target.value)}/>
                     <br/>
+        
+                    <div className="password">
                     <label htmlFor="password" className="form-label">Password</label>
-                    <input type="text" className="form-control" id="password" placeholder="Enter password" value={password} onChange={(e)=>setPassword(e.target.value) }/>
+                    <input  className="form-control" id="password" placeholder="Enter password" value={password} onChange={(e)=>setPassword(e.target.value) }type={isPasswordVisible?"text":"password"}/>
+                    <i className={`fa ${isPasswordVisible? "fa-eye-slash":"fa-eye"}  password-icon`} onClick={togglePassword}/></div>
                 </div>
                 
                 {!isLogin?
