@@ -198,7 +198,7 @@ function LoginInv() {
             <div className="login" style={centerElem}>
                 <br/>
                 <br/>
-                <br/>
+                
                 <div style={centerElem}>
                     <h2>Login for investors</h2>
                     {isLogin? <h2>Please Login </h2>: <h2>Please Register</h2>}
