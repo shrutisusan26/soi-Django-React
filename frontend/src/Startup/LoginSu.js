@@ -6,7 +6,35 @@ import StartupDashboard from './StartupDashboard';
 import ls from "local-storage";
 import LoginFail from "../LoginFail"
 import './styles.css';
+
+import ExamplesNavbar from "./../components/Navbars/ExamplesNavbar";
+import StartupLoginHeader from "../components/Headers/StartupLoginHeader";
+import DarkFooter from "./../components/Footers/DarkFooter";
+import {
+    Button,
+    NavItem,
+    NavLink,
+    Nav,
+    TabContent,
+    TabPane,
+    Container,
+    Row,
+    Col,
+    UncontrolledTooltip,
+  } from "reactstrap";
 function LoginSu() {
+    const [pills, setPills] = React.useState("2");
+    React.useEffect(() => {
+      document.body.classList.add("profile-page");
+      document.body.classList.add("sidebar-collapse");
+      document.documentElement.classList.remove("nav-open");
+      window.scrollTo(0, 0);
+      document.body.scrollTop = 0;
+      return function cleanup() {
+        document.body.classList.remove("profile-page");
+        document.body.classList.remove("sidebar-collapse");
+      };
+    }, []);
     const [username,setUsername]=useState('')
     const [password,setPassword]=useState('')
     const [startup_name,setstartup_name]=useState('')
@@ -67,6 +95,111 @@ function LoginSu() {
     })
     }
     return (
+        <>
+    <ExamplesNavbar />
+         <div className="wrapper">
+        <StartupLoginHeader />
+        <div className="section">
+          <Container>
+            <div className="button-container">
+              
+            </div>
+            
+            <Row>
+              <Col className="ml-auto mr-auto" md="6">
+                {/* <h4 className="title text-center">My Portfolio</h4> */}
+                <div className="nav-align-center">
+                  <Nav
+                    className="nav-pills-info nav-pills-just-icons"
+                    pills
+                    role="tablist"
+                  >
+                    <NavItem>
+                     
+                    </NavItem>
+                    <NavItem>
+                      
+                    </NavItem>
+                    <NavItem>
+                    
+                    </NavItem>
+                  </Nav>
+                </div>
+              </Col>
+              <TabContent className="gallery" activeTab={"pills" + pills}>
+                <TabPane tabId="pills1">
+                  <Col className="ml-auto mr-auto" md="10">
+                    <Row className="collections">
+                      <Col md="6">
+                        <img
+                          alt="..."
+                          className="img-raised"
+                         
+                        ></img>
+                        <img
+                          alt="..."
+                          className="img-raised"
+                         
+                        ></img>
+                      </Col>
+                      <Col md="6">
+                        <img
+                          alt="..."
+                          className="img-raised"
+                          
+                        ></img>
+                        <img
+                          alt="..."
+                          className="img-raised"
+                         
+                        ></img>
+                      </Col>
+                    </Row>
+                  </Col>
+                </TabPane>
+                <TabPane tabId="pills2">
+                  <Col className="ml-auto mr-auto" md="10">
+                    <Row className="collections">
+                     
+                     
+                    </Row>
+                  </Col>
+                </TabPane>
+                <TabPane tabId="pills3">
+                  <Col className="ml-auto mr-auto" md="10">
+                    <Row className="collections">
+                      <Col md="6">
+                        <img
+                          alt="..."
+                          className="img-raised"
+                        //   src={bg3}
+                        ></img>
+                        <img
+                          alt="..."
+                          className="img-raised"
+                        //   src={bg8}
+                        ></img>
+                      </Col>
+                      <Col md="6">
+                        <img
+                          alt="..."
+                          className="img-raised"
+                        //   src={bg7}
+                        ></img>
+                        <img
+                          alt="..."
+                          className="img-raised"
+                        //   src={bg6}
+                        ></img>
+                      </Col>
+                    </Row>
+                  </Col>
+                </TabPane>
+              </TabContent>
+            </Row>
+          </Container>
+          </div>
+          </div>
         <div>
             <div className="login" style={centerElem}>
                 {isLogin? <h1 style={centerElem}>Please Login </h1>: <h1 style={centerElem}>Please Register</h1>}
@@ -100,7 +233,8 @@ function LoginSu() {
                 <div style={centerElem}>
                     <button style={{margin:"auto"}} className="btn btn-primary" onClick={loginButton}>Login</button> 
                 </div>
-                }
+                
+}
                 {isLogin?
                 <div className="mb-3" style={centerElem}>
                     <br/>
@@ -118,8 +252,12 @@ function LoginSu() {
                     </div>:
                     <br/>
                 }
+               
             </div>
         </div>
+        <DarkFooter />
+      </>
+       
     )
 }
 
