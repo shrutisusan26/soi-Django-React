@@ -11,7 +11,7 @@ import { CContainer, CFade } from '@coreui/react'
 const IDashboard = React.lazy(() => import('../views/dashboard/InvestorDash'));
 const routes=[
     { path: '/', exact: true, name: 'Home' },
-    { path: '/investor/dashboard', exact:true,name: 'Dashboard', component: IDashboard }
+    { path: '/investor/dashboard', exact:true,name: 'Dashboard', component: IDashboard },
 ]
   
 const loading = (

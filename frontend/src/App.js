@@ -30,6 +30,9 @@ function App(){
     const Logout=React.lazy(()=>'./Startup/Logout');
     const AboutUs=React.lazy(()=>import('./AboutUs'));
     const ProfilePage = React.lazy(()=>import('./views/examples/ProfilePage'));
+    const ContactForm = React.lazy(()=>import('./Investor/contactForm'));
+    const ContactUs = React.lazy(()=>import('./Startup/ContactUs'));
+
     return (
       
       <CookiesProvider>
@@ -50,6 +53,8 @@ function App(){
               <Route path = "/about" name = "AboutUs" render = {props => <AboutUs {...props} />} />
               <Route path='/chat' name="chat" render={props=> <ChatApp {...props}/>}/>
               <Route path = "/profile" name = "ProfilePage" render = {props => <ProfilePage {...props} />} />
+              <Route path = "/contactform" name = "InvestorContactPage" render = {props => <ContactForm {...props} />} />
+              <Route path = "/contactus" name = "StartupContactPage" render = {props => <ContactForm {...props} />} />
             </Switch>
           </React.Suspense>
       </BrowserRouter>
