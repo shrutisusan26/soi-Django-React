@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {
-    TheSidebar,
+    TheStartupSidebar,
     TheHeader,
     TheContent,
     TheFooter
@@ -10,7 +10,7 @@ import {
 const StartupDashboard = (props) => {
   return (
     <div className="c-app c-default-layout">
-      <TheSidebar/>
+      <TheStartupSidebar/>
       <div className="c-wrapper">
         <TheHeader/>
         <div className="c-body">

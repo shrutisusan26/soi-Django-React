@@ -1,7 +1,7 @@
 import React from 'react'
 import CIcon from '@coreui/icons-react'
 
-const _nav =  [
+const _startupNav =  [
   {
     _tag: 'CSidebarNavItem',
     name: 'Dashboard',
@@ -16,21 +16,26 @@ const _nav =  [
     _tag: 'CSidebarNavTitle',
     _children: ['Profile Update']
   },
- 
+  {
+    _tag: 'CSidebarNavItem',
+    name: 'Update Description',
+    to: '/startup/updatedesc',
+    icon: 'cil-drop',
+  },
   
   {
     _tag: 'CSidebarNavItem',
-    name: 'Catalog',
-    to: '/investor/catalog',
+    name: 'Delete Description',
+    to: '/theme/typography',
     icon: 'cil-pencil',
   },
+  
   {
     _tag: 'CSidebarNavItem',
     name: 'Chat',
     to: '/chat',
     icon: 'cil-pencil',
   },
-  
   
   
   {
@@ -46,4 +51,4 @@ const _nav =  [
   
 ]
 
-export default _nav
+export default _startupNav
