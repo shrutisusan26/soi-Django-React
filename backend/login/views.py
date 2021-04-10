@@ -1,13 +1,15 @@
 from rest_framework import viewsets
 from .serializers import InvestorUserSerializer, StartupUserSerializer
-from .models import Investor, Startup
+from .models import Investor, Startup,User
 from rest_framework.generics import GenericAPIView
 from rest_framework.mixins import UpdateModelMixin
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.decorators import api_view
 from django.contrib.auth.decorators import login_required
-
+from django.core.mail import EmailMessage
+from django.conf import settings
+from django.template.loader import render_to_string
 class InvestorViewset(viewsets.ModelViewSet):
     queryset = Investor.objects.all()
     serializer_class = InvestorUserSerializer
@@ -34,7 +36,7 @@ class StartupViewset(viewsets.ModelViewSet,UpdateModelMixin):
 
 @api_view([ 'GET' ])
 def follow_unfollow_startup(request, action, startuppk,investorpk):
-    print("wut")
+   # print("wut")
     """
     Follower for your startup is going to be an investor, hardcoded for now
     Get the startup object which the investor clicks using the pk

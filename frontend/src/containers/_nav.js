@@ -30,7 +30,12 @@ const _nav =  [
     to: '/chat',
     icon: 'cil-pencil',
   },
-  
+  {
+    _tag: 'CSidebarNavItem',
+    name: 'Contact Us',
+    to: '/contactform',
+    icon: 'cil-pencil',
+  },
   
   
   {
