@@ -6,7 +6,7 @@ import Chat from "./containers/Chat";
 
 const BaseRouter = () => (
   <Hoc>
-    <Route exact path="/:chatID/" component={Chat} />
+    <Route path="/:chatID/" component={Chat} />
   </Hoc>
 );
 

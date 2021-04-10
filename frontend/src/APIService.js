@@ -80,4 +80,23 @@ export default class APIService{
         
         }).then(resp=>resp.json())
     }
+    static password_reset(body){
+        return fetch('http://localhost:8000/auth/users/reset_password/',{
+            method:'POST',
+            headers:{
+              'Content-Type':'application/json',
+            },
+            body:JSON.stringify(body)
+        }).then(resp=>resp.json())
+    }
+    static password_confirm_reset(body){
+        return fetch('http://127.0.0.1:8000/auth/users/reset_password_confirm/',{
+            method:'POST',
+            headers:{
+              'Content-Type':'application/json',
+            },
+            body:JSON.stringify(body)
+        
+        }).then(resp=>resp.json())
+    }
 }

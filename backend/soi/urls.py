@@ -9,4 +9,5 @@ urlpatterns = [
     path('api-token-auth/', CustomAuthToken.as_view()),
     url('', include('sapp.urls')),
     path('chat/', include('chat.api.urls', namespace='chat')),
+    url(r'^auth/', include('djoser.urls')),
 ]

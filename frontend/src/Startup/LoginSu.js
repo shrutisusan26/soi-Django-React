@@ -1,7 +1,7 @@
 import React,{useEffect,useState} from 'react'
 import APIService from '../APIService'
 import {useCookies} from 'react-cookie';
-import {useHistory} from 'react-router-dom'
+import {useHistory,Link} from 'react-router-dom'
 import StartupDashboard from './StartupDashboard';
 import ls from "local-storage";
 import LoginFail from "../LoginFail"
@@ -240,10 +240,13 @@ function LoginSu() {
                     <br/>
                     <h5>Don't Have An Account?</h5>
                     <button className="btn btn-primary" onClick={()=>setIsLogin(false)}>Register Here!</button>
+                    <p className='text-right 80'>Forgot Password ?<Link to={'/forgotpass'}>Reset Password</Link></p>
+
                 </div>:
                 <div className="mb-3" style={centerElem}>
                     <h5>If you have an account,</h5>
                     <button className="btn btn-primary" onClick={()=>setIsLogin(true)}>Login</button>
+                    
                 </div>
                 }
                 {isAttempt?

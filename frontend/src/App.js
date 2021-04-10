@@ -32,7 +32,9 @@ function App(){
     const ProfilePage = React.lazy(()=>import('./views/examples/ProfilePage'));
     const ContactForm = React.lazy(()=>import('./Investor/contactForm'));
     const ContactUs = React.lazy(()=>import('./Startup/ContactUs'));
-
+    const ForgotPass=React.lazy(()=>import('./ForgotPass'));
+    const ResetPass=React.lazy(()=>import('./ResetPass'));
+    const Mailsuccess=React.lazy(()=>import('./mailsuccess'));
     return (
       
       <CookiesProvider>
@@ -54,7 +56,10 @@ function App(){
               <Route path='/chat' name="chat" render={props=> <ChatApp {...props}/>}/>
               <Route path = "/profile" name = "ProfilePage" render = {props => <ProfilePage {...props} />} />
               <Route path = "/contactform" name = "InvestorContactPage" render = {props => <ContactForm {...props} />} />
-              <Route path = "/contactus" name = "StartupContactPage" render = {props => <ContactForm {...props} />} />
+              <Route path = "/contactus" name = "StartupContactPage" render = {props => <ContactUs {...props} />} />
+              <Route exact path="/forgotpass" name="Forgot Password" render={props=><ForgotPass {...props} />}/>
+              <Route path="/reset-password/confirm/:uid/:token/" name="Reset Password" render={props=><ResetPass {...props} />}/>
+              <Route path="/success" name="Mail Success" render={props=><Mailsuccess {...props} />}/>
             </Switch>
           </React.Suspense>
       </BrowserRouter>

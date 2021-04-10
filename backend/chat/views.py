@@ -11,4 +11,7 @@ def get_user_contact(username):
     return contact
 
 def get_current_chat(chatId):
-    return get_object_or_404(Chat,id=chatId)
+    chat,created=Chat.objects.get_or_create(id=chatId)
+    return chat
+
+    # return get_object_or_404(Chat,id=chatId)

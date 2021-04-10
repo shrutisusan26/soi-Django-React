@@ -13,7 +13,10 @@ class Chat extends React.Component {
         this.props.match.params.chatID
       );
     });
-    WebSocketInstance.connect(this.props.match.params.chatID);
+    // if (this.props.match.params.chatID!="chat"){
+      console.log(this.props.match.params.chatID);
+      WebSocketInstance.connect(this.props.match.params.chatID);
+    // }
   }
 
   constructor(props) {

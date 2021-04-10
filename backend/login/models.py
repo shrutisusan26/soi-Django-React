@@ -6,7 +6,7 @@ from django.contrib.auth.models import AbstractUser
 class User(AbstractUser):
     is_startup=models.BooleanField(default=False)
     is_investor=models.BooleanField(default=False)
-    email=models.CharField(max_length=50)
+    email=models.EmailField(max_length=50)
     username=models.CharField(max_length=50,primary_key=True)
     password=models.CharField(max_length=50)
 

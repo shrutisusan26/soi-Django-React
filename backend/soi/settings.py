@@ -52,7 +52,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
-   
+    'djoser',
+
 ]
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
@@ -159,3 +160,21 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'shrutisusan055@gmail.com'
+EMAIL_HOST_PASSWORD = 'fjwk gjoy wvse desa'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'SOI Team <noreply@soiteam.com>'
+DOMAIN= "localhost:3000"
+SITE_NAME= "localhost:3000"
+DJOSER = {
+   
+    "USER_ID_FIELD": "username",
+    "LOGIN_FIELD": "username",
+    "PASSWORD_RESET_CONFIRM_URL": "reset-password/confirm/{uid}/{token}", # the reset link 
+    'SERIALIZERS': {
+        'token_create': 'login.serializers.CustomAuthToken',
+    },
+    }
