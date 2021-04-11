@@ -15,7 +15,7 @@ from .serializers import ChatSerializer
 
 def get_user_contact(username):
     user = get_object_or_404(User, username=username)
-    contact = get_object_or_404(Contact, user=user)
+    contact,created=Contact.objects.get_or_create(user=user)
     return contact
 
 

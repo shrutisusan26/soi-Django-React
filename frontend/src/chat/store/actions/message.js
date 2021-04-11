@@ -24,17 +24,18 @@ const getUserChatsSuccess = chats => {
 };
 
 export const getUserChats = (username, token) => {
-  //console.log(username);
   return dispatch => {
     axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
     axios.defaults.xsrfCookieName = "csrftoken";
     console.log(token.replace(/['"]+/g, ''));
-    axios.defaults.headers = {
-      "Content-Type": "application/json",
-      Authorization: `Token ${token.replace(/['"]+/g, '')}`
-    };
-    axios
-      .get(`http://127.0.0.1:8000/chat/?username=${username.replace(/['"]+/g, '')}`)
-      .then(res => dispatch(getUserChatsSuccess(res.data)));
-  };
+    if(username){
+      axios.defaults.headers = {
+        "Content-Type": "application/json",
+        Authorization: `Token ${token.replace(/['"]+/g, '')}`
+      };
+      axios
+        .get(`http://127.0.0.1:8000/chat/?username=${username.replace(/['"]+/g, '')}`)
+        .then(res => dispatch(getUserChatsSuccess(res.data)));
+    }
+  }
 };

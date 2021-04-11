@@ -14,7 +14,8 @@ const Navbar = (props) => {
   const Logout=()=>{
       removeToken(['mytoken','csrftoken'])
       setshowLogout(false)
-      ls.clear()
+      localStorage.removeItem('username');
+      localStorage.removeItem('token');
       history.push('/')
   };
 

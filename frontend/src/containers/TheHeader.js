@@ -43,6 +43,8 @@ const TheHeader = () => {
   }
   const Logout=()=>{
     removeCookie(['mytoken']);
+    localStorage.removeItem('username');
+    localStorage.removeItem('token')
     history.push('/home');
   };
   return (
