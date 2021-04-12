@@ -4,6 +4,8 @@ from .models import Investor,User, Startup
 from django.contrib.auth.hashers import make_password
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.response import Response
+
+
 class UserSerializer(serializers.ModelSerializer):
     # additional args to make password hidden
     password = serializers.CharField(required=True, style={'input_type': 'password'},write_only=True)
@@ -37,6 +39,7 @@ class InvestorUserSerializer(serializers.ModelSerializer):
 class StartupUserSerializer(serializers.ModelSerializer):
     
     #user instance needs to be created to be used in create() further
+    
     user = UserSerializer()
     class Meta:
         model=Startup

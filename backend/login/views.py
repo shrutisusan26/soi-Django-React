@@ -10,6 +10,23 @@ from django.contrib.auth.decorators import login_required
 from django.core.mail import EmailMessage
 from django.conf import settings
 from django.template.loader import render_to_string
+from rest_framework.pagination import PageNumberPagination
+class CustomPagination(PageNumberPagination):
+    page_size = 3
+    page_size_query_param = 'page_size'
+    max_page_size = 150
+
+    def get_paginated_response(self, data):
+        return Response({
+            'links': {
+                'next': self.get_next_link(),
+                'previous': self.get_previous_link()
+            },
+            'count': self.page.paginator.count,
+            'page_size': self.page_size,
+            'results': data
+        })
+
 class InvestorViewset(viewsets.ModelViewSet):
     queryset = Investor.objects.all()
     serializer_class = InvestorUserSerializer
@@ -21,7 +38,7 @@ class StartupViewset(viewsets.ModelViewSet,UpdateModelMixin):
     """
     queryset = Startup.objects.all()
     serializer_class = StartupUserSerializer
-    
+    pagination_class = CustomPagination
     def partial_update(self, request, *args, **kwargs):
         kwargs['partial'] = True
         return self.update(request, *args, **kwargs)

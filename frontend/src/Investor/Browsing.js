@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import '../index.css'
-import {useHistory} from 'react-router-dom'
+import {useHistory,useParams} from 'react-router-dom'
+
 import axios from 'axios';
 import Posts from '../containers/Posts';
 import Pagination from '../containers/Pagination';
@@ -9,31 +10,39 @@ import {
     TheHeader,
   } from  '../containers/index'
 import { MDBCol, MDBFormInline, MDBBtn } from "mdbreact";
+import { Button } from 'react-bootstrap';
 
-function Browsing() {
+function Browsing(props) {
     const[posts, setPosts] = useState([]);
     const[loading, setLoading] = useState(false);
-    const[currentPage, setCurrentPage] = useState(1);
-    const[postsPerPage, setPostsPerPage] = useState(10);
     const[profiles,setProfiles]=useState([]);
     const[searchTerm,setSearchTerm]=useState('');
-    // Get current posts
-    const indexOfLastPost = currentPage * postsPerPage;
-    const indexOfFirstPost = indexOfLastPost - postsPerPage;
-    const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+    const[getlinks,setLinks]=useState('http://localhost:8000/soi/startup/signup/');
+    const [getProfilelinks,setProfileLink]=useState('http://localhost:8000/soi/startup/profile/')
+    const [next,setNext]=useState(0);
+    let page=0;  
+  
     useEffect(() => {
         const fetchPosts = async () => {
           setLoading(true);
-          const res = await axios.get('http://127.0.0.1:8000/soi/startup/signup/');
-          const prof = await axios.get('http://127.0.0.1:8000/soi/startup/profile/');
-          setPosts(res.data);
-          setProfiles(prof.data);
+          page=page+1;
+         
+         
+          const res= await axios.get(getlinks)
+          const results=await axios.get(getProfilelinks)
+          console.log(res.data.links.next)
+          console.log(results.data.links.next)
+          setLinks(res.data.links.next)
+          setPosts(res.data.results);
+          setProfileLink(results.data.links.next);
+          setProfiles(results.data.results);
+          console.log(getlinks)
+          console.log(getProfilelinks)
           setLoading(false);
         };
     
         fetchPosts();
-      }, []);
-      const paginate = pageNumber => setCurrentPage(pageNumber);
+      }, [next]);
     return (
     
         <div className="c-app c-default-layout">
@@ -51,9 +60,10 @@ function Browsing() {
               
               </MDBFormInline>
             </MDBCol>
-            <Posts posts = {currentPosts} loading = {loading} prof={profiles} filter={searchTerm}/>
-            <Pagination postsPerPage = {postsPerPage} totalPosts = {posts.length}   paginate={paginate}/>
-
+            <Posts posts = {posts} loading = {loading} prof={profiles} filter={searchTerm} links={getlinks}/>
+            {/* <Pagination postsPerPage = {postsPerPage} totalPosts = {posts.length}   paginate={paginate}/> */}
+           {!loading && <button onClick={()=>setNext(page+1)}>Next</button>}
+           {/* {!loading && <button onClick={()=>setNext()}>Previous</button>} */}
             </div>
             </div>
    

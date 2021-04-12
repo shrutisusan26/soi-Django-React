@@ -21,7 +21,7 @@ const StartupDashboard = () => {
        setisNotif(resp.interested_investors)
         console.log(Notifs)
      })
-  },[])
+  })
   return (
     <>
       <CCard>
