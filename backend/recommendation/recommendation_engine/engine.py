@@ -31,6 +31,20 @@ corpus_vocabulary = defaultdict(None, copy.deepcopy(corpus_tfidf_vectorizer.voca
 corpus_vocabulary.default_factory = corpus_vocabulary.__len__
 cosine_similarities = joblib.load("cosine_similarities.pkl")
 
+def lemmatize(text):
+    return WordNetLemmatizer().lemmatize(text, pos='v')
+
+
+def preprocess(raw_text):
+
+    # keep only words
+    letters_only_text = re.sub("[^a-zA-Z]", " ", raw_text)
+
+    # convert to lower case and split 
+    words = letters_only_text.lower()
+
+    return [lemmatize(token) for token in gensim.utils.simple_preprocess(words) if (token not in gensim.parsing.preprocessing.STOPWORDS and len(token) > 3) ]
+
 def loadGloveModel(gloveFile):
     print ("Loading Glove Model")
     with open(gloveFile, encoding="utf8" ) as f:
