@@ -78,8 +78,9 @@ function LoginInv() {
             ls.set('username',resp['user_id']);
             console.log(resp)
             ls.set('token',resp.token);
-            setToken('mytoken',resp.token)}
-        
+            setToken('mytoken',resp.token)
+            ls.set('startup',resp.is_startup);
+        }
         else{ 
             setisError(true)
             setisAttempt(true)

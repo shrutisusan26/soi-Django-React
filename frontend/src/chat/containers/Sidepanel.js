@@ -5,13 +5,12 @@ import * as actions from "../store/actions/auth";
 import * as navActions from "../store/actions/nav";
 import * as messageActions from "../store/actions/message";
 import Contact from "../components/Contact";
-
 const antIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
 
 class Sidepanel extends React.Component {
   state = {
-    loginForm: true
-  };
+    loginForm: true,
+     };
 
   waitForAuthDetails() {
     const component = this;
@@ -46,7 +45,16 @@ class Sidepanel extends React.Component {
       this.props.login(e.target.username.value, e.target.password.value);
     } 
   };
-
+  redirect=e=>{
+    e.preventDefault();
+   
+    if(localStorage.getItem('startup')=="true"){
+      window.location.href = '/startup/dashboard';
+     }
+    else{
+      window.location.href = '/investor/dashboard';
+    }
+  }
   render() {
     let activeChats = this.props.chats.map(c => {
       return (
@@ -74,60 +82,13 @@ class Sidepanel extends React.Component {
               className="fa fa-chevron-down expand-button"
               aria-hidden="true"
             />
-            <div id="status-options">
-              <ul>
-                <li id="status-online" className="active">
-                  <span className="status-circle" /> <p>Online</p>
-                </li>
-                <li id="status-away">
-                  <span className="status-circle" /> <p>Away</p>
-                </li>
-                <li id="status-busy">
-                  <span className="status-circle" /> <p>Busy</p>
-                </li>
-                <li id="status-offline">
-                  <span className="status-circle" /> <p>Offline</p>
-                </li>
-              </ul>
-            </div>
+            
             <div id="expanded">
-              {this.props.loading ? (
-                <Spin indicator={antIcon} />
-              ) : this.props.isAuthenticated ? (
-                <button onClick={() => this.props.logout()} className="authBtn">
-                  <span>Logout</span>
-                </button>
-              ) : (
-                <div>
-                  <form method="POST" onSubmit={this.authenticate}>
-                    {this.state.loginForm ? (
-                      <div>
-                        <input
-                          name="username"
-                          type="text"
-                          placeholder="username"
-                        />
-                        <input
-                          name="password"
-                          type="password"
-                          placeholder="password"
-                        />
-                      </div>
-                    ) : <div></div>}
-
-                    <button type="submit">Authenticate</button>
-                  </form>
-                </div>
-              )}
+                <button onClick={(e)=>this.redirect(e)}>Back</button>
             </div>
           </div>
         </div>
-        <div id="search">
-          <label htmlFor="">
-            <i className="fa fa-search" aria-hidden="true" />
-          </label>
-          <input type="text" placeholder="Search Chats..." />
-        </div>
+       
         <div id="contacts">
           <ul>{activeChats}</ul>
         </div>

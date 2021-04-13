@@ -1,6 +1,7 @@
 import axios from "axios";
 import * as actionTypes from "./actionTypes";
 import { HOST_URL } from "../../settings";
+
 export const authStart = () => {
   return {
     type: actionTypes.AUTH_START
@@ -24,8 +25,10 @@ export const authFail = error => {
 
 export const logout = () => {
   
+  window.location.href = '/home';
   localStorage.removeItem("token");
   localStorage.removeItem("username");
+  localStorage.removeItem("is_startup");
   return {
     type: actionTypes.AUTH_LOGOUT
   };

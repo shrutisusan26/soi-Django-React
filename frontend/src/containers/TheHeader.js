@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import {useCookies} from 'react-cookie';
 import {useHistory} from 'react-router-dom'
-
+import ls from 'local-storage'
 // routes config
 import routes from '../routes'
 
@@ -43,8 +43,7 @@ const TheHeader = () => {
   }
   const Logout=()=>{
     removeCookie(['mytoken']);
-    localStorage.removeItem('username');
-    localStorage.removeItem('token')
+    ls.clear()
     history.push('/home');
   };
   return (

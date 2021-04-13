@@ -86,6 +86,7 @@ function LoginSu() {
             if(resp.token){
                 ls.set('username',resp['user_id']);
                 ls.set('token',resp.token);
+                ls.set('startup',resp.is_startup);
                 setToken('mytoken',resp.token)
             }
             else{ 

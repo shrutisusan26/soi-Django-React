@@ -6,7 +6,7 @@ import { withRouter } from "react-router-dom";
 import * as navActions from "../store/actions/nav";
 import * as messageActions from "../store/actions/message";
 import { HOST_URL } from "../settings";
-
+import WebSocketInstance from "../websocket";
 const FormItem = Form.Item;
 
 function hasErrors(fieldsError) {
@@ -48,6 +48,7 @@ class HorizontalAddChatForm extends React.Component {
           })
           .then(res => {
             this.props.history.push(`/${res.data.id}`);
+            WebSocketInstance.connect(res.data.id);
             this.props.closeAddChatPopup();
             this.props.getUserChats(this.props.username, this.props.token);
           })
