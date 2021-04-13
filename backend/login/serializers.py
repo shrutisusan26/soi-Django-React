@@ -67,7 +67,9 @@ class CustomAuthToken(ObtainAuthToken):
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data['user']
         token, created = Token.objects.get_or_create(user=user)
+        print(user.is_startup)
         return Response({
             'token': token.key,
             'user_id': user.pk,
+            'is_startup':user.is_startup
         })

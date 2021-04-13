@@ -56,7 +56,7 @@ body {
     }
   }
   #frame #sidepanel #profile.expanded .wrap {
-    height: 250px;
+    height: 100px;
     line-height: initial;
   }
   #frame #sidepanel #profile.expanded .wrap p {
@@ -71,7 +71,7 @@ body {
     -ms-filter: "FlipH";
   }
   #frame #sidepanel #profile .wrap {
-    height: 250px;
+    height: 150px;
     line-height: 65px;
     overflow: scroll;
     -moz-transition: 0.3s height ease;
@@ -339,7 +339,7 @@ body {
     }
   }
   #frame #sidepanel #contacts.expanded {
-    height: calc(100% - 334px);
+    height: calc(100% - 100px);
   }
   #frame #sidepanel #contacts::-webkit-scrollbar {
     width: 8px;
