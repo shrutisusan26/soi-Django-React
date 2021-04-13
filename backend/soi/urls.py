@@ -10,4 +10,5 @@ urlpatterns = [
     url('', include('sapp.urls')),
     path('chat/', include('chat.api.urls', namespace='chat')),
     url(r'^auth/', include('djoser.urls')),
+    path('recommend/',include('recommendation.urls'))
 ]

@@ -24,14 +24,14 @@ import copy
 from sklearn.metrics.pairwise import cosine_similarity
 import joblib
 
-embeddings = joblib.load("embeddings.pkl")
-tfidf = joblib.load("tfidf.pkl")
-corpus_tfidf_vectorizer = joblib.load("corpus_tfidf_vectorizer.pkl")
+embeddings = joblib.load("recommendation/recommendation_engine/embeddings.pkl")
+tfidf = joblib.load("recommendation/recommendation_engine/tfidf.pkl")
+corpus_tfidf_vectorizer = joblib.load("recommendation/recommendation_engine/corpus_tfidf_vectorizer.pkl")
 corpus_vocabulary = defaultdict(None, copy.deepcopy(corpus_tfidf_vectorizer.vocabulary_))
 corpus_vocabulary.default_factory = corpus_vocabulary.__len__
-cosine_similarities = joblib.load("cosine_similarities.pkl")
+cosine_similarities = joblib.load("recommendation/recommendation_engine/cosine_similarities.pkl")
   
-df = pd.read_excel("P11-1000-Startups.xlsx",engine='openpyxl')
+df = pd.read_excel("recommendation/recommendation_engine/P11-1000-Startups.xlsx",engine='openpyxl')
 df.drop([334,982],inplace=True)
 
 def lemmatize(text):
@@ -113,8 +113,4 @@ class Engine:
         sim_scores = sim_scores[1:8]
         startup_indices = [i[0] for i in sim_scores]
         recommend = df.iloc[startup_indices]
-        print(recommend)
-
-engine = Engine()
-engine.loadGloveModel()
-engine.Recommend("Daltfase")
+        return recommend['Name'].to_dict()
