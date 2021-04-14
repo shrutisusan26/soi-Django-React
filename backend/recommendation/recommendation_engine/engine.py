@@ -2,8 +2,8 @@
 # 1. pip install pipreqs
 # 2. pip install -r requirements.txt
 
-gloveFile = "/home/jinitsan/Documents/glove.6B.50d.txt"  #Download glove embeddings and change path accordingly
-
+gloveFile = "/home/shruti/soi-Django-React/backend/recommendation/recommendation_engine/glove.6B.50d.txt"  #Download glove embeddings and change path accordingly
+# gloveFile = "/home/jinitsan/Documents/glove.6B.50d.txt"
 import numpy as np
 import nltk
 nltk.download('stopwords')
@@ -24,14 +24,23 @@ import copy
 from sklearn.metrics.pairwise import cosine_similarity
 import joblib
 
-embeddings = joblib.load("recommendation/recommendation_engine/embeddings.pkl")
-tfidf = joblib.load("recommendation/recommendation_engine/tfidf.pkl")
-corpus_tfidf_vectorizer = joblib.load("recommendation/recommendation_engine/corpus_tfidf_vectorizer.pkl")
+
+embeddings = joblib.load("/home/shruti/soi-Django-React/backend/recommendation/recommendation_engine/embeddings.pkl")
+tfidf = joblib.load("/home/shruti/soi-Django-React/backend/recommendation/recommendation_engine/tfidf.pkl")
+corpus_tfidf_vectorizer = joblib.load("/home/shruti/soi-Django-React/backend/recommendation/recommendation_engine/corpus_tfidf_vectorizer.pkl")
 corpus_vocabulary = defaultdict(None, copy.deepcopy(corpus_tfidf_vectorizer.vocabulary_))
 corpus_vocabulary.default_factory = corpus_vocabulary.__len__
-cosine_similarities = joblib.load("recommendation/recommendation_engine/cosine_similarities.pkl")
-  
-df = pd.read_excel("recommendation/recommendation_engine/P11-1000-Startups.xlsx",engine='openpyxl')
+cosine_similarities = joblib.load("/home/shruti/soi-Django-React/backend/recommendation/recommendation_engine/cosine_similarities.pkl")
+
+
+# embeddings = joblib.load("recommendation/recommendation_engine/embeddings.pkl")
+# tfidf = joblib.load("recommendation/recommendation_engine/tfidf.pkl")
+# corpus_tfidf_vectorizer = joblib.load("recommendation/recommendation_engine/corpus_tfidf_vectorizer.pkl")
+# corpus_vocabulary = defaultdict(None, copy.deepcopy(corpus_tfidf_vectorizer.vocabulary_))
+# corpus_vocabulary.default_factory = corpus_vocabulary.__len__
+# cosine_similarities = joblib.load("recommendation/recommendation_engine/cosine_similarities.pkl")
+df = pd.read_excel("/home/shruti/soi-Django-React/backend/recommendation/recommendation_engine/P11-1000-Startups.xlsx",engine='openpyxl')
+# df = pd.read_excel("recommendation/recommendation_engine/P11-1000-Startups.xlsx",engine='openpyxl')
 df.drop([334,982],inplace=True)
 
 def lemmatize(text):
@@ -52,7 +61,7 @@ class Engine:
         words = letters_only_text.lower()
         return [lemmatize(token) for token in gensim.utils.simple_preprocess(words) if (token not in gensim.parsing.preprocessing.STOPWORDS and len(token) > 3) ]
     
-    def loadGloveModel(self,gloveFile="/home/jinitsan/Documents/glove.6B.50d.txt"):
+    def loadGloveModel(self,gloveFile="/home/shruti/soi-Django-React/backend/recommendation/recommendation_engine/glove.6B.50d.txt"):
         print ("Loading Glove Model")
         with open(gloveFile, encoding="utf8" ) as f:
             content = f.readlines()
@@ -110,7 +119,7 @@ class Engine:
         idx = df[df['Name']==name].index[0]
         sim_scores = list(enumerate(self.cosine_similarities[idx]))
         sim_scores = sorted(sim_scores, key = lambda x: x[1], reverse = True)
-        sim_scores = sim_scores[1:8]
+        sim_scores = sim_scores[1:5]
         startup_indices = [i[0] for i in sim_scores]
         recommend = df.iloc[startup_indices]
         return recommend['Name'].to_dict()

@@ -21,6 +21,7 @@ class ChatSerializer(serializers.ModelSerializer):
         print(validated_data)
         participants = validated_data.pop('participants')
         chat = Chat()
+        print(chat)
         chat.save()
         for username in participants:
             contact = get_user_contact(username)

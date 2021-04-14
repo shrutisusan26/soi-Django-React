@@ -53,7 +53,6 @@ class StartupViewset(viewsets.ModelViewSet,UpdateModelMixin):
 
 @api_view([ 'GET' ])
 def follow_unfollow_startup(request, action, startuppk,investorpk):
-   # print("wut")
     """
     Follower for your startup is going to be an investor, hardcoded for now
     Get the startup object which the investor clicks using the pk

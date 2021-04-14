@@ -12,6 +12,7 @@ export default function Startups(props) {
     const NotifButton=()=>{
         APIService.NotifSubmit(s_pk,i_pk)
         .then()
+        APIService.addtoRecommendations(i_pk,s_pk)
       }
     const NotifRemoveButton=()=>{
         APIService.NotifRemove(s_pk,i_pk)
