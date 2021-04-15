@@ -76,8 +76,10 @@ class Engine:
     
     def add_new_embeddings(self,queries):
 
-        pre_query = [self.preprocess(query) for query in queries]
-
+        pre_query = [self.preprocess(query['Description']) for query in queries]
+        queries = pd.DataFrame(queries)
+        print(queries)
+        
         query_vocabulary_vectorizer = TfidfVectorizer()
         query_vocabulary_vectorizer.fit_transform([' '.join(query) for query in pre_query])
         for word in query_vocabulary_vectorizer.vocabulary_.keys():
@@ -85,8 +87,8 @@ class Engine:
 
         query_tfidf = TfidfVectorizer(vocabulary=self.corpus_vocabulary).fit_transform([' '.join(query) for query in pre_query])
 
-        tfidf.resize((self.tfidf.shape[0],query_tfidf.shape[1]))
-        tfidf = sp.vstack([self.tfidf, query_tfidf])
+        self.tfidf.resize((self.tfidf.shape[0],query_tfidf.shape[1]))
+        self.tfidf = sp.vstack([self.tfidf, query_tfidf])
 
         self.tfidf = self.tfidf.toarray()  
         
@@ -106,17 +108,19 @@ class Engine:
             self.cosine_similarities = np.vstack((self.cosine_similarities,np.ones((1,self.cosine_similarities.shape[1]))))
             self.cosine_similarities = np.hstack((self.cosine_similarities,np.ones((self.cosine_similarities.shape[0],1))))
 
-            cosine_similarities[-1,:-1] = cosine_sim
-            cosine_similarities[:-1,-1] = cosine_sim
-            cosine_similarities[-1,-1] = 1
+            self.cosine_similarities[-1,:-1] = cosine_sim
+            self.cosine_similarities[:-1,-1] = cosine_sim
+            self.cosine_similarities[-1,-1] = 1
 
             self.embeddings.append(embedding/tf_wts)
+        
+        self.df = self.df.append(queries,ignore_index=True)
 
         self.tfidf = sp.csr_matrix(self.tfidf)
     
     
     def Recommend(self,name):
-        idx = df[df['Name']==name].index[0]
+        idx = self.df[self.df['Name']==name].index[0]
         sim_scores = list(enumerate(self.cosine_similarities[idx]))
         sim_scores = sorted(sim_scores, key = lambda x: x[1], reverse = True)
         sim_scores = sim_scores[1:5]

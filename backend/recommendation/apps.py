@@ -38,6 +38,7 @@ cosine_similarities = joblib.load("/home/shruti/soi-Django-React/backend/recomme
 df = pd.read_excel("recommendation/recommendation_engine/P11-1000-Startups.xlsx",engine='openpyxl')
 df.drop([334,982],inplace=True)
 
+
 class RecommendationConfig(AppConfig):
     name = 'recommendation'
     engine = Engine()
