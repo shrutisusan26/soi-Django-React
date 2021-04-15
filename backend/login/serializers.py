@@ -4,7 +4,7 @@ from .models import Investor,User, Startup
 from django.contrib.auth.hashers import make_password
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.response import Response
-
+from recommendation.views import RecommendationConfig
 
 class UserSerializer(serializers.ModelSerializer):
     # additional args to make password hidden
@@ -55,8 +55,11 @@ class StartupUserSerializer(serializers.ModelSerializer):
         user=User.objects.create(**user_data)
         user.is_startup=True
         user.save()
-        print(validated_data)
+        startup_data = {}
+        startup_data['Name'] = validated_data['startup_name']
+        startup_data['Description'] = validated_data['startup_description']
         startup = Startup.objects.create(user=user,**validated_data)
+        RecommendationConfig.engine.add_new_embeddings([startup_data])
         Token.objects.create(user=user)
         return startup 
 
