@@ -134,3 +134,6 @@ class Engine:
         joblib.dump(self.cosine_similarities,"recommendation/recommendation_engine/cosine_similarities.pkl")
         self.df.to_excel("recommendation/recommendation_engine/P11-1000-Startups.xlsx")
 
+    def add_profile_info(self,tags,place):
+        self.df.iloc[-1]['Industry'] = tags
+        self.df.iloc[-1]['City'] = place
