@@ -30,16 +30,7 @@ function HomePage() {
         };
       });
     return (
-        // <div  >
-        //     <header>
-              
-        //             <div className="title">
-        //                 <h1 className="mb-5">Seeking Online Investments!</h1>
-        //                 <a href="/investorlogin" className="btn btn-outline btn-xl js-scroll-trigger">Investor</a>
-        //                 <a href="/startuplogin" className="btn btn-outline btn-xl js-scroll-trigger">Startup</a>
-        //             </div>
-        //     </header>
-        // </div>
+    
         <div>
         <IndexNavbar />
         <div className="wrapper">
@@ -53,12 +44,12 @@ function HomePage() {
                   <a href="/startuplogin" className="btn btn-outline btn-xl js-scroll-trigger">Startup</a>
               </div>
       </header>
-            <Carousel  style={{margin:"auto"}}/>
+            {/* <Carousel  style={{margin:"auto"}}/> */}
             {/* <NucleoIcons /> */}
             <CompleteExamples />
             
-            <Examples  style={{margin:"auto"}}/>
-            <Download />
+            {/* <Examples  style={{margin:"auto"}}/> */}
+            {/* <Download /> */}
           </div>
           <DarkFooter />
         </div>

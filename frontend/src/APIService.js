@@ -99,4 +99,22 @@ export default class APIService{
         
         }).then(resp=>resp.json())
     }
+    static getRecommendations(i_pk){
+        return fetch(`http://127.0.0.1:8000/recommend/get/${i_pk}`,{
+            method:'GET',
+            headers:{
+              'Content-Type':'application/json',
+            },       
+        }).then(resp=>resp.json())
+    }
+    static addtoRecommendations(i_pk,s_pk){
+        return fetch(`http://127.0.0.1:8000/recommend/model/${s_pk}/${i_pk}`,{
+            method:'GET',
+            headers:{
+              'Content-Type':'application/json',
+            },       
+        }).then(resp=>resp.json())
+
+
+    }
 }

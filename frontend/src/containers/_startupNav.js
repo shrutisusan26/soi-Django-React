@@ -26,7 +26,7 @@ const _startupNav =  [
   {
     _tag: 'CSidebarNavItem',
     name: 'Chat',
-    to: '/chat',
+    to: '/',
     icon: 'cil-pencil',
   },
   {

@@ -27,7 +27,13 @@ const _nav =  [
   {
     _tag: 'CSidebarNavItem',
     name: 'Chat',
-    to: '/chat',
+    to: '/',
+    icon: 'cil-pencil',
+  },
+  {
+    _tag: 'CSidebarNavItem',
+    name: 'Recommendations',
+    to: '/recommendation',
     icon: 'cil-pencil',
   },
   {

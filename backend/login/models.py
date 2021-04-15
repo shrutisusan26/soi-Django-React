@@ -15,7 +15,7 @@ class Investor(models.Model):
    user= models.OneToOneField(User,on_delete=models.CASCADE,primary_key=True)
    first_name=models.CharField(max_length=100)
    last_name=models.CharField(max_length=100)
-   
+  
   
 class Startup(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE,primary_key=True) #Linking users to their startup, same as in investor
@@ -32,3 +32,4 @@ class Startup(models.Model):
     def unfollow_startup(cls, startup, follower):
         startup, created = cls.objects.get_or_create(pk=startup.user.username)
         startup.interested_investors.remove(follower)
+
