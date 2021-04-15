@@ -16,9 +16,9 @@ import {
 import ExamplesNavbar from "./components/Navbars/ExamplesNavbar.js";
 import LandingPageHeader from "./components/Headers/LandingPageHeader.js";
 import DefaultFooter from "./components/Footers/DefaultFooter.js";
-import login from './assets/img/login.jpg';
-import bg3 from './assets/img/bg3.jpg';
-import bg1 from './assets/img/bg1.jpg';
+import startupfg from './assets/img/startupfg.jfif';
+import mainstartup from './assets/img/mainstartup.jfif';
+import startupbg from './assets/img/startupbg.jfif';
 import abhishek from './assets/img/abhishek.jpeg'
 import shruti from './assets/img/shruti.jpeg';
 import jinit from './assets/img/jinit.PNG';
@@ -65,22 +65,21 @@ function AboutUs() {
                     className="image-container image-left"
                     style={{
                       backgroundImage:
-                        "url(" + login + ")",
+                        "url(" + startupfg + ")",
                     }}
                   >
                     <p className="blockquote blockquote-info">
-                      "Over the span of the satellite record, Arctic sea ice has
-                      been declining significantly, while sea ice in the
-                      Antarctichas increased very slightly" <br></br>
+                      "Our team helps startups and investers come closer, and meet
+                      targets and establish opportunities in markets by growing their profits." <br></br>
                       <br></br>
-                      <small>-NOAA</small>
+                      <small>-CEO</small>
                     </p>
                   </div>
                   <div
                     className="image-container"
                     style={{
                       backgroundImage:
-                        "url(" + bg3 + ")",
+                        "url(" + mainstartup + ")",
                     }}
                   ></div>
                 </Col>
@@ -89,7 +88,7 @@ function AboutUs() {
                     className="image-container image-right"
                     style={{
                       backgroundImage:
-                        "url(" + bg1 + ")",
+                        "url(" + startupbg + ")",
                     }}
                   ></div>
                   <h3>
