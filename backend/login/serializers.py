@@ -60,6 +60,7 @@ class StartupUserSerializer(serializers.ModelSerializer):
         startup_data['Description'] = validated_data['startup_description']
         startup = Startup.objects.create(user=user,**validated_data)
         RecommendationConfig.engine.add_new_embeddings([startup_data])
+        RecommendationConfig.engine.save_files()
         Token.objects.create(user=user)
         return startup 
 
