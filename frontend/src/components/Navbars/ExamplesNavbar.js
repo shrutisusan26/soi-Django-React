@@ -51,7 +51,7 @@ function ExamplesNavbar() {
       ) : null}
       <Navbar className={"fixed-top " + navbarColor} color="info" expand="lg">
         <Container>
-          <UncontrolledDropdown className="button-dropdown">
+          {/* <UncontrolledDropdown className="button-dropdown">
             <DropdownToggle
               caret
               data-toggle="dropdown"
@@ -86,14 +86,14 @@ function ExamplesNavbar() {
                 One more separated link
               </DropdownItem>
             </DropdownMenu>
-          </UncontrolledDropdown>
+          </UncontrolledDropdown> */}
           <div className="navbar-translate">
             <NavbarBrand
               href="https://demos.creative-tim.com/now-ui-kit-react/index?ref=nukr-examples-navbar"
               target="_blank"
               id="navbar-brand"
             >
-              Menu
+              Seeking Online Investments
             </NavbarBrand>
             <UncontrolledTooltip target="#navbar-brand">
               Designed & Coded by Coep Students
@@ -118,7 +118,7 @@ function ExamplesNavbar() {
             navbar
           >
             <Nav navbar>
-              <NavItem>
+              {/* <NavItem>
                 <NavLink to="/index" tag={Link}>
                   Back to index
                 </NavLink>
@@ -127,10 +127,10 @@ function ExamplesNavbar() {
                 <NavLink href="https://github.com/shrutisusan26/soi-Django-React/issues">
                   Have an issue?
                 </NavLink>
-              </NavItem>
+              </NavItem> */}
               <NavItem>
                 <NavLink
-                  href="https://twitter.com/CreativeTim?ref=creativetim"
+                  href=""
                   target="_blank"
                   id="twitter-tooltip"
                 >
@@ -143,7 +143,7 @@ function ExamplesNavbar() {
               </NavItem>
               <NavItem>
                 <NavLink
-                  href="https://www.facebook.com/CreativeTim?ref=creativetim"
+                  href=""
                   target="_blank"
                   id="facebook-tooltip"
                 >
@@ -156,7 +156,7 @@ function ExamplesNavbar() {
               </NavItem>
               <NavItem>
                 <NavLink
-                  href="https://www.instagram.com/CreativeTimOfficial?ref=creativetim"
+                  href=""
                   target="_blank"
                   id="instagram-tooltip"
                 >
