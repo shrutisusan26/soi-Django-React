@@ -56,7 +56,7 @@ function LoginInv() {
         }
         else if(token['mytoken']){
             setisAttempt(true)
-            history.push('/investor/dashboard')
+            history.push('/investor/catalog')
         }
     },[token,isError])
     const togglePassword=()=>{

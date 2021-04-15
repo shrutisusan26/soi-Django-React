@@ -52,7 +52,7 @@ class Sidepanel extends React.Component {
       window.location.href = '/startup/dashboard';
      }
     else{
-      window.location.href = '/investor/dashboard';
+      window.location.href = '/investor/catalog';
     }
   }
   render() {
