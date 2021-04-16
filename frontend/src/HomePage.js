@@ -16,6 +16,9 @@ import CompleteExamples from "./views/index-sections/CompleteExamples.js";
 
 import Examples from "./views/index-sections/Examples.js";
 import Download from "./views/index-sections/Download.js";
+import { Router } from 'react-router';
+
+import Route from '../../frontend/src/Route';
 
 function HomePage() {
     React.useEffect(() => {
@@ -32,7 +35,11 @@ function HomePage() {
     return (
     
         <div>
-        <IndexNavbar />
+          
+          <IndexNavbar />
+          
+         
+       
         <div className="wrapper">
           <IndexHeader />
           <div className="main">
@@ -53,6 +60,7 @@ function HomePage() {
           </div>
           <DarkFooter />
         </div>
+        
         </div>
     );
 }

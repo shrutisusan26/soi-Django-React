@@ -47,13 +47,15 @@ function App(){
     const ResetPass=React.lazy(()=>import('./ResetPass'));
     const Mailsuccess=React.lazy(()=>import('./mailsuccess'));
     const Recommendation=React.lazy(()=>import('./Investor/Recommendation'));
+    const FAQ = React.lazy(()=>import('./FAQ'));
+    
     return (
       
       <CookiesProvider>
       <BrowserRouter>
           <React.Suspense fallback={loading}>
             <Switch>
-            
+            <Route path = "/faq" name = "FAQ" render = {props => <FAQ {...props} />} />
               <Route  path="/home" name="Home" render={props => <HomePage {...props}/>} />
               <PrivateRoute  path="/investor/dashboard" name="Investor Dashboard" type="investor" render={props => <InvestorDashboard {...props} />} />
               <PrivateRoute  path="/startup/dashboard" name="Startup Dashboard" type="startup" render={props => <StartupDashboard {...props}/>} />
@@ -72,6 +74,7 @@ function App(){
               <Route path="/success" name="Mail Success" render={props=><Mailsuccess {...props} />}/>
               <Route path="/recommendation" name="recommendation" type="investor" render={props=> <Recommendation {...props}/>}/>
               <Route path="/" name="chat" render={props=> <ChatApp {...props}/>}/>
+              
               {/* <PrivateRoute path = "/profile" name = "ProfilePage" render = {props => <ProfilePage {...props} />} /> */}
             
             </Switch>

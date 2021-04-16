@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import history from '../../history';
+import Route from '../../Route';
 // reactstrap components
 import {
   Button,
@@ -16,6 +18,7 @@ import {
   Container,
   UncontrolledTooltip,
 } from "reactstrap";
+import AboutUs from "../../AboutUs";
 
 function IndexNavbar() {
   const [navbarColor, setNavbarColor] = React.useState("navbar-transparent");
@@ -41,6 +44,7 @@ function IndexNavbar() {
   });
   return (
     <>
+    
       {collapseOpen ? (
         <div
           id="bodyClick"
@@ -100,7 +104,23 @@ function IndexNavbar() {
                   </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
-              
+              <NavItem>
+                <Button
+                  className="nav-link btn-neutral"
+                  color="secondary"
+                  // href="https://localhost:3000/about"
+                  // onClick = {AboutUs}
+                  onClick={() => history.push('/about')}
+                  id="upgrade-to-pro"
+                  // onClick={(e) => e.preventDefault()}
+                >
+                  <i className="now-ui-icons arrows-1_share-66 mr-1"></i>
+                  <p>About Us</p>
+                </Button>
+                {/* <UncontrolledTooltip target="#upgrade-to-pro">
+                  
+                </UncontrolledTooltip> */}
+              </NavItem>
               <NavItem>
                 <NavLink
                   href=""
@@ -144,6 +164,7 @@ function IndexNavbar() {
           </Collapse>
         </Container>
       </Navbar>
+     
     </>
   );
 }

@@ -48,7 +48,7 @@ function AboutUs() {
           <Container>
             <Row>
               <Col className="ml-auto mr-auto text-center" md="8">
-                <h2 className="title">Who we are?</h2>
+                <h2>Who we are?</h2>
                 <h5 className="description">
                   This is portal for the startups who want's to seek Investments
                   to fulfill their dreams & Aspirations.
@@ -125,7 +125,10 @@ The other neat thing about Stockpile is that it allows you to give a gift card t
         </div>
         <div className="section section-team text-center">
           <Container>
-            <h2 className="title">Here is our team</h2>
+          <Col className="ml-auto mr-auto text-center" md="8">
+            <h2>Here is our team</h2>
+            <br />
+            </Col>
             <div className="team">
               <Row>
                 <Col md="4">
@@ -256,7 +259,7 @@ The other neat thing about Stockpile is that it allows you to give a gift card t
             </div>
           </Container>
         </div>
-        <div className="section section-contact-us text-center">
+        {/* <div className="section section-contact-us text-center">
           <Container>
             <h2 className="title">Want to work with us?</h2>
             <p className="description">Your project is very important to us.</p>
@@ -320,7 +323,7 @@ The other neat thing about Stockpile is that it allows you to give a gift card t
               </Col>
             </Row>
           </Container>
-        </div>
+        </div> */}
         <DefaultFooter />
       </div>
     </>
