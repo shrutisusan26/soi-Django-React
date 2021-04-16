@@ -241,7 +241,7 @@ function LoginSu() {
                     <br/>
                     <h5>Don't Have An Account?</h5>
                     <button className="btn btn-primary" onClick={()=>setIsLogin(false)}>Register Here!</button>
-                    <p className='text-right 80'>Forgot Password ?<Link to={'/forgotpass'}>Reset Password</Link></p>
+                    <p >Forgot Password ?<Link to={'/forgotpass'}> Reset Password</Link></p>
 
                 </div>:
                 <div className="mb-3" style={centerElem}>
