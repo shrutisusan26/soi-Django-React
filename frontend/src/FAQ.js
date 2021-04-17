@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Faq from "react-faq-component";
 import ExamplesNavbar from "./components/Navbars/ExamplesNavbar.js";
-import DefaultFooter from "./components/Footers/DefaultFooter.js";
+import DarkFooter from "./components/Footers/DarkFooter.js";
+import FaqPageHeader from "../src/components/Headers/FaqPageHeader";
 import {
     Button,
     NavItem,
@@ -136,6 +137,8 @@ function FAQ(){
     return (
         <>
         <ExamplesNavbar />
+        <div className="wrapper">
+        <FaqPageHeader />
         <div className="section">
           <Container>
             <div className="button-container">
@@ -242,9 +245,9 @@ function FAQ(){
                 config={config}
             />
         </div>
-       
+       </div>
         </div>
-        <DefaultFooter />
+        <DarkFooter />
         </>
     );
 }

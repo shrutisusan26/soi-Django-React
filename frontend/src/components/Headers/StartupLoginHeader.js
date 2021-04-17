@@ -5,7 +5,7 @@ import { Container } from "reactstrap";
 
 // core components
 
-import ryan from "../Headers/ryan.jpg";
+// import ryan from "../Headers/ryan.jpg";
 import bg5 from "../Headers/startup.jfif";
 
 function StartupLoginHeader() {

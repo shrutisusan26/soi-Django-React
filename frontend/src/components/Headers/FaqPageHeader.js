@@ -5,7 +5,7 @@ import { Container } from "reactstrap";
 
 // core components
 
-
+import faq from "../Headers/faq.jpg";
 import bg5 from "../Headers/investor.jpg";
 
 function InvestorLoginHeader() {
@@ -33,7 +33,7 @@ function InvestorLoginHeader() {
         <div
           className="page-header-image"
           style={{
-            backgroundImage: "url(" + bg5 + ")",
+            backgroundImage: "url(" + faq + ")",
           }}
           ref={pageHeader}
         ></div>
