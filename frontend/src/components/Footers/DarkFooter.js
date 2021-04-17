@@ -12,7 +12,7 @@ function DarkFooter() {
           <ul>
             <li>
               <a
-                href="https://www.creative-tim.com?ref=nukr-dark-footer"
+                href=""
                 target="_blank"
               >
                 COEP
@@ -20,7 +20,7 @@ function DarkFooter() {
             </li>
             <li>
               <a
-                href="http://presentation.creative-tim.com?ref=nukr-dark-footer"
+                href=""
                 target="_blank"
               >
                 About Us
@@ -28,7 +28,7 @@ function DarkFooter() {
             </li>
             <li>
               <a
-                href="http://blog.creative-tim.com?ref=nukr-dark-footer"
+                href=""
                 target="_blank"
               >
                 Blog
@@ -39,14 +39,14 @@ function DarkFooter() {
         <div className="copyright" id="copyright">
           © {new Date().getFullYear()}, Designed &{" "}
           <a
-            href="https://www.invisionapp.com?ref=nukr-dark-footer"
+            href=""
             target="_blank"
           >
             
           </a>
           Coded by{" "}
           <a
-            href="https://www.creative-tim.com?ref=nukr-dark-footer"
+            href=""
             target="_blank"
           >
             Coep Students

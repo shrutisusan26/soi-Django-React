@@ -15,7 +15,7 @@ function DefaultFooter() {
             <ul>
               <li>
                 <a
-                  href="https://www.creative-tim.com?ref=nukr-default-footer"
+                  href=""
                   target="_blank"
                 >
                   COEP
@@ -23,7 +23,7 @@ function DefaultFooter() {
               </li>
               <li>
                 <a
-                  href="http://presentation.creative-tim.com?ref=nukr-default-footer"
+                  href=""
                   target="_blank"
                 >
                   About Us
@@ -31,7 +31,7 @@ function DefaultFooter() {
               </li>
               <li>
                 <a
-                  href="http://blog.creative-tim.com?ref=nukr-default-footer"
+                  href=""
                   target="_blank"
                 >
                   Blog
@@ -42,14 +42,14 @@ function DefaultFooter() {
           <div className="copyright" id="copyright">
             © {new Date().getFullYear()}, Designed &{" "}
             <a
-              href="https://www.invisionapp.com?ref=nukr-default-footer"
+              href=""
               target="_blank"
             >
               
             </a>
              Coded by{" "}
             <a
-              href="https://www.creative-tim.com?ref=nukr-default-footer"
+              href=""
               target="_blank"
             >
               Coep students
