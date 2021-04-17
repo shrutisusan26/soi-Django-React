@@ -14,7 +14,7 @@ import Carousel from "./views/index-sections/Carousel.js";
 // import NucleoIcons from "./index-sections/NucleoIcons.js";
 import CompleteExamples from "./views/index-sections/CompleteExamples.js";
 
-import Examples from "./views/index-sections/Examples.js";
+// import Examples from "./views/index-sections/Examples.js";
 import Download from "./views/index-sections/Download.js";
 import { Router } from 'react-router';
 

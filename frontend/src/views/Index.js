@@ -15,8 +15,8 @@ import Carousel from "./index-sections/Carousel.js";
 // import NucleoIcons from "./index-sections/NucleoIcons.js";
 import CompleteExamples from "./index-sections/CompleteExamples.js";
 
-import Examples from "./index-sections/Examples.js";
-import Download from "./index-sections/Download.js";
+// import Examples from "./index-sections/Examples.js";
+// import Download from "./index-sections/Download.js";
 
 function Index() {
   React.useEffect(() => {
