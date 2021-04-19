@@ -23,28 +23,38 @@ function Browsing(props) {
     const [next,setNext]=useState(0);
     const [pagenum,setPagenum]=useState(1);
     const [totalcount,setCount]=useState(0);
+    const [pageBtn,setPageButton] = useState(true)
     let page=0;  
   
     useEffect(() => {
         const fetchPosts = async () => {
           setLoading(true);
           page=page+1;
-          const res= await axios.get(`http://localhost:8000/soi/startup/signup/?page=${pagenum}`)
-          const results=await axios.get(`http://localhost:8000/soi/startup/profile/?page=${pagenum}`)
-          console.log(res.data.links.next)
-          setCount(res.data.count)
-          console.log(results.data.links.next)
-          setLinks(res.data.links.next)
-          setPosts(res.data.results);
-          setProfileLink(results.data.links.next);
-          setProfiles(results.data.results);
-          console.log(getlinks)
-          console.log(getProfilelinks)
-          setLoading(false);
+          if(pageBtn==true){
+            const res= await axios.get(`http://localhost:8000/soi/startup/signup/?page=${pagenum}`)
+            const results=await axios.get(`http://localhost:8000/soi/startup/profile/?page=${pagenum}`)
+            console.log(res.data.links.next)
+            setCount(res.data.count)
+            console.log(results.data.links.next)
+            setLinks(res.data.links.next)
+            setPosts(res.data.results);
+            setProfileLink(results.data.links.next);
+            setProfiles(results.data.results);
+            console.log(getlinks)
+            console.log(getProfilelinks)
+            setLoading(false);
+            setPageButton(false)
+          }
+          
         };
     
         fetchPosts();
-      }, [next,pagenum]);
+      }, [next,pageBtn]);
+    
+    const clickPageBtn = (e) => {
+        e.preventDefault();
+        setPageButton(true)
+    }
     return (
     
         <div className="c-app c-default-layout">
@@ -69,7 +79,7 @@ function Browsing(props) {
                 <MDBCol md="12">
                 <MDBFormInline  className="md-form mb-4">
                   <input className="form-control mr-sm-2"  type="text" placeholder="Enter page number" aria-label="Pagenum" onChange={(e)=>{setPagenum(e.target.value)}} />
-                  <MDBBtn rounded color = "primary"  rounded size="sm" type="submit" className="mr-auto" rounded>
+                  <MDBBtn rounded color = "primary"  rounded size="sm" type="submit" className="mr-auto" rounded onClick={(e)=>clickPageBtn(e)}>
                     Submit
                 </MDBBtn><br/>
                 <span style={{display:"inline-block"}} >Enter between 1-{totalcount}/3</span>

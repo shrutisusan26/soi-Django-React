@@ -10,8 +10,8 @@ function Posts({ posts, loading ,prof,filter,links}) {
   
   return (
       <div>
-   
-      
+        
+      {console.log(posts)}
       {posts.filter((val)=>{
           if (filter==""){
             return val
