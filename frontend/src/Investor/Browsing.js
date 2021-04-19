@@ -4,7 +4,6 @@ import {useHistory,useParams} from 'react-router-dom'
 import { Form } from "antd";
 import axios from 'axios';
 import Posts from '../containers/Posts';
-import Pagination from '../containers/Pagination';
 import {
     TheSidebar,
     TheHeader,
@@ -20,28 +19,20 @@ function Browsing(props) {
     const[searchTerm,setSearchTerm]=useState('');
     const[getlinks,setLinks]=useState('http://localhost:8000/soi/startup/signup/');
     const [getProfilelinks,setProfileLink]=useState('http://localhost:8000/soi/startup/profile/')
-    const [next,setNext]=useState(0);
     const [pagenum,setPagenum]=useState(1);
     const [totalcount,setCount]=useState(0);
     const [pageBtn,setPageButton] = useState(true)
-    let page=0;  
-  
     useEffect(() => {
         const fetchPosts = async () => {
-          setLoading(true);
-          page=page+1;
           if(pageBtn==true){
+            setLoading(true);
             const res= await axios.get(`http://localhost:8000/soi/startup/signup/?page=${pagenum}`)
             const results=await axios.get(`http://localhost:8000/soi/startup/profile/?page=${pagenum}`)
-            console.log(res.data.links.next)
             setCount(res.data.count)
-            console.log(results.data.links.next)
             setLinks(res.data.links.next)
             setPosts(res.data.results);
             setProfileLink(results.data.links.next);
             setProfiles(results.data.results);
-            console.log(getlinks)
-            console.log(getProfilelinks)
             setLoading(false);
             setPageButton(false)
           }
@@ -49,7 +40,7 @@ function Browsing(props) {
         };
     
         fetchPosts();
-      }, [next,pageBtn]);
+      }, [pageBtn]);
     
     const clickPageBtn = (e) => {
         e.preventDefault();
@@ -82,15 +73,13 @@ function Browsing(props) {
                   <MDBBtn rounded color = "primary"  rounded size="sm" type="submit" className="mr-auto" rounded onClick={(e)=>clickPageBtn(e)}>
                     Submit
                 </MDBBtn><br/>
-                <span style={{display:"inline-block"}} >Enter between 1-{totalcount}/3</span>
+                <span style={{display:"inline-block",padding:'10'}} >Enter between 1-{ Math.floor(totalcount/7)}</span>
                 </MDBFormInline>
                 </MDBCol>
               </span>
             </div>
+            
             <Posts posts = {posts} loading = {loading} prof={profiles} filter={searchTerm} links={getlinks}/>
-            {/* <Pagination postsPerPage = {postsPerPage} totalPosts = {posts.length}   paginate={paginate}/> */}
-           {!loading && <button onClick={()=>setNext(page+1)}>Next</button>}
-           {/* {!loading && <button onClick={()=>setNext()}>Previous</button>} */}
             </div>
             </div>
    

@@ -1,24 +1,10 @@
 import React from 'react'
-import Navbar from './Navbar'
 import './index.css'
 
 // core components
 import IndexNavbar from "./components/Navbars/IndexNavbar.js";
 import IndexHeader from "./components/Headers/IndexHeader.js";
 import DarkFooter from "./components/Footers/DarkFooter.js";
-
-// sections for this page
-
-// import Carousel from "./index-sections/Carousel.js";
-import Carousel from "./views/index-sections/Carousel.js";
-// import NucleoIcons from "./index-sections/NucleoIcons.js";
-import CompleteExamples from "./views/index-sections/CompleteExamples.js";
-
-// import Examples from "./views/index-sections/Examples.js";
-import Download from "./views/index-sections/Download.js";
-import { Router } from 'react-router';
-
-import Route from '../../frontend/src/Route';
 
 function HomePage() {
     React.useEffect(() => {

@@ -21,6 +21,7 @@ class call_model(APIView):
             response = RecommendationConfig.engine.Recommend(name=startuppk)
             for names in response.values():
                 startup=Startup.objects.get(pk=names)
+                # print(investor.recommendations)
                 investor.recommendations.add(startup) 
             return JsonResponse(response)
 
@@ -40,5 +41,6 @@ def get_recommendations(request,investor):
             dict_startup['tags']=prof.tags
             dict_startup['logo_url']=prof.logo_url
             l.append(dict_startup)
-        return Response({"interested_startups":l})
+        # print(l.reverse)
+        return Response({"interested_startups":l[::-1]})
         # return queryset

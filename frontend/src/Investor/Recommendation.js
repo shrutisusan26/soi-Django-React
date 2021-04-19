@@ -13,8 +13,9 @@ export default function Recommendation() {
     const [open, setOpen] = useState(false)
     useEffect(()=>{
         APIService.getRecommendations(i_pk).then(resp=>{
+            console.log(resp.interested_startups)
            setRecommendation(resp.interested_startups)
-           
+           console.log(recommendation)
         })
     },[]);
     return(<div>
@@ -23,7 +24,7 @@ export default function Recommendation() {
             <TheSidebar/>
             <div className="c-wrapper">
             <TheHeader/>
-            <h1 style={centerElem}>Recommendations</h1>
+            <h1 style={{marginLeft:370,width:'50%',fontFamily:'Helvetica',paddingTop:15}}>Recommendations</h1>
             <div className="c-body">
     
                 {recommendation && recommendation.map(startup=>
@@ -34,7 +35,7 @@ export default function Recommendation() {
                         <div className="d-flex justify-content-between">
                             <div>
                                 <Card.Title>
-                                <h1>{startup.startup_name}</h1>
+                                <h1 style={{fontFamily:'Helvetica'}}>{startup.startup_name}</h1>
                                 </Card.Title>
                                 <Badge variant="secondary" className="mr-2">Startup</Badge>
                                 <Badge variant="secondary">{startup.place && startup.place}</Badge>
@@ -55,10 +56,9 @@ export default function Recommendation() {
                        
                         <Collapse in={open}>
                             <div className="mt-4">
-                                <p>Tags: {startup && startup.tags}</p><br/>
-                                <p>Logo Url: {startup && startup.logo_url}</p><br/>
-                                <p>Description:{startup.startup_description}</p>
-                            
+                                <p style={{fontFamily:'Helvetica'}}>Tags: {startup && startup.tags}</p><br/>
+                                <p style={{fontFamily:'Helvetica'}}>HomePage: <a>{startup && startup.logo_url}</a></p><br/>
+                                <p style={{fontFamily:'Helvetica'}}>Description: {startup.startup_description}</p>
                             </div>
                         </Collapse>
                     </Card.Body>

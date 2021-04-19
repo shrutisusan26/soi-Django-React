@@ -8,8 +8,6 @@ import './scss/style.scss';
 import SubmitProfile from './Startup/SubmitProfile';
 import InvestorDashboard from './Investor/InvestorDashboard';
 import Browsing from './Investor/Browsing';
-import ProfilePage from './views/examples/ProfilePage';
-
 const loading = (
   <div className="pt-3 text-center">
     <div className="sk-spinner sk-spinner-pulse"></div>
@@ -40,7 +38,7 @@ function App(){
     const SubmitProfile=React.lazy(()=>import('./Startup/SubmitProfile'));
     const Logout=React.lazy(()=>'./Startup/Logout');
     const AboutUs=React.lazy(()=>import('./AboutUs'));
-    const ProfilePage = React.lazy(()=>import('./views/examples/ProfilePage'));
+
     const ContactForm = React.lazy(()=>import('./Investor/contactForm'));
     const ContactUs = React.lazy(()=>import('./Startup/ContactUs'));
     const ForgotPass=React.lazy(()=>import('./ForgotPass'));
@@ -48,7 +46,7 @@ function App(){
     const Mailsuccess=React.lazy(()=>import('./mailsuccess'));
     const Recommendation=React.lazy(()=>import('./Investor/Recommendation'));
     const FAQ = React.lazy(()=>import('./FAQ'));
-    
+    // const Logintrial=React.lazy(()=>import('./Investor/login'))
     return (
       
       <CookiesProvider>
@@ -74,9 +72,6 @@ function App(){
               <Route path="/success" name="Mail Success" render={props=><Mailsuccess {...props} />}/>
               <Route path="/recommendation" name="recommendation" type="investor" render={props=> <Recommendation {...props}/>}/>
               <Route path="/" name="chat" render={props=> <ChatApp {...props}/>}/>
-              
-              {/* <PrivateRoute path = "/profile" name = "ProfilePage" render = {props => <ProfilePage {...props} />} /> */}
-            
             </Switch>
           </React.Suspense>
       </BrowserRouter>

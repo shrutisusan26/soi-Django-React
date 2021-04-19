@@ -1,7 +1,5 @@
 import axios from "axios";
 import * as actionTypes from "./actionTypes";
-import { HOST_URL } from "../../settings";
-
 export const authStart = () => {
   return {
     type: actionTypes.AUTH_START

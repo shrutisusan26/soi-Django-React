@@ -6,7 +6,7 @@ import ls from 'local-storage'
 import {useHistory} from 'react-router-dom'
 import APIService from "../APIService"
 import {
-    TheSidebar,
+    TheStartupSidebar,
     TheHeader,
   } from  '../containers/index'
 function DescriptionForm(){
@@ -47,7 +47,7 @@ function DescriptionForm(){
     return(
     <div>
          <div className="c-app c-default-layout">
-            <TheSidebar/>
+            <TheStartupSidebar/>
             <div className="c-wrapper">
             <TheHeader/>
             <div className="c-body">
@@ -62,9 +62,10 @@ function DescriptionForm(){
     );
 }
 const centerElem = {
-    margin: "0px 450px ",
-    width: "15%",
-    padding: "10px"
+    margin: "0px 466px ",
+    width: "20%",
+    padding: "10px",
+
 }
 export default DescriptionForm;
 

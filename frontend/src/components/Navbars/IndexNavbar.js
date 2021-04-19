@@ -59,7 +59,7 @@ function IndexNavbar() {
           <div className="navbar-translate">
             <NavbarBrand
               href=""
-              target="_blank"
+              target="_self"
               id="navbar-brand"
             >
               Seeking Online Investments
@@ -97,7 +97,7 @@ function IndexNavbar() {
                   </DropdownItem>
                   <DropdownItem
                     href="https://github.com/shrutisusan26/soi-Django-React.git"
-                    target="_blank"
+                    target="_self"
                   >
                     <i className="now-ui-icons design_bullet-list-67 mr-1"></i>
                     Documentation
@@ -105,26 +105,21 @@ function IndexNavbar() {
                 </DropdownMenu>
               </UncontrolledDropdown>
               <NavItem>
-                <Button
-                  className="nav-link btn-neutral"
-                  color="secondary"
-                  // href="https://localhost:3000/about"
-                  // onClick = {AboutUs}
-                  onClick={() => history.push('/about')}
-                  id="upgrade-to-pro"
-                  // onClick={(e) => e.preventDefault()}
-                >
-                  <i className="now-ui-icons arrows-1_share-66 mr-1"></i>
+              <NavLink
+                    href="/about"
+                    target="_self"
+                    id="about-tooltip"
+                  >
+
+                  <i className="now-ui-icons arrows-1_share-66 mr-3"></i>
                   <p>About Us</p>
-                </Button>
-                {/* <UncontrolledTooltip target="#upgrade-to-pro">
-                  
-                </UncontrolledTooltip> */}
+                  </NavLink>
+                 
               </NavItem>
               <NavItem>
                 <NavLink
                   href=""
-                  target="_blank"
+                  target="_self"
                   id="twitter-tooltip"
                 >
                   <i className="fab fa-twitter"></i>
@@ -137,7 +132,7 @@ function IndexNavbar() {
               <NavItem>
                 <NavLink
                   href=""
-                  target="_blank"
+                  target="_self"
                   id="facebook-tooltip"
                 >
                   <i className="fab fa-facebook-square"></i>
@@ -150,7 +145,7 @@ function IndexNavbar() {
               <NavItem>
                 <NavLink
                   href=""
-                  target="_blank"
+                  target="_self"
                   id="instagram-tooltip"
                 >
                   <i className="fab fa-instagram"></i>

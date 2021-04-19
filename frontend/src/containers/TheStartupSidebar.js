@@ -13,7 +13,7 @@ import {
 } from '@coreui/react'
 
 import CIcon from '@coreui/icons-react'
-
+import logo from '../Images/logo.png'
 // sidebar nav config
 import navigation from './_startupNav'
 
@@ -32,7 +32,9 @@ const TheStartupSidebar = () => {
           name="logo-negative"
           height={35}
         /> */}
-        <h1>SOI</h1>
+         {<img className="d-none d-md-block" height="50"  src={logo} alt="logo"  style={{ position: 'absolute', top: 0, left:30}}/>
+        }
+        {<h1 style={styles}>SOI</h1>}
         <CIcon
           className="c-sidebar-brand-minimized"
           name="sygnet"
@@ -54,6 +56,14 @@ const TheStartupSidebar = () => {
       <CSidebarMinimizer className="c-d-md-down-none"/>
     </CSidebar>
   )
+}
+
+
+const styles= {
+  width:"70px",
+  margin:"auto",
+  color:"#B2FFFF",
+  fontFamily:"Helvetica"
 }
 
 export default React.memo(TheStartupSidebar)

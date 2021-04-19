@@ -3,12 +3,14 @@ import Loading from './Loading.js'
 import NewsList from './NewsList'
 import {
     TheSidebar,
+    TheStartupSidebar,
     TheHeader,
   } from  '../containers/index'
 
 function NewsPage() {
     const [loading, setLoading] = useState(true)
     const [news,setNews]=useState([])
+    const type=localStorage.getItem('startup')
     useEffect(()=>{
     setLoading(true)
     fetch('https://finnhub.io/api/v1/news?category=general&token=c0bavkf48v6to0ropqfg',{
@@ -27,7 +29,7 @@ function NewsPage() {
   return (<div className="bg">
      
      <div className="c-app c-default-layout">
-            <TheSidebar/>
+            {type==="false" ? <TheSidebar/> :<TheStartupSidebar/>}
             <div className="c-wrapper">
                 <TheHeader/>
             <main>

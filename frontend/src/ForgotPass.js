@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import APIService from "./APIService"
-import {useHistory,Link} from 'react-router-dom'
+import {useHistory} from 'react-router-dom'
 function ForgotPass() {
     let history=useHistory();
     const [email,setEmail]=useState('');

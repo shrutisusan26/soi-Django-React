@@ -5,7 +5,7 @@ import {useHistory} from 'react-router-dom'
 import ls from 'local-storage'
 // routes config
 import routes from '../routes'
-
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import {
   CHeader,
   CToggler,
@@ -19,12 +19,6 @@ import {
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 
-import { 
-  TheHeaderDropdown,
-  TheHeaderDropdownMssg,
-  TheHeaderDropdownNotif,
-  TheHeaderDropdownTasks
-}  from './index'
 
 const TheHeader = () => {
   let history=useHistory()
@@ -70,9 +64,14 @@ const TheHeader = () => {
           <CHeaderNavLink   onClick={Logout}>Logout</CHeaderNavLink>
         </CHeaderNavItem>
       </CHeaderNav>
-
+    <AccountCircleIcon style={{ fontSize: 50}} ></AccountCircleIcon>
+    <CHeaderNavItem className="px-2" style={{ paddingTop: '15px',fontFamily:'Helvetica'}} >
+        Welcome {localStorage.getItem('username').replace(/['"]+/g, '')}
+      </CHeaderNavItem>
     </CHeader>
   )
 }
-
+const style={
+  width:"80px"
+}
 export default TheHeader
