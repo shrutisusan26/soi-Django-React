@@ -28,9 +28,10 @@ function Browsing(props) {
   
     useEffect(() => {
         const fetchPosts = async () => {
-          setLoading(true);
           page=page+1;
           if(pageBtn==true){
+            setLoading(true);
+            console.log("IN HERE")
             const res= await axios.get(`http://localhost:8000/soi/startup/signup/?page=${pagenum}`)
             const results=await axios.get(`http://localhost:8000/soi/startup/profile/?page=${pagenum}`)
             console.log(res.data.links.next)
