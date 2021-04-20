@@ -10,8 +10,6 @@ function Posts({ posts, loading ,prof,filter,links}) {
   
   return (
       <div>
-        
-      {console.log(posts)}
       {posts.filter((val)=>{
           if (filter==""){
             return val
@@ -20,7 +18,6 @@ function Posts({ posts, loading ,prof,filter,links}) {
             return val
           }
       }).map((post,idx) => (
-        //  console.log(post)
          <Startups key={idx} props = {post} prof={prof.filter(data=>data.profile_user===post.user.username)}/>
         
       ))}

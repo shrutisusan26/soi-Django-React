@@ -8,22 +8,24 @@ export default function Startups(props) {
     const s_pk=props.props.user.username.replace(/['"]+/g, '');
     const i_pk= ls.get('username').replace(/['"]+/g, '');
     const [investor,setInvestor]=useState([]);
-
-    const NotifButton=()=>{
-        APIService.NotifSubmit(s_pk,i_pk)
-        .then()
-        APIService.addtoRecommendations(i_pk,s_pk)
-      }
-    const NotifRemoveButton=()=>{
-        APIService.NotifRemove(s_pk,i_pk)
-        .then()
-    }
+    const [btn,setBtn]=useState("");
     useEffect(()=>{
-        APIService.getNotifInvestors(s_pk).then(resp=>{
-            setInvestor(resp.interested_investors.filter(investor=>investor===i_pk));
-
-        })
-     })
+    
+            APIService.getNotifInvestors(s_pk).then(resp=>{
+                setInvestor(resp.interested_investors.filter(investor=>investor===i_pk));
+            })
+     },[btn])
+    const NotifButton=()=>{
+        APIService.addtoRecommendations(i_pk,s_pk);
+        APIService.NotifSubmit(s_pk,i_pk).then(resp=> setBtn(true));
+    }
+    const NotifRemoveButton=()=>{
+       
+        APIService.NotifRemove(s_pk,i_pk)
+        .then(resp=> setBtn(false))
+        
+    }
+    
     const [open, setOpen] = useState(false)
     
     return (
@@ -32,14 +34,9 @@ export default function Startups(props) {
                 <div className="d-flex justify-content-between">
                     <div>
                         <Card.Title>
-                        <h1>{props.props.startup_name}</h1>
+                        <h1 style={{fontFamily:'Helvetica'}}>{props.props.startup_name}</h1>
                         </Card.Title>
-                        <Card.Subtitle className="text-muted mb-2">
-                            {/* {new Date(job.created_at).toLocaleDateString()} */}
-                            3/2/20121
-                        </Card.Subtitle>
-                        <Badge variant="secondary" className="mr-2">Startup</Badge>
-                        <Badge variant="secondary">{props.prof[0] && props.prof[0].place}</Badge>
+                        <Badge variant="secondary" style={{fontFamily:'Helvetica'}}>{props.prof[0] && props.prof[0].place}</Badge>
                         <div style={{ wordBreak: 'break-all' }}>
                             
                         </div>
@@ -57,9 +54,9 @@ export default function Startups(props) {
                 </Card.Text>
                 <Collapse in={open}>
                     <div className="mt-4">
-                        <p>Tags: {props.prof[0] && props.prof[0].tags}</p><br/>
-                        <p>Logo Url: {props.prof[0] && props.prof[0].logo_url}</p><br/>
-                        <p>Description:{props.props.startup_description}</p>
+                        <p style={{fontFamily:'Helvetica'}}>Tags: {props.prof[0] && props.prof[0].tags}</p><br/>
+                        <p style={{fontFamily:'Helvetica'}}>HomePage: <a>{props.prof[0] && props.prof[0].logo_url}</a></p><br/>
+                        <p style={{fontFamily:'Helvetica'}}>Description: {props.props.startup_description}</p>
                     
                     </div>
                 </Collapse>

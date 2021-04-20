@@ -22,7 +22,7 @@ import {
 
 
 import ExamplesNavbar from "./../components/Navbars/ExamplesNavbar";
-import ProfilePageHeader from "../components/Headers/ProfilePageHeader";
+
 import InvestorLoginHeader from "../components/Headers/InvestorLoginHeader";
 function LoginInv() {
     const [pills, setPills] = React.useState("2");
@@ -49,7 +49,6 @@ function LoginInv() {
     const [isPasswordVisible,setPassVisibility] = useState(false);
     let history=useHistory()
     useEffect(()=>{
-        console.log("hi")
         if(isError){
             setisError(false)
             //history.push('/home')
@@ -200,9 +199,9 @@ function LoginInv() {
                 <br/>
                 <br/>
                 
-                <div style={centerElem}>
-                    <h2>Login for investors</h2>
-                    {isLogin? <h2>Please Login </h2>: <h2>Please Register</h2>}
+                <div>
+                  {isLogin? <h2 style={{fontFamily:'Helvetica cursive',margin:'auto',width:'50%'}}>Login for investors</h2>: <h2 style={{fontFamily:'Helvetica',margin:'auto',width:'50%'}}>Register for investors</h2>}
+                  <br/>
                 </div>
 
                 <div className="mb-3" style={centerElem}>
@@ -259,27 +258,10 @@ function LoginInv() {
             </div>
             <br/>
             <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
             
            
         </div>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
+          
         </div>
         <DarkFooter />
       </div>

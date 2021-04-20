@@ -6,7 +6,7 @@ const _startupNav =  [
     _tag: 'CSidebarNavItem',
     name: 'Dashboard',
     to: '/startup/dashboard',
-    icon: <CIcon name="cil-speedometer" customClasses="c-sidebar-nav-icon"/>,
+    icon: 'cil-pencil',
     badge: {
       color: 'info',
       text: 'NEW',
@@ -20,7 +20,7 @@ const _startupNav =  [
     _tag: 'CSidebarNavItem',
     name: 'Update Description',
     to: '/startup/updatedesc',
-    icon: 'cil-drop',
+    icon: 'cil-pencil',
   },
     
   {
@@ -44,7 +44,7 @@ const _startupNav =  [
     _tag: 'CSidebarNavItem',
     name: 'Market News',
     to: '/News',
-    icon: 'cil-drop',
+    icon: 'cil-pencil',
   },
   
 ]

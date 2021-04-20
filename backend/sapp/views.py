@@ -9,7 +9,7 @@ from django.http.response import JsonResponse
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 class CustomPagination(PageNumberPagination):
-    page_size = 3
+    page_size = 7
     page_size_query_param = 'page_size'
     max_page_size = 150
 

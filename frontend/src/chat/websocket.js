@@ -1,7 +1,7 @@
 class WebSocketService {
   static instance = null;
   callbacks = {};
-
+  messageid=0;
   static getInstance() {
     if (!WebSocketService.instance) {
       WebSocketService.instance = new WebSocketService();
@@ -40,6 +40,8 @@ class WebSocketService {
   socketNewMessage(data) {
     const parsedData = JSON.parse(data);
     const command = parsedData.command;
+    
+    // console.log(parsedData);
     if (Object.keys(this.callbacks).length === 0) {
       return;
     }
@@ -47,7 +49,12 @@ class WebSocketService {
       this.callbacks[command](parsedData.messages);
     }
     if (command === "new_message") {
-      this.callbacks[command](parsedData.message);
+    
+      if(this.messageid!==parsedData.message.id){
+        this.messageid=parsedData.message.id;
+        this.callbacks[command](parsedData.message);
+       
+      }
     }
   }
 

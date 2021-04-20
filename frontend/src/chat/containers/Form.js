@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import * as navActions from "../store/actions/nav";
 import * as messageActions from "../store/actions/message";
-import { HOST_URL } from "../settings";
 import WebSocketInstance from "../websocket";
 const FormItem = Form.Item;
 

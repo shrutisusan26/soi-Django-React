@@ -1,19 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Faq from "react-faq-component";
 import ExamplesNavbar from "./components/Navbars/ExamplesNavbar.js";
 import DarkFooter from "./components/Footers/DarkFooter.js";
 import FaqPageHeader from "../src/components/Headers/FaqPageHeader";
 import {
-    Button,
+    
     NavItem,
-    NavLink,
     Nav,
     TabContent,
     TabPane,
     Container,
     Row,
     Col,
-    UncontrolledTooltip,
   } from "reactstrap";
 const data = {
     title: "FAQ (How it works)",
