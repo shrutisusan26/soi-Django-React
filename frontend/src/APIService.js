@@ -53,7 +53,7 @@ export default class APIService{
             body:JSON.stringify(body),
         }).then(resp=>resp.json())
     }
-    static NotifSubmit(s_pk,i_pk){
+    static   NotifSubmit(s_pk,i_pk){
        
         return fetch('http://127.0.0.1:8000/startup/add/'+s_pk+'/'+i_pk,{
             method:'GET',
@@ -62,7 +62,7 @@ export default class APIService{
             },
         }).then()
     }
-    static NotifRemove(s_pk,i_pk){
+    static  NotifRemove(s_pk,i_pk){
        
         return fetch('http://127.0.0.1:8000/startup/remove/'+s_pk+'/'+i_pk,{
             method:'GET',
@@ -71,7 +71,7 @@ export default class APIService{
             },
         }).then()
     }
-    static getNotifInvestors(s_pk){
+    static  getNotifInvestors(s_pk){
         return fetch('http://127.0.0.1:8000/soi/startup/signup/'+s_pk+'/',{
             method:'GET',
             headers:{
@@ -99,7 +99,7 @@ export default class APIService{
         
         }).then(resp=>resp.json())
     }
-    static getRecommendations(i_pk){
+    static  getRecommendations(i_pk){
         return fetch(`http://127.0.0.1:8000/recommend/get/${i_pk}`,{
             method:'GET',
             headers:{

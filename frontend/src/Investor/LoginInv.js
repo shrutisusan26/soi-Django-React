@@ -43,21 +43,22 @@ function LoginInv() {
     const [last_name,setLastName]=useState('')
     const [email,setEmail]=useState('')
     const [isLogin,setIsLogin]=useState(true)
-    const [token,setToken]=useCookies(['mytoken'])
+    const [cookies, setCookie, removeCookie] = useCookies(['mytoken']);
     const [isError,setisError]=useState(false)
     const [isAttempt,setisAttempt] = useState(false);
     const [isPasswordVisible,setPassVisibility] = useState(false);
     let history=useHistory()
+    
     useEffect(()=>{
         if(isError){
             setisError(false)
             //history.push('/home')
         }
-        else if(token['mytoken']){
+        else if(cookies['mytoken']){
             setisAttempt(true)
             history.push('/investor/catalog')
         }
-    },[token,isError])
+    },[cookies,isError])
     const togglePassword=()=>{
         setPassVisibility(!isPasswordVisible);
     }
@@ -77,7 +78,7 @@ function LoginInv() {
             ls.set('username',resp['user_id']);
             console.log(resp)
             ls.set('token',resp.token);
-            setToken('mytoken',resp.token)
+            setCookie('mytoken',resp.token,"/")
             ls.set('startup',resp.is_startup);
         }
         else{ 

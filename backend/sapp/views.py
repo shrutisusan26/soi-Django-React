@@ -1,3 +1,4 @@
+from django.core import serializers as core_serializers
 from django.shortcuts import render
 from .serializers import ProfileSerializer
 from .models import Profile
@@ -8,8 +9,13 @@ from django.shortcuts import render
 from django.http.response import JsonResponse
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
+from rest_framework.decorators import api_view
+from rest_framework.renderers import JSONRenderer, TemplateHTMLRenderer
+from django_filters.rest_framework import DjangoFilterBackend
+import json
+
 class CustomPagination(PageNumberPagination):
-    page_size = 7
+    page_size = 10
     page_size_query_param = 'page_size'
     max_page_size = 150
 
@@ -29,22 +35,5 @@ class profileViewset(viewsets.ModelViewSet):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
     pagination_class = CustomPagination
-    # def get_queryset(self):
-    #     return print(self.request.user)
-
-# def listing(request):
-#     Startups = Startup.objects.all()
-#     paginator = Paginator(Startups, 25) # Show 25 contacts per page
-#     page=request.GET.get('page')
-#     try:
-#         contacts = paginator.page(page)
-#     except PageNotAnInteger:
-#         # If page is not an integer, deliver first page.
-#         contacts = paginator.page(1)
-#     except EmptyPage:
-#         # If page is out of range (e.g. 9999), deliver last page of results.
-#         contacts = paginator.page(paginator.num_pages)
-#     queryset = list(chain(contacts),paginator.count)
-#     content = {'total_page_count': paginator.num_pages, 'data': queryset}
-#     return JsonResponse(content)
-#     # return contacts
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['tags','place','profile_user']

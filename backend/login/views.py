@@ -10,9 +10,10 @@ from django.contrib.auth.decorators import login_required
 from django.core.mail import EmailMessage
 from django.conf import settings
 from django.template.loader import render_to_string
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.pagination import PageNumberPagination
 class CustomPagination(PageNumberPagination):
-    page_size = 7
+    page_size = 18
     page_size_query_param = 'page_size'
     max_page_size = 150
 
@@ -39,6 +40,8 @@ class StartupViewset(viewsets.ModelViewSet,UpdateModelMixin):
     queryset = Startup.objects.all()
     serializer_class = StartupUserSerializer
     pagination_class = CustomPagination
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['startup_name','startup_description','user']
     def partial_update(self, request, *args, **kwargs):
         kwargs['partial'] = True
         return self.update(request, *args, **kwargs)
