@@ -37,6 +37,7 @@ const TheHeader = () => {
   }
   const Logout=()=>{
     removeCookie(['mytoken']);
+    removeCookie(['csrftoken']);
     ls.clear()
     history.push('/home');
   };

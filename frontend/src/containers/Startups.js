@@ -9,18 +9,21 @@ export default function Startups(props) {
     const i_pk= ls.get('username').replace(/['"]+/g, '');
     const [investor,setInvestor]=useState([]);
     const [btn,setBtn]=useState("");
+    const [notifyButton,setNotifyButton] = useState("Notify Startup")
     useEffect(()=>{
     
             APIService.getNotifInvestors(s_pk).then(resp=>{
                 setInvestor(resp.interested_investors.filter(investor=>investor===i_pk));
             })
-     },[btn])
+     },[])
     const NotifButton=()=>{
+        
+        setNotifyButton("Remove Notification")
         APIService.addtoRecommendations(i_pk,s_pk);
         APIService.NotifSubmit(s_pk,i_pk).then(resp=> setBtn(true));
     }
     const NotifRemoveButton=()=>{
-       
+        setNotifyButton("Notify Startup")
         APIService.NotifRemove(s_pk,i_pk)
         .then(resp=> setBtn(false))
         
@@ -50,7 +53,7 @@ export default function Startups(props) {
                     >
                         {open ? 'Hide Details' : 'View Details'}
                     </Button>
-                    {investor.length!==0 ? <Button onClick={NotifRemoveButton}>Remove Notification</Button>:<Button onClick={NotifButton}>Notify Startup </Button>}
+                    {investor.length!==0 ? <Button onClick={NotifRemoveButton}>{notifyButton}</Button>:<Button onClick={NotifButton}>{notifyButton}</Button>}
                 </Card.Text>
                 <Collapse in={open}>
                     <div className="mt-4">
