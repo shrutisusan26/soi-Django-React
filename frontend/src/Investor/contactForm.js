@@ -27,7 +27,7 @@ export default function ContactForm() {
             <TheSidebar/>
             <div className="c-wrapper">
             <TheHeader/>
-            <h1 style={{marginLeft:370,width:'50%',fontFamily:'Helvetica',paddingTop:15}}>Enquiry/Feedback</h1>
+            <h1 style={{marginLeft:370,width:'50%',fontFamily:'Oswald',paddingTop:15}}>Enquiry/Feedback</h1>
             <div className="c-body">
             <div className="container">
             <form onSubmit={sendEmail}>

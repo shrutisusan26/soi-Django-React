@@ -22,7 +22,7 @@ export default function Recommendation() {
             <TheSidebar/>
             <div className="c-wrapper">
             <TheHeader/>
-            <h1 style={{marginLeft:370,width:'50%',fontFamily:'Helvetica',paddingTop:15}}>Recommendations</h1>
+            <h1 style={{marginLeft:370,width:'50%',fontFamily:'Oswald',paddingTop:15}}>Recommendations</h1>
             <div className="c-body">
     
                 {recommendation && recommendation.map(startup=>
