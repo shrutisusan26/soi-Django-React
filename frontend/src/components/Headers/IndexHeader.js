@@ -5,7 +5,7 @@ import React from "react";
 import { Container } from "reactstrap";
 import styled from "styled-components";
 // core components
-import header from '../Headers/header.jpg';
+import header from '../Headers/header3.jpg';
 import nowlogo from '../Headers/now-logo.png';
 import SplitPane, { Pane } from 'react-split-pane';
 
