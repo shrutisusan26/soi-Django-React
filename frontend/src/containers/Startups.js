@@ -10,6 +10,7 @@ import ls from "local-storage"
     const [investor,setInvestor]=useState(props.props.profile_user.interested_investors.filter(investor=>investor===i_pk));
     const [btn,setBtn]=useState("");
     const [firstUpdate,setUpdate]=useState(true);
+    const [notifyButton,setNotifyButton] = useState("Notify Startup")
     useEffect(() => {
 
         if (firstUpdate) {
@@ -27,7 +28,7 @@ import ls from "local-storage"
         APIService.NotifSubmit(s_pk,i_pk).then(resp=> setBtn(true));
     }
     const NotifRemoveButton=()=>{
-        setNotifyButton("Notify Startup")
+        setNotifyButton("Remove Notification")
         APIService.NotifRemove(s_pk,i_pk)
         .then(resp=> setBtn(false))
         
