@@ -201,7 +201,7 @@ function LoginInv() {
                 <br/>
                 
                 <div>
-                  {isLogin? <h2 style={{fontFamily:'Helvetica cursive',margin:'auto',width:'50%'}}>Login for investors</h2>: <h2 style={{fontFamily:'Helvetica',margin:'auto',width:'50%'}}>Register for investors</h2>}
+                  {isLogin? <h1 style={{fontFamily:'Bebas Neue',margin:'auto',width:'100%',textAlign:"center"}}>Login for Investors</h1>: <h1 style={{fontFamily:'Bebas Neue',margin:'auto',width:'100%',textAlign:"center"}}>Register for investors</h1>}
                   <br/>
                 </div>
 
@@ -231,22 +231,22 @@ function LoginInv() {
                         <label htmlFor="email" className="form-label">Email:</label>
                         <input type="text" className="form-control" id="email" placeholder="Enter your email" value={email} onChange={(e)=>setEmail(e.target.value) }/>
                         <br/>
-                        <button className="btn btn-primary" onClick={RegisterButton}>Register</button></div>
+                        <button className="btn btn-primary" onClick={RegisterButton} style={buttonStyles}>Register</button></div>
                     </div> 
                 :
                     <div style={centerElem}>
-                        <button className="btn btn-primary" onClick={loginButton}>Login</button> 
+                        <button className="btn btn-primary" onClick={loginButton} style={buttonStyles}>Login</button> 
                     </div>
                 }
                 {isLogin?
                 <div className="mb-3" style={centerElem}>
-                    <h5> Don't Have An Account?</h5>
-                    <button className="btn btn-primary" onClick={()=>setIsLogin(false)}>Register Here!</button>
-                    <p >Forgot Password ?<Link to={'/forgotpass'}> Reset Password</Link></p>
+                    <p style={{color:"var(--clr-grey-5)", marginBottom:"0"}}> Don't Have An Account?</p>
+                    <button className="btn btn-primary" onClick={()=>setIsLogin(false)} style={buttonStyles}>Register Here!</button>
+                    <p >Forgot Password?<Link to={'/forgotpass'}> Reset Password</Link></p>
                 </div>:
                 <div className="mb-3" style={centerElem}>
-                    <h5> If you have an account,</h5>
-                    <button className="btn btn-primary" onClick={()=>setIsLogin(true)}>Login</button>
+                    <p style={{color:"var(--clr-grey-5)", marginBottom:"0"}}> If you have an account,</p>
+                    <button className="btn btn-primary" onClick={()=>setIsLogin(true)} style={buttonStyles}>Login</button>
                 </div>
                 }
                
@@ -276,4 +276,8 @@ const centerElem = {
     margin: "auto",
     width: "50%",
     padding: "10px"
+}
+
+const buttonStyles = {
+    width:"100%",
 }
