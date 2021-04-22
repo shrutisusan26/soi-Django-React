@@ -121,5 +121,5 @@ export default IndexHeader;
 
 const splitBtnStyle = {
 	marginTop:"50%", 
-	backgroundColor:"grey"
+	backgroundColor:"#CDB7B5"
 }
