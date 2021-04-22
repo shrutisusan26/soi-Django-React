@@ -41,7 +41,7 @@ function LoginSu() {
     const [startup_description,setDescription]=useState('')
     const [email,setEmail]=useState('')
     const [isLogin,setIsLogin]=useState(true)
-    const [token,setToken]=useCookies(['mytoken'])
+    const [cookies, setCookie, removeCookie] = useCookies(['mytoken']);
     const [isError,setisError]=useState(false)
     const [response,setisResponse]=useState('');
     let history=useHistory()
@@ -53,20 +53,20 @@ function LoginSu() {
             setisError(false)
             history.push('/startuplogin')
         }
-        else if(isLogin==true && token['mytoken']){
+        else if(isLogin==true && cookies['mytoken']){
             history.push({
                 pathname: '/startup/dashboard',
                 state: { user_id: response }
             })
         }
-        else if(isLogin==false && token['mytoken'] ){
+        else if(isLogin==false &&  cookies['mytoken']){
             console.log("inside profile");
             history.push({
                 pathname: '/startup/profile',
                 state: { user_id: response }
             })
         }
-    },[token,isError])
+    },[cookies,isError])
     const togglePassword=()=>{
         setPassVisibility(!isPasswordVisible);
     }
@@ -87,7 +87,7 @@ function LoginSu() {
                 ls.set('username',resp['user_id']);
                 ls.set('token',resp.token);
                 ls.set('startup',resp.is_startup);
-                setToken('mytoken',resp.token)
+                setCookie('mytoken',resp.token,"/")
             }
             else{ 
                 setisError(true)

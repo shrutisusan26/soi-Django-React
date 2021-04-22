@@ -54,12 +54,14 @@ INSTALLED_APPS = [
     'corsheaders',
     'djoser',
     'recommendation',
+    'django_filters',
 
 ]
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',  # Responsible for token authentication
     ],
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
 }
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

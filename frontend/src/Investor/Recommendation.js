@@ -13,9 +13,7 @@ export default function Recommendation() {
     const [open, setOpen] = useState(false)
     useEffect(()=>{
         APIService.getRecommendations(i_pk).then(resp=>{
-            console.log(resp.interested_startups)
            setRecommendation(resp.interested_startups)
-           console.log(recommendation)
         })
     },[]);
     return(<div>

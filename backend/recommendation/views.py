@@ -19,9 +19,9 @@ class call_model(APIView):
             investoruser=Investor.objects.get(pk=investorpk)
             investor,created=InvestorRecommendations.objects.get_or_create(user=investoruser)
             response = RecommendationConfig.engine.Recommend(name=startuppk)
+            # startup=Startup.objects.get(pk='Over-Hex')
             for names in response.values():
                 startup=Startup.objects.get(pk=names)
-                # print(investor.recommendations)
                 investor.recommendations.add(startup) 
             return JsonResponse(response)
 

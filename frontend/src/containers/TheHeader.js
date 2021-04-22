@@ -1,6 +1,5 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import {useCookies} from 'react-cookie';
 import {useHistory} from 'react-router-dom'
 import ls from 'local-storage'
 // routes config
@@ -23,7 +22,6 @@ import CIcon from '@coreui/icons-react'
 const TheHeader = () => {
   let history=useHistory()
   const dispatch = useDispatch()
-  const [cookies, setCookie, removeCookie] = useCookies(["mytoken"]);
   const sidebarShow = useSelector(state => state.sidebarShow)
 
   const toggleSidebar = () => {
@@ -35,9 +33,20 @@ const TheHeader = () => {
     const val = [false, 'responsive'].includes(sidebarShow) ? true : 'responsive'
     dispatch({type: 'set', sidebarShow: val})
   }
+  function deleteAllCookies() {
+    var cookies = document.cookie.split(";");
+    for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i];
+        var eqPos = cookie.indexOf("=");
+
+        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    }
+}
+
+
   const Logout=()=>{
-    removeCookie(['mytoken']);
-    removeCookie(['csrftoken']);
+    deleteAllCookies();
     ls.clear()
     history.push('/home');
   };
@@ -66,7 +75,7 @@ const TheHeader = () => {
         </CHeaderNavItem>
       </CHeaderNav>
     <AccountCircleIcon style={{ fontSize: 50}} ></AccountCircleIcon>
-    <CHeaderNavItem className="px-2" style={{ paddingTop: '15px',fontFamily:'Helvetica'}} >
+    <CHeaderNavItem className="px-2" style={{ paddingTop: '15px'}} >
         Welcome {localStorage.getItem('username').replace(/['"]+/g, '')}
       </CHeaderNavItem>
     </CHeader>
