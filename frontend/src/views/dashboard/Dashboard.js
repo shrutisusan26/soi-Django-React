@@ -24,25 +24,36 @@ const StartupDashboard = () => {
   })
   return (
     <>
-      <CCard>
+     
+
+      {Notifs.length!==0 && Notifs.map(info => <main>
+        <CCard>
         <CCardBody>
         <CCardHeader>
             Notifications
         </CCardHeader>
           <CRow className="text-center">
-
-            {Notifs && Notifs.map(info => <main>
-            <CCol ml="20" >
-            <div className="block" style={{borderStyle:"solid",borderColor:"black",borderWidth:"1px"}}>
-              <h4 className="block-element" style={{fontWeight:"normal",margin:"10px"}}>{info} viewed your profile</h4>
-              <button className="btn btn-primary" style={{height:"40px",position:"relative",top:"5px"}}>View</button>
-            </div>
-            </CCol>
-            </main>
-         )}
+          <CCol ml="20" >
+          <div className="block" >
+            <h4 className="block-element" style={{fontWeight:"normal",margin:"10px"}}>{info} viewed your profile</h4>
+          </div>
+          </CCol>
           </CRow>
-          </CCardBody>
-          </CCard>
+        </CCardBody>
+        </CCard>
+        </main>
+      )}
+
+      {Notifs.length===0 && 
+        <CCard>
+        <CCardBody>
+        <CCardHeader>
+            Notifications
+        </CCardHeader>
+        </CCardBody>
+        </CCard>
+      }
+
     </>
   )
 }

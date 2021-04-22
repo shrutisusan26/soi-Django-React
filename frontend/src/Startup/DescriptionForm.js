@@ -65,6 +65,7 @@ const centerElem = {
     margin: "0px 466px ",
     width: "20%",
     padding: "10px",
+    fontFamily:"Oswald"
 
 }
 export default DescriptionForm;

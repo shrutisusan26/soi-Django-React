@@ -33,9 +33,9 @@ export default function Recommendation() {
                         <div className="d-flex justify-content-between">
                             <div>
                                 <Card.Title>
-                                <h1 style={{fontFamily:'Helvetica'}}>{startup.startup_name}</h1>
+                                <h1 style={{fontFamily:'Oswald'}}>{startup.startup_name}</h1>
                                 </Card.Title>
-                                <Badge variant="secondary" className="mr-2">Startup</Badge>
+                                
                                 <Badge variant="secondary">{startup.place && startup.place}</Badge>
                                 <div style={{ wordBreak: 'break-all' }}>
                                     
