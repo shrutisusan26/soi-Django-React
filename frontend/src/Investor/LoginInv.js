@@ -201,7 +201,7 @@ function LoginInv() {
                 <br/>
                 
                 <div>
-                  {isLogin? <h1 style={{fontFamily:'Bebas Neue',margin:'auto',width:'100%',textAlign:"center"}}>Login for Investors</h1>: <h1 style={{fontFamily:'Bebas Neue',margin:'auto',width:'100%',textAlign:"center"}}>Register for investors</h1>}
+                  {isLogin? <h1 style={{fontFamily:'Oswald',margin:'auto',width:'100%',textAlign:"center"}}>Login for Investors</h1>: <h1 style={{fontFamily:'Oswald',margin:'auto',width:'100%',textAlign:"center"}}>Registration for Investors</h1>}
                   <br/>
                 </div>
 
@@ -234,7 +234,7 @@ function LoginInv() {
                         <button className="btn btn-primary" onClick={RegisterButton} style={buttonStyles}>Register</button></div>
                     </div> 
                 :
-                    <div style={centerElem}>
+                    <div className="mb-3" style={centerElem}>
                         <button className="btn btn-primary" onClick={loginButton} style={buttonStyles}>Login</button> 
                     </div>
                 }

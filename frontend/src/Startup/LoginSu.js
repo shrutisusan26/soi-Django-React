@@ -199,11 +199,15 @@ function LoginSu() {
               </TabContent>
             </Row>
           </Container>
-          </div>
-          </div>
-        <div>
+          <div>
             <div className="login" style={centerElem}>
-                {isLogin? <h1 style={centerElem}>Please Login </h1>: <h1 style={centerElem}>Please Register</h1>}
+                <br/>
+                <br/>
+                
+                <div>
+                  {isLogin? <h1 style={{fontFamily:'Oswald',margin:'auto',width:'100%',textAlign:"center"}}>Login for Startups</h1>: <h1 style={{fontFamily:'Oswald',margin:'auto',width:'100%',textAlign:"center"}}>Registration for Startups</h1>}
+                  <br/>
+                </div>
                 <div className="mb-3" style={centerElem}>
                     <label htmlFor="username" className="form-label">Username</label>
                     <input type="text"  className="form-control" id="username" value={username} placeholder="Enter username" onChange={(e)=>setUsername(e.target.value)}/>
@@ -227,26 +231,26 @@ function LoginSu() {
                         <label htmlFor="email" className="form-label">Email:</label>
                         <input type="text" className="form-control" id="email" placeholder="Enter your email" value={email} onChange={(e)=>setEmail(e.target.value) }/>
                         <br/>
-                        <button className="btn btn-primary" onClick={RegisterButton}>Register</button>
+                        <button className="btn btn-primary" onClick={RegisterButton} style={buttonStyles}>Register</button>
                     </div>             
                 </div>
                 :
                 <div style={centerElem}>
-                    <button style={{margin:"auto"}} className="btn btn-primary" onClick={loginButton}>Login</button> 
+                    <button style={buttonStyles} className="btn btn-primary" onClick={loginButton}>Login</button> 
                 </div>
                 
 }
                 {isLogin?
                 <div className="mb-3" style={centerElem}>
                     <br/>
-                    <h5>Don't Have An Account?</h5>
-                    <button className="btn btn-primary" onClick={()=>setIsLogin(false)}>Register Here!</button>
+                    <p style={{color:"var(--clr-grey-5)", marginBottom:"0"}}>Don't have an account?</p>
+                    <button className="btn btn-primary" onClick={()=>setIsLogin(false)} style={buttonStyles}>Register Here!</button>
                     <p >Forgot Password ?<Link to={'/forgotpass'}> Reset Password</Link></p>
 
                 </div>:
                 <div className="mb-3" style={centerElem}>
-                    <h5>If you have an account,</h5>
-                    <button className="btn btn-primary" onClick={()=>setIsLogin(true)}>Login</button>
+                    <p style={{color:"var(--clr-grey-5)", marginBottom:"0"}}> If you have an account,</p>
+                    <button className="btn btn-primary" onClick={()=>setIsLogin(true)} style={buttonStyles}>Login</button>
                     
                 </div>
                 }
@@ -259,7 +263,9 @@ function LoginSu() {
                
             </div>
         </div>
+        </div>
         <DarkFooter />
+        </div>
       </>
        
     )
@@ -269,6 +275,9 @@ const centerElem = {
     margin: "auto",
     width: "50%",
     padding: "10px"
+}
+const buttonStyles = {
+    width:"100%",
 }
 
 export default LoginSu

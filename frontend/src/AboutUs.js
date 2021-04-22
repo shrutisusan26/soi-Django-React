@@ -130,6 +130,7 @@ The other neat thing about Stockpile is that it allows you to give a gift card t
                       alt="..."
                       className="rounded-circle img-fluid img-raised"
                       src={shruti}
+                      style={{width:"350px",height:"150px"}}
                     ></img>
                     <h4 className="title">Shruti Mathews</h4>
                     <p className="category text-info">Student</p>
@@ -174,6 +175,7 @@ The other neat thing about Stockpile is that it allows you to give a gift card t
                       alt="..."
                       className="rounded-circle img-fluid img-raised"
                       src={abhishek}
+                      style={{width:"350px",height:"150px"}}
                     ></img>
                     <h4 className="title">Abhishek Rai</h4>
                     <p className="category text-info">Student</p>
@@ -210,7 +212,8 @@ The other neat thing about Stockpile is that it allows you to give a gift card t
                       alt="..."
                       className="rounded-circle img-fluid img-raised"
                       src={jinit}
-                    ></img>
+                      style={{width:"350px",height:"150px"}}>
+                      </img>
                     <h4 className="title">Jinit Sanghvi</h4>
                     <p className="category text-info">Student</p>
                     <p className="description">
