@@ -43,7 +43,7 @@ function App(){
     const ContactUs = React.lazy(()=>import('./Startup/ContactUs'));
     const ForgotPass=React.lazy(()=>import('./ForgotPass'));
     const ResetPass=React.lazy(()=>import('./ResetPass'));
-    const Mailsuccess=React.lazy(()=>import('./mailsuccess'));
+    const Mailsuccess=React.lazy(()=>import('./Mailsuccess'));
     const Recommendation=React.lazy(()=>import('./Investor/Recommendation'));
     const FAQ = React.lazy(()=>import('./FAQ'));
     // const Logintrial=React.lazy(()=>import('./Investor/login'))
