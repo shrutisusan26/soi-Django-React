@@ -27,7 +27,7 @@ function Browsing(props) {
     const [searchBtn,setSearchButton] = useState(true)
     useEffect(() => {
         const fetchPosts = async () => {
-          if(pageBtn==true || searchBtn==true ){
+          if(pageBtn==true || searchBtn==true|| dropdownop=="none" ){
             setLoading(true);
             await axios.get(`http://localhost:8000/soi/startup/profile/?${dropdownop}=${searchTerm}&page=${pagenum}`)
             .then(resp=>{
@@ -44,7 +44,7 @@ function Browsing(props) {
         };
     
         fetchPosts();
-      }, [pageBtn,searchBtn]);
+      }, [pageBtn,searchBtn,dropdownop]);
     
     const clickPageBtn = (e) => {
         e.preventDefault();
@@ -72,6 +72,7 @@ function Browsing(props) {
                   <Option value="tags">Tags</Option>
                   <Option value="place">Place</Option>
                   <Option value="profile_user">Startup</Option>
+                  <Option value="none">None</Option>
                 </Select>  
 
                 <span     style={{  display:"inline-block"}}>
@@ -92,7 +93,7 @@ function Browsing(props) {
                   <MDBBtn rounded color = "primary"  rounded size="sm" type="submit" className="mr-auto" rounded onClick={(e)=>clickPageBtn(e)}>
                     Submit
                 </MDBBtn><br/>
-                { Math.floor(totalcount/10) ? <span style={{display:"inline-block",padding:'10'}} >Enter between 1- {Math.floor(totalcount/10) }</span>:<span>Page 1 of 1</span>}
+                { Math.floor(totalcount/6) ? <span style={{display:"inline-block",padding:'10'}} >Enter between 1- {Math.floor(totalcount/6) }</span>:<span>Page 1 of 1</span>}
                 </MDBFormInline>
                 </MDBCol>
               </span>
