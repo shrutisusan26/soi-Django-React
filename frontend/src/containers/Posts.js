@@ -5,7 +5,7 @@ import Startups from './Startups';
 function Posts({ posts, loading,links}) {
   const [open, setOpen] = useState(false)
     if (loading) {
-    return <h2>Loading...</h2>;
+    return <h2 style={{fontFamily:"Oswald"}}>Loading...</h2>;
   }
     
   return (

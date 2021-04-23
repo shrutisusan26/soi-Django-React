@@ -5,7 +5,7 @@ import React from "react";
 import { Container } from "reactstrap";
 import styled from "styled-components";
 // core components
-import header from '../Headers/header3.jpg';
+import header from '../Headers/background.jpg';
 import nowlogo from '../Headers/now-logo.png';
 import SplitPane, { Pane } from 'react-split-pane';
 
@@ -90,25 +90,13 @@ function IndexHeader() {
 		></div>
 		<Container>
 		  <div className="content-center brand">
-			<img
-			  alt="..."
-			  className="n-logo"
-			  src={nowlogo}
-			></img>
-			<h1 className="h1-seo"><b>Seeking Online Investments</b></h1>
+			<h1 className="h1-seo" style={{fontFamily:'Oswald',textAlign:"center",color:"white",fontSize:"50px"}}><b>Seeking Online Investments</b></h1>
 			{/* <h3>Enjoy Tech. Enjoy Investing.</h3> */}
 		  </div>
-			<SplitPane
-			split="vertical"
-			defaultSize="50%"
-			>
-				<div>
-					<a href="/investorlogin" className="btn btn-xl js-scroll-trigger" style={splitBtnStyle}>Investor</a>
-				</div>
-				<div>
-					<a href="/startuplogin" className="btn btn-xl js-scroll-trigger" style={splitBtnStyle}>Startup</a>
-				</div>
-			</SplitPane>
+            <div style={centerElem}>
+                <a href="/investorlogin" className="btn btn-xl js-scroll-trigger" style={splitBtnStyle}>Investor</a>
+                <a href="/startuplogin" className="btn btn-xl js-scroll-trigger" style={splitBtnStyle}>Startup</a>
+            </div>
 		  
 		</Container>
 	  </div>
@@ -120,6 +108,17 @@ export default IndexHeader;
 
 
 const splitBtnStyle = {
-	marginTop:"50%", 
-	backgroundColor:"#CDB7B5"
+	marginTop:"48%",
+    background: "rgb(238,174,202)",
+    background: "linear-gradient(90deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%)",
+    width:"110px",
+    height:"40px",
+    padding:"10px",
+    marginLeft:"15px",
+    marginRight:"15px"
+}
+const centerElem = {
+    margin: "auto",
+    width: "50%",
+    padding: "10px"
 }

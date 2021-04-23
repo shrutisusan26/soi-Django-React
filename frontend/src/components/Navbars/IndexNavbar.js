@@ -106,13 +106,22 @@ function IndexNavbar() {
               </UncontrolledDropdown>
               <NavItem>
               <NavLink
-                    href="/about"
+                    href="/faq"
                     target="_self"
                     id="about-tooltip"
                   >
 
-                  <i className="now-ui-icons arrows-1_share-66 mr-3"></i>
-                  <p>About Us</p>
+                  <p style={{color:"white"}}>FAQ</p>
+                  </NavLink>
+                 
+              </NavItem>
+              <NavItem>
+              <NavLink
+                    href="/about"
+                    target="_self"
+                    id="about-tooltip"
+                  >
+                  <p style={{color:"white"}}>About Us</p>
                   </NavLink>
                  
               </NavItem>

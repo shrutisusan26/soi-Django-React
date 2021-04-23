@@ -22,7 +22,7 @@ export default function Recommendation() {
             <TheSidebar/>
             <div className="c-wrapper">
             <TheHeader/>
-            <h1 style={{marginLeft:370,width:'50%',fontFamily:'Helvetica',paddingTop:15}}>Recommendations</h1>
+            <h1 style={{marginLeft:370,width:'50%',fontFamily:'Oswald',paddingTop:15}}>Recommendations</h1>
             <div className="c-body">
     
                 {recommendation && recommendation.map(startup=>
@@ -33,9 +33,9 @@ export default function Recommendation() {
                         <div className="d-flex justify-content-between">
                             <div>
                                 <Card.Title>
-                                <h1 style={{fontFamily:'Helvetica'}}>{startup.startup_name}</h1>
+                                <h1 style={{fontFamily:'Oswald'}}>{startup.startup_name}</h1>
                                 </Card.Title>
-                                <Badge variant="secondary" className="mr-2">Startup</Badge>
+                                
                                 <Badge variant="secondary">{startup.place && startup.place}</Badge>
                                 <div style={{ wordBreak: 'break-all' }}>
                                     

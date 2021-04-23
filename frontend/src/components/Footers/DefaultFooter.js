@@ -25,6 +25,7 @@ function DefaultFooter() {
                 <a
                   href=""
                   target="_blank"
+                  style={{color:"white"}}
                 >
                   About Us
                 </a>
