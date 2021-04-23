@@ -69,7 +69,10 @@ def follow_unfollow_startup(request, action, startuppk,investorpk):
     name=str(startuppk)
     user = Startup.objects.get(pk=name)
     if action == "add":
-        Startup.follow_startup(user, follower)
+        # Startup.follow_startup(user, follower)
+        startup, created = Startup.objects.get_or_create(pk=user.user.username)
+        startup.interested_investors.add(follower)
     elif action == "remove":
-        Startup.unfollow_startup(user, follower)
+        startup, created = Startup.objects.get_or_create(pk=user.user.username)
+        startup.interested_investors.remove(follower)
     return Response(status=status.HTTP_200_OK)

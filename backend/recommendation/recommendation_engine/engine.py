@@ -4,7 +4,6 @@
 
 # gloveFile = "/home/shruti/Desktop/Se-mini-proj/soi-Django-React/backend/recommendation/recommendation_engine/glove.6B.50d.txt"  #Download glove embeddings and change path accordingly
 gloveFile = "/home/jinitsan/Documents/glove.6B.50d.txt"
-gloveFile =  "E:/glove.6B.50d.txt"
 import numpy as np
 import nltk
 nltk.download('stopwords')
@@ -44,8 +43,6 @@ cosine_similarities = joblib.load("recommendation/recommendation_engine/cosine_s
 df = pd.read_excel("recommendation/recommendation_engine/P11-1000-Startups.xlsx",engine='openpyxl')
 # df = pd.read_excel("/home/shruti/Desktop/Se-mini-proj/soi-Django-React/backend/recommendation/recommendation_engine/P11-1000-Startups.xlsx",engine='openpyxl')
 
-
-df = pd.read_excel("recommendation/recommendation_engine/P11-1000-Startups.xlsx",engine='openpyxl')
 # df = pd.read_excel("/home/shruti/Desktop/Se-mini-proj/soi-Django-React/backend/recommendation/recommendation_engine/P11-1000-Startups.xlsx",engine='openpyxl')
 # df = pd.read_excel("E:/soi-Django-React/backend/recommendation/recommendation_engine/P11-1000-Startups.xlsx",engine='openpyxl')
 
