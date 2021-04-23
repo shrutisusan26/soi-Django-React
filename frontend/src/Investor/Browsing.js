@@ -93,7 +93,7 @@ function Browsing(props) {
                   <MDBBtn rounded color = "primary"  rounded size="sm" type="submit" className="mr-auto" rounded onClick={(e)=>clickPageBtn(e)}>
                     Submit
                 </MDBBtn><br/>
-                { Math.floor(totalcount/6) ? <span style={{display:"inline-block",padding:'10'}} >Enter between 1- {Math.floor(totalcount/6) }</span>:<span>Page 1 of 1</span>}
+                { Math.floor(totalcount/6) ? <span style={{ marginLeft:"10px",display:"inline-block"}} >Enter between 1- {Math.floor(totalcount/6) }</span>:<span>Page 1 of 1</span>}
                 </MDBFormInline>
                 </MDBCol>
               </span>

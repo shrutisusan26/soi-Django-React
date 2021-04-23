@@ -47,7 +47,7 @@ df = pd.read_excel("/home/shruti/Desktop/Se-mini-proj/soi-Django-React/backend/r
 
 # df = pd.read_excel("recommendation/recommendation_engine/P11-1000-Startups.xlsx",engine='openpyxl')
 # df = pd.read_excel("/home/shruti/Desktop/Se-mini-proj/soi-Django-React/backend/recommendation/recommendation_engine/P11-1000-Startups.xlsx",engine='openpyxl')
-df = pd.read_excel("E:/soi-Django-React/backend/recommendation/recommendation_engine/P11-1000-Startups.xlsx",engine='openpyxl')
+# df = pd.read_excel("E:/soi-Django-React/backend/recommendation/recommendation_engine/P11-1000-Startups.xlsx",engine='openpyxl')
 
 def lemmatize(text):
     return WordNetLemmatizer().lemmatize(text, pos='v')
@@ -135,15 +135,15 @@ class Engine:
         return recommend['Name'].to_dict()
     
     def save_files(self):
-        # joblib.dump(self.embeddings, "/home/shruti/Desktop/Se-mini-proj/soi-Django-React/backend/recommendation/recommendation_engine/embeddings.pkl")
-        # joblib.dump(self.tfidf, "/home/shruti/Desktop/Se-mini-proj/soi-Django-React/backend/recommendation/recommendation_engine/tfidf.pkl")
-        # joblib.dump(self.cosine_similarities,"/home/shruti/Desktop/Se-mini-proj/soi-Django-React/backend/recommendation/recommendation_engine/cosine_similarities.pkl")
-        # self.df.to_excel("recommendation/recommendation_engine/P11-1000-Startups.xlsx")
-
-        joblib.dump(self.embeddings, "E:/soi-Django-React/backend/recommendation/recommendation_engine/embeddings.pkl")
-        joblib.dump(self.tfidf, "E:/soi-Django-React/backend/recommendation/recommendation_engine/tfidf.pkl")
-        joblib.dump(self.cosine_similarities,"E:/soi-Django-React/backend/recommendation/recommendation_engine/cosine_similarities.pkl")
+        joblib.dump(self.embeddings, "/home/shruti/Desktop/Se-mini-proj/soi-Django-React/backend/recommendation/recommendation_engine/embeddings.pkl")
+        joblib.dump(self.tfidf, "/home/shruti/Desktop/Se-mini-proj/soi-Django-React/backend/recommendation/recommendation_engine/tfidf.pkl")
+        joblib.dump(self.cosine_similarities,"/home/shruti/Desktop/Se-mini-proj/soi-Django-React/backend/recommendation/recommendation_engine/cosine_similarities.pkl")
         self.df.to_excel("recommendation/recommendation_engine/P11-1000-Startups.xlsx")
+
+        # joblib.dump(self.embeddings, "E:/soi-Django-React/backend/recommendation/recommendation_engine/embeddings.pkl")
+        # joblib.dump(self.tfidf, "E:/soi-Django-React/backend/recommendation/recommendation_engine/tfidf.pkl")
+        # joblib.dump(self.cosine_similarities,"E:/soi-Django-React/backend/recommendation/recommendation_engine/cosine_similarities.pkl")
+        # self.df.to_excel("recommendation/recommendation_engine/P11-1000-Startups.xlsx")
 
         # joblib.dump(self.embeddings, "recommendation/recommendation_engine/embeddings.pkl")
         # joblib.dump(self.tfidf, "recommendation/recommendation_engine/tfidf.pkl")

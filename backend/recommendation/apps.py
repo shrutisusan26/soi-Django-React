@@ -1,8 +1,8 @@
 from django.apps import AppConfig
 from recommendation.recommendation_engine.engine import Engine
 
-# gloveFile = "/home/shruti/Desktop/Se-mini-proj/soi-Django-React/backend/recommendation/recommendation_engine/glove.6B.50d.txt"  #Download glove embeddings and change path accordingly
-gloveFile = "E:/soi-Django-React/backend/recommendation/recommendation_engine/glove.6B.50d.txt"  #Download glove embeddings and change path accordingly
+gloveFile = "/home/shruti/Desktop/Se-mini-proj/soi-Django-React/backend/recommendation/recommendation_engine/glove.6B.50d.txt"  #Download glove embeddings and change path accordingly
+# gloveFile = "E:/soi-Django-React/backend/recommendation/recommendation_engine/glove.6B.50d.txt"  #Download glove embeddings and change path accordingly
 import numpy as np
 import nltk
 nltk.download('stopwords')
