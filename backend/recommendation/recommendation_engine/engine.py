@@ -2,8 +2,9 @@
 # 1. pip install pipreqs
 # 2. pip install -r requirements.txt
 
-gloveFile = "/home/shruti/Desktop/Se-mini-proj/soi-Django-React/backend/recommendation/recommendation_engine/glove.6B.50d.txt"  #Download glove embeddings and change path accordingly
+# gloveFile = "/home/shruti/Desktop/Se-mini-proj/soi-Django-React/backend/recommendation/recommendation_engine/glove.6B.50d.txt"  #Download glove embeddings and change path accordingly
 # gloveFile = "/home/jinitsan/Documents/glove.6B.50d.txt"
+gloveFile =  "E:/glove.6B.50d.txt"
 import numpy as np
 import nltk
 nltk.download('stopwords')
@@ -32,17 +33,25 @@ import joblib
 # corpus_vocabulary.default_factory = corpus_vocabulary.__len__
 # cosine_similarities = joblib.load("/home/shruti/Desktop/Se-mini-proj/soi-Django-React/backend/recommendation/recommendation_engine/cosine_similarities.pkl")
 
-
-embeddings = joblib.load("recommendation/recommendation_engine/embeddings.pkl")
-tfidf = joblib.load("recommendation/recommendation_engine/tfidf.pkl")
-corpus_tfidf_vectorizer = joblib.load("recommendation/recommendation_engine/corpus_tfidf_vectorizer.pkl")
+embeddings = joblib.load("E:/soi-Django-React/backend/recommendation/recommendation_engine/embeddings.pkl")
+tfidf = joblib.load("E:/soi-Django-React/backend/recommendation/recommendation_engine/tfidf.pkl")
+corpus_tfidf_vectorizer = joblib.load("E:/soi-Django-React/backend/recommendation/recommendation_engine/corpus_tfidf_vectorizer.pkl")
 corpus_vocabulary = defaultdict(None, copy.deepcopy(corpus_tfidf_vectorizer.vocabulary_))
 corpus_vocabulary.default_factory = corpus_vocabulary.__len__
-cosine_similarities = joblib.load("recommendation/recommendation_engine/cosine_similarities.pkl")
+cosine_similarities = joblib.load("E:/soi-Django-React/backend/recommendation/recommendation_engine/cosine_similarities.pkl")
 
-df = pd.read_excel("recommendation/recommendation_engine/P11-1000-Startups.xlsx",engine='openpyxl')
+# embeddings = joblib.load("recommendation/recommendation_engine/embeddings.pkl")
+# tfidf = joblib.load("recommendation/recommendation_engine/tfidf.pkl")
+# corpus_tfidf_vectorizer = joblib.load("recommendation/recommendation_engine/corpus_tfidf_vectorizer.pkl")
+# corpus_vocabulary = defaultdict(None, copy.deepcopy(corpus_tfidf_vectorizer.vocabulary_))
+# corpus_vocabulary.default_factory = corpus_vocabulary.__len__
+# cosine_similarities = joblib.load("recommendation/recommendation_engine/cosine_similarities.pkl")
+
+
+
+# df = pd.read_excel("recommendation/recommendation_engine/P11-1000-Startups.xlsx",engine='openpyxl')
 # df = pd.read_excel("/home/shruti/Desktop/Se-mini-proj/soi-Django-React/backend/recommendation/recommendation_engine/P11-1000-Startups.xlsx",engine='openpyxl')
-
+df = pd.read_excel("E:/soi-Django-React/backend/recommendation/recommendation_engine/P11-1000-Startups.xlsx",engine='openpyxl')
 
 def lemmatize(text):
     return WordNetLemmatizer().lemmatize(text, pos='v')
@@ -62,7 +71,7 @@ class Engine:
         words = letters_only_text.lower()
         return [lemmatize(token) for token in gensim.utils.simple_preprocess(words) if (token not in gensim.parsing.preprocessing.STOPWORDS and len(token) > 3) ]
     
-    def loadGloveModel(self,gloveFile="/home/jinitsan/Documents/glove.6B.50d.txt"):
+    def loadGloveModel(self,gloveFile="E:/glove.6B.50d.txt"):
         print ("Loading Glove Model")
         with open(gloveFile, encoding="utf8" ) as f:
             content = f.readlines()
@@ -130,10 +139,16 @@ class Engine:
         return recommend['Name'].to_dict()
     
     def save_files(self):
-        joblib.dump(self.embeddings, "/home/shruti/Desktop/Se-mini-proj/soi-Django-React/backend/recommendation/recommendation_engine/embeddings.pkl")
-        joblib.dump(self.tfidf, "/home/shruti/Desktop/Se-mini-proj/soi-Django-React/backend/recommendation/recommendation_engine/tfidf.pkl")
-        joblib.dump(self.cosine_similarities,"/home/shruti/Desktop/Se-mini-proj/soi-Django-React/backend/recommendation/recommendation_engine/cosine_similarities.pkl")
+        # joblib.dump(self.embeddings, "/home/shruti/Desktop/Se-mini-proj/soi-Django-React/backend/recommendation/recommendation_engine/embeddings.pkl")
+        # joblib.dump(self.tfidf, "/home/shruti/Desktop/Se-mini-proj/soi-Django-React/backend/recommendation/recommendation_engine/tfidf.pkl")
+        # joblib.dump(self.cosine_similarities,"/home/shruti/Desktop/Se-mini-proj/soi-Django-React/backend/recommendation/recommendation_engine/cosine_similarities.pkl")
+        # self.df.to_excel("recommendation/recommendation_engine/P11-1000-Startups.xlsx")
+
+        joblib.dump(self.embeddings, "E:/soi-Django-React/backend/recommendation/recommendation_engine/embeddings.pkl")
+        joblib.dump(self.tfidf, "E:/soi-Django-React/backend/recommendation/recommendation_engine/tfidf.pkl")
+        joblib.dump(self.cosine_similarities,"E:/soi-Django-React/backend/recommendation/recommendation_engine/cosine_similarities.pkl")
         self.df.to_excel("recommendation/recommendation_engine/P11-1000-Startups.xlsx")
+
         # joblib.dump(self.embeddings, "recommendation/recommendation_engine/embeddings.pkl")
         # joblib.dump(self.tfidf, "recommendation/recommendation_engine/tfidf.pkl")
         # joblib.dump(self.cosine_similarities,"recommendation/recommendation_engine/cosine_similarities.pkl")
