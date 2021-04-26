@@ -25,7 +25,6 @@ class Sidepanel extends React.Component {
         );
         return;
       } else {
-        console.log("waiting for authentication details...");
         component.waitForAuthDetails();
       }
     }, 100);
@@ -78,10 +77,7 @@ class Sidepanel extends React.Component {
               alt=""
             />
             <p>{this.props.username}</p>
-            <i
-              className="fa fa-chevron-down expand-button"
-              aria-hidden="true"
-            />
+           
             
             <div id="expanded">
                 <button onClick={(e)=>this.redirect(e)}>Back</button>
@@ -96,10 +92,6 @@ class Sidepanel extends React.Component {
           <button id="addChat" onClick={() => this.openAddChatPopup()}>
             <i className="fa fa-user-plus fa-fw" aria-hidden="true" />
             <span>Create chat</span>
-          </button>
-          <button id="settings">
-            <i className="fa fa-cog fa-fw" aria-hidden="true" />
-            <span>Settings</span>
           </button>
         </div>
       </div>

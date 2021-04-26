@@ -47,7 +47,8 @@ class HorizontalAddChatForm extends React.Component {
           })
           .then(res => {
             this.props.history.push(`/${res.data.id}`);
-            WebSocketInstance.connect(res.data.id);
+            // WebSocketInstance.disconnect();
+            WebSocketInstance.connect(this.props.match.params.chatID);
             this.props.closeAddChatPopup();
             this.props.getUserChats(this.props.username, this.props.token);
           })

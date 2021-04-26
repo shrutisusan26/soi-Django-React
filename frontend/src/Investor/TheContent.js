@@ -5,8 +5,8 @@ import {
   Switch
 } from 'react-router-dom'
 import { CContainer, CFade } from '@coreui/react'
-
-// routes config
+import Loader from "react-loader-spinner";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 const IDashboard = React.lazy(() => import('../views/dashboard/InvestorDash'));
 const routes=[
@@ -15,12 +15,20 @@ const routes=[
 ]
   
 const loading = (
-  <div className="pt-3 text-center">
-    <div className="sk-spinner sk-spinner-pulse"></div>
-  </div>
+  // <div className="pt-3 text-center">
+  //   <div className="sk-spinner sk-spinner-pulse"></div>
+  // </div>
+  <Loader
+        type="Puff"
+        color="#00BFFF"
+        height={100}
+        width={100}
+        timeout={3000} //3 secs
+      />
 )
 
 const TheContent = () => {
+  
   return (
     <main className="c-main">
       <CContainer fluid>

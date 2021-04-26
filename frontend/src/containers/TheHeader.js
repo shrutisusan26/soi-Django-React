@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import {useHistory} from 'react-router-dom'
 import ls from 'local-storage'
-// routes config
+import {useCookies} from 'react-cookie';
 import routes from '../routes'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import {
@@ -17,13 +17,14 @@ import {
   CLink
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
+import { logout } from '../chat/store/actions/auth';
 
 
 const TheHeader = () => {
   let history=useHistory()
   const dispatch = useDispatch()
   const sidebarShow = useSelector(state => state.sidebarShow)
-
+  const [cookies, setCookie, removeCookie] = useCookies(['mytoken']);
   const toggleSidebar = () => {
     const val = [true, 'responsive'].includes(sidebarShow) ? false : 'responsive'
     dispatch({type: 'set', sidebarShow: val})
@@ -45,8 +46,10 @@ const TheHeader = () => {
 }
 
 
-  const Logout=()=>{
-    deleteAllCookies();
+  const Logout=(e)=>{
+    e.preventDefault();
+    // deleteAllCookies();
+    removeCookie('mytoken',{path:'/',domain:'localhost'})
     ls.clear()
     history.push('/home');
   };
@@ -71,7 +74,7 @@ const TheHeader = () => {
           <CHeaderNavLink to="/home" >Home</CHeaderNavLink>
         </CHeaderNavItem>
         <CHeaderNavItem className="px-3" >
-          <CHeaderNavLink   onClick={Logout}>Logout</CHeaderNavLink>
+          <CHeaderNavLink   onClick={(e)=>{Logout(e)}}>Logout</CHeaderNavLink>
         </CHeaderNavItem>
       </CHeaderNav>
     <AccountCircleIcon style={{ fontSize: 50}} ></AccountCircleIcon>

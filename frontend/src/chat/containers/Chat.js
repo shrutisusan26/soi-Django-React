@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import WebSocketInstance from "../websocket";
 import Hoc from "../hoc/hoc";
-
+import Profile from "./Profile";
 class Chat extends React.Component {
   state = { message: "" };
 
@@ -13,10 +13,8 @@ class Chat extends React.Component {
         this.props.match.params.chatID
       );
     });
-    // if (this.props.match.params.chatID!="chat"){
-      console.log(this.props.match.params.chatID);
+   
       WebSocketInstance.connect(this.props.match.params.chatID);
-    // }
   }
 
   constructor(props) {
@@ -78,10 +76,7 @@ class Chat extends React.Component {
 
   renderMessages = messages => {
     const currentUser=localStorage.getItem('username').replace(/['"]+/g, '');
-    // if(this.state.username){
-    //    currentUser= this.state.username
-    // }
-    return messages.map((message, i, arr) => (
+    return messages.map((message, i, arr) => (<>
       <li
         key={message.id}
         style={{ marginBottom: arr.length - 1 === i ? "300px" : "15px" }}
@@ -98,6 +93,7 @@ class Chat extends React.Component {
           <small>{this.renderTimestamp(message.timestamp)}</small>
         </p>
       </li>
+      </>
     ));
   };
 
@@ -129,10 +125,11 @@ class Chat extends React.Component {
   render() {
     return (
       <Hoc>
-    
+        <Profile props={this.props.match.params.name}/>
         <div className="messages">
         
           <ul id="chat-log">
+            
             {this.props.messages && this.renderMessages(this.props.messages)}
             <div
               style={{ float: "left", clear: "both" }}

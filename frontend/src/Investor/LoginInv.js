@@ -73,12 +73,10 @@ function LoginInv() {
     const loginButton=()=>{
         APIService.LoginInvestor({username,password})
         .then(resp=> {
-        console.log(resp.token)
         if(resp.token){
             ls.set('username',resp['user_id']);
-            console.log(resp)
             ls.set('token',resp.token);
-            setCookie('mytoken',resp.token,"/")
+            setCookie('mytoken',resp.token,{path:"/"})
             ls.set('startup',resp.is_startup);
         }
         else{ 
@@ -104,7 +102,6 @@ function LoginInv() {
             
             <Row>
               <Col className="ml-auto mr-auto" md="6">
-                {/* <h4 className="title text-center">My Portfolio</h4> */}
                 <div className="nav-align-center">
                   <Nav
                     className="nav-pills-info nav-pills-just-icons"
@@ -174,19 +171,19 @@ function LoginInv() {
                         <img
                           alt="..."
                           className="img-raised"
-                        //   src={bg8}
+                      
                         ></img>
                       </Col>
                       <Col md="6">
                         <img
                           alt="..."
                           className="img-raised"
-                        //   src={bg7}
+                        
                         ></img>
                         <img
                           alt="..."
                           className="img-raised"
-                        //   src={bg6}
+                       
                         ></img>
                       </Col>
                     </Row>

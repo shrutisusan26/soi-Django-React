@@ -16,10 +16,7 @@ const { Option } = Select;
 function Browsing(props) {
     const[posts, setPosts] = useState([]);
     const[loading, setLoading] = useState(false);
-    const[profiles,setProfiles]=useState([]);
     const[searchTerm,setSearchTerm]=useState('');
-    const[getlinks,setLinks]=useState('http://localhost:8000/soi/startup/signup/');
-    const [getProfilelinks,setProfileLink]=useState('http://localhost:8000/soi/startup/profile/')
     const [pagenum,setPagenum]=useState(1);
     const [totalcount,setCount]=useState(0);
     const [pageBtn,setPageButton] = useState(true)
@@ -32,7 +29,6 @@ function Browsing(props) {
             await axios.get(`http://localhost:8000/soi/startup/profile/?${dropdownop}=${searchTerm}&page=${pagenum}`)
             .then(resp=>{
               setCount(resp.data.count)
-              setLinks(resp.data.links.next)
               setPosts(resp.data.results);
               setLoading(false);
               setPageButton(false);
@@ -68,7 +64,7 @@ function Browsing(props) {
             <div className="c-body">
               <div className="forms">
           
-                <Select defaultValue="Filter by" style={{ width:120 }} onChange={handleChange}>
+                <Select defaultValue="Filter by" style={{marginLeft:'5px', width:120 }} onChange={handleChange}>
                   <Option value="tags">Tags</Option>
                   <Option value="place">Place</Option>
                   <Option value="profile_user">Startup</Option>
@@ -93,12 +89,13 @@ function Browsing(props) {
                   <MDBBtn rounded color = "primary"  rounded size="sm" type="submit" className="mr-auto" rounded onClick={(e)=>clickPageBtn(e)}>
                     Submit
                 </MDBBtn><br/>
-                { Math.floor(totalcount/6) ? <span style={{ marginLeft:"10px",display:"inline-block"}} >Enter between 1- {Math.floor(totalcount/6) }</span>:<span>Page 1 of 1</span>}
+                { Math.floor(totalcount/6) ? <span style={{ marginLeft:"10px",display:"inline-block"}} >Enter between 1- {Math.floor(totalcount/6) }</span>:<span style={{ marginLeft:"10px"}}>Page 1 of 1</span>}
                 </MDBFormInline>
                 </MDBCol>
               </span>
             </div>
-            <Posts posts = {posts} loading = {loading} links={getlinks}/>
+         
+            {posts.length!==0 || loading==true ?<div><Posts posts = {posts} loading = {loading}/> </div>:<div style={centerElem}>No exact matches found </div>}
             </div>
             </div>
    
@@ -108,3 +105,9 @@ function Browsing(props) {
 }
 
 export default Browsing;
+const centerElem = {
+  margin: "50px 0 80px 350px",
+  fontFamily:'Oswald',
+  fontSize:"40px"
+
+}

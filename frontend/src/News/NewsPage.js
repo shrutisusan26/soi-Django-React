@@ -32,8 +32,12 @@ function NewsPage() {
             {type==="false" ? <TheSidebar/> :<TheStartupSidebar/>}
             <div className="c-wrapper">
                 <TheHeader/>
+                <div className="title" style={{marginLeft:'0px'}} >
+                <h2>Market News</h2>
+                <div className="underline"></div>
+              </div>
             <main>
-                <div>
+                <div >
                     <NewsList news={news}/>
                 </div>
             </main>

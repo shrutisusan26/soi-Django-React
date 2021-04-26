@@ -1,20 +1,27 @@
 import React, { useState,useEffect } from 'react';
 import ls from 'local-storage';
 import APIService from '../APIService'
+import '../index.css';
 import {
     TheSidebar,
     TheHeader,
   } from  '../containers/index'
 import { Card, Badge, Button, Collapse } from 'react-bootstrap'
 import cslogo from '../Images/cslogo.png'
+import Loader from "react-loader-spinner";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 export default function Recommendation() {
     const [recommendation,setRecommendation]=useState([]);
     const i_pk=ls.get('username');
     const [open, setOpen] = useState(false)
+    const[loading, setLoading] = useState(false);
     useEffect(()=>{
+        setLoading(true);
         APIService.getRecommendations(i_pk).then(resp=>{
-           setRecommendation(resp.interested_startups)
+           setRecommendation(resp.interested_startups);
+           setLoading(false);
         })
+        
     },[]);
     return(<div>
             {/* {console.log(recommendation)} */}
@@ -22,9 +29,16 @@ export default function Recommendation() {
             <TheSidebar/>
             <div className="c-wrapper">
             <TheHeader/>
-            <h1 style={{marginLeft:370,width:'50%',fontFamily:'Oswald',paddingTop:15}}>Recommendations</h1>
+            <div className="title" style={{marginLeft:'0px'}}>
+                <h2>Recommendations</h2>
+                <div className="underline"></div>
+            </div>
             <div className="c-body">
-    
+                {loading && <Loader style={{marginLeft:'350px'}} 
+                type="ThreeDots"
+                color="#1F2DB2"
+                height={600}
+                width={500}/>}
                 {recommendation && recommendation.map(startup=>
                     (
                        
@@ -33,7 +47,7 @@ export default function Recommendation() {
                         <div className="d-flex justify-content-between">
                             <div>
                                 <Card.Title>
-                                <h1 style={{fontFamily:'Oswald'}}>{startup.startup_name}</h1>
+                                <h1 style={{fontFamily:'Helvetica'}}>{startup.startup_name}</h1>
                                 </Card.Title>
                                 
                                 <Badge variant="secondary">{startup.place && startup.place}</Badge>
@@ -70,7 +84,9 @@ export default function Recommendation() {
     )
 }
 const centerElem = {
-    margin: "auto",
-    width: "50%",
-    padding: "10px"
-}
+    margin: "30px 0 0px 400px",
+    fontFamily:'Oswald',
+    fontSize:"40px"
+
+  }
+  

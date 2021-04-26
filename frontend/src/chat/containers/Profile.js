@@ -10,15 +10,10 @@ class Profile extends React.Component {
     }
     return (
       <div className="contact-profile">
-        {this.props.username !== null ? (
+        {this.props.props!== null ? (
           <Hoc>
             <img src="https://www.freeiconspng.com/thumbs/live-chat-icon/live-chat-icon-18.png" alt="" />
-            <p>{this.props.username}</p>
-            <div className="social-media">
-              <i className="fa fa-facebook" aria-hidden="true" />
-              <i className="fa fa-twitter" aria-hidden="true" />
-              <i className="fa fa-instagram" aria-hidden="true" />
-            </div>
+            <p>{this.props.props}</p>
           </Hoc>
         ) : null}
       </div>

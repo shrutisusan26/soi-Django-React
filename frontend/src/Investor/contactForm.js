@@ -2,6 +2,7 @@ import emailjs from "emailjs-com";
 import React, { useState } from 'react';
 import ls from 'local-storage';
 import Feedback from "react-bootstrap/esm/Feedback";
+import '../index.css'
 import {
     TheSidebar,
     TheHeader,
@@ -27,7 +28,10 @@ export default function ContactForm() {
             <TheSidebar/>
             <div className="c-wrapper">
             <TheHeader/>
-            <h1 style={{marginLeft:370,width:'50%',fontFamily:'Oswald',paddingTop:15}}>Enquiry/Feedback</h1>
+            <div className="title" style={{marginLeft:'0px'}}>
+                <h2>Enquiry/Feedback</h2>
+                <div className="underline"></div>
+            </div>
             <div className="c-body">
             <div className="container">
             <form onSubmit={sendEmail}>
@@ -46,7 +50,7 @@ export default function ContactForm() {
                         <div className="col-8 form-group pt-2 mx-auto">
                             Feedback:
                             <textarea className="form-control" id="" cols="30" rows="8" placeholder="Your feedback" name="message"></textarea>
-                            <button className="btn btn-primary" onClick={()=>setFeedback(false)}>Send An Enquiry?</button><input type="submit" className="btn btn-primary" value="Send Message"></input>
+                            <button className="btn btn-primary" onClick={()=>setFeedback(false)} style={{marginRight:'10px'}}>Send An Enquiry?</button><input type="submit" className="btn btn-primary" value="Send Message"></input>
                             </div>  : <div className="col-8 form-group pt-2 mx-auto">
                             Message:
                             <textarea className="form-control" id="" cols="30" rows="8" placeholder="Your message" name="message"></textarea>

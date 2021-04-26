@@ -50,6 +50,10 @@ function DescriptionForm(){
             <TheStartupSidebar/>
             <div className="c-wrapper">
             <TheHeader/>
+            <div className="title" style={{marginLeft:'0px'}}>
+                <h2>Update Description</h2>
+                <div className="underline"></div>
+            </div>
             <div className="c-body">
             <TextArea parentCallback={handleCallback}/>
             <button className="btn btn-primary" onClick={DescriptionButton} style={centerElem}>Update Description</button>
@@ -62,10 +66,10 @@ function DescriptionForm(){
     );
 }
 const centerElem = {
-    margin: "0px 466px ",
-    width: "20%",
-    padding: "10px",
-    fontFamily:"Oswald"
+    margin:'0px 0px 0px 330px',
+    width: "30%",
+    padding: "10px"
+   
 
 }
 export default DescriptionForm;

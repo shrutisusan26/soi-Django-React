@@ -34,7 +34,7 @@ class App extends React.Component {
               isVisible={this.props.showAddChatPopup}
               close={() => this.props.closeAddChatPopup()}
             />
-            <Profile />
+            
             <BaseRouter />
           </div>
         </div>
